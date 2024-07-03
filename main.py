@@ -13,7 +13,6 @@ app = FastAPI()
 @app.get('/')
 async def index_page():
     try:
-        await db.initialize()
         return {"Status": True, "init": 'Success'}
     except Exception as e:
         return {"Status": False, "init": f"err: {e}"}
@@ -24,6 +23,7 @@ async def webhook(update: dict[str, Any]) -> None:
 
 @app.on_event('startup')
 async def on_startup():
+    await db.initialize()
     bot_init.dp.include_router(admin_router)
     await bot_init.bot.set_webhook(config.webhook_url)
 

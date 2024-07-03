@@ -30,7 +30,7 @@ async def reg_admin_command(message: Message):
 @router.message(F.text == 'Панель админа')
 async def admin_panel(message: Message):
     if await db.tg_admin.check_admin_by_user_id(message.chat.id):
-        await message.answer(replic_admin_menu, keyboards.menu)
+        await message.answer(replic_admin_menu, reply_markup=keyboards.menu)
     else:
         await message.answer(replic_403)
 
