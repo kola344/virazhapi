@@ -53,8 +53,4 @@ async def callback(call):
             await db.tg_admin.del_admin_by_id(int(l3))
             text, markup = await replic_menu_admins()
             await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-
-@router.callback_query(F.data)
-async def callfasd(call):
-    print(call.data)
-    print(1)
+    await call.message.answer('боибк')

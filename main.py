@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 import asyncio
 import db
 from aiogram.types import Update
-from virazh_bot import bot_init
+from virazh_bot.bot_init import bot, dp
 import config
 from virazh_bot.admin.admin_messages import router as admin_router
 from aiogram import Bot, Dispatcher
@@ -18,18 +18,19 @@ async def index_page():
         return {"Status": False, "init": f"err: {e}"}
 
 @app.post('/bot_hook')
-async def webhook(update: dict[str, Any]) -> None:
-    await bot_init.dp.feed_webhook_update(bot=bot_init.bot, update=Update(**update))
+async def webhook(update: dict[str, Any]):
+    await dp.feed_webhook_update(bot=bot, update=Update(**update))
     return {'status': 'ok'}
 
 @app.on_event('startup')
 async def on_startup():
     await db.initialize()
-    bot_init.dp.include_router(admin_router)
-    await bot_init.bot.set_webhook(config.webhook_url)
+    dp.include_router(admin_router)
+    await bot.set_webhook(config.webhook_url)
 
 @app.on_event('shutdown')
 async def on_shutdown():
+    pass
     #await bot_init.bot.delete_webhook()
     #await bot_init.bot.session.close()
 
