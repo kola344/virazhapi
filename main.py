@@ -26,8 +26,8 @@ async def webhook(request: Update):
 
 @app.on_event('startup')
 async def on_startup():
-    await bot_init.bot.set_webhook(config.webhook_url)
     await bot_init.dp.include_router(admin_router)
+    await bot_init.bot.set_webhook(config.webhook_url)
 
 @app.on_event('shutdown')
 async def on_shutdown():
