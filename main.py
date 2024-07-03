@@ -20,6 +20,7 @@ async def index_page():
 @app.post('/bot_hook')
 async def webhook(update: dict[str, Any]) -> None:
     await bot_init.dp.feed_webhook_update(bot=bot_init.bot, update=Update(**update))
+    return {'status': 'ok'}
 
 @app.on_event('startup')
 async def on_startup():
