@@ -8,7 +8,7 @@ import db
 
 router = Router()
 
-@router.message(F.text.startswith == '/start reg_admin_')
+@router.message(F.text.startswith('/start reg_admin_'))
 async def start_admin_reg_command(message: Message):
     try:
         key = message.text.split()[1]
@@ -34,7 +34,7 @@ async def admin_panel(message: Message):
     else:
         await message.answer(replic_403)
 
-@router.callback_query(F.data.startswith == 'admin')
+@router.callback_query(F.data.startswith('admin'))
 async def callback(call):
     print(call.data)
     user_id = call.message.chat.id
@@ -44,16 +44,17 @@ async def callback(call):
         l3 = calls[2]
         if l2 == 'menu':
             if l3 == 'admins':
-                text, markup = replic_menu_admins()
+                text, markup = await replic_menu_admins()
                 await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
         elif l2 == 'main':
             if l3 == 'main':
                 await bot.edit_message_text(replic_admin_menu, chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.menu)
         elif l2 == 'del':
             await db.tg_admin.del_admin_by_id(int(l3))
-            text, markup = replic_menu_admins()
+            text, markup = await replic_menu_admins()
             await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
 
 @router.callback_query(F.data)
 async def callfasd(call):
     print(call.data)
+    print(1)

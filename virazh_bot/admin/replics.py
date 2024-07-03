@@ -11,11 +11,14 @@ def replic_reg_new_admin_keygen():
     temp.reg_admin_key = keygen.generate_password(12)
     return f'Ссылка на регистрацию нового администратра:\n{temp.reg_admin_key}'
 
-def replic_menu_admins():
-    admins = db.tg_admin.get_admins_list()
+async def replic_menu_admins():
+    admins = await db.tg_admin.get_admins_list()
     keyboard = []
     for i in admins:
-        keyboard.append([InlineKeyboardButton(text=admins[i]['name'], callback_data=f"admin.del.{admins[i]['id']}")])
+        print(i)
+        print(i['name'])
+        print(i['id'])
+        keyboard.append([InlineKeyboardButton(text=i['name'], callback_data=f"admin.del.{i['id']}")])
     keyboard.append([InlineKeyboardButton(text='⬅️ Назад', callback_data='admin.main.main')])
     markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
     text = 'Управление админами (Нажмите, чтобы удалить)'

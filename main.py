@@ -30,8 +30,8 @@ async def on_startup():
 
 @app.on_event('shutdown')
 async def on_shutdown():
-    await bot_init.bot.delete_webhook()
-    await bot_init.bot.session.close()
+    #await bot_init.bot.delete_webhook()
+    #await bot_init.bot.session.close()
 
 if __name__ == '__main__':
     import uvicorn
