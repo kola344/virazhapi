@@ -8,7 +8,7 @@ import db
 
 router = Router()
 
-@router.message(F.text.startwith == '/start reg_admin_')
+@router.message(F.text.startswith == '/start reg_admin_')
 async def start_admin_reg_command(message: Message):
     try:
         key = message.text.split()[1]
@@ -34,8 +34,9 @@ async def admin_panel(message: Message):
     else:
         await message.answer(replic_403)
 
-@router.callback_query(F.data.startwith == 'admin')
+@router.callback_query(F.data.startswith == 'admin')
 async def callback(call):
+    print(call.data)
     user_id = call.message.chat.id
     if await db.tg_admin.check_admin_by_user_id(user_id):
         calls = str(call.data).split(sep='.')
@@ -53,3 +54,6 @@ async def callback(call):
             text, markup = replic_menu_admins()
             await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
 
+@router.callback_query(F.data)
+async def callfasd(call):
+    print(call.data)
