@@ -167,8 +167,9 @@ async def callback(call, state: FSMContext):
                 await state.set_state(models.admin_categoryState.add_new_category_name)
                 await bot.edit_message_text(replic_admin_adding_new_category_name, chat_id=user_id, message_id=call.message.message_id)
         elif l2 == 'category':
+            await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
             text, markup = await replic_menu_category(int(l3))
-            await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            await call.message.answer(text, reply_markup=markup)
         elif l2 == 'categorydel':
             text, markup = replic_menu_categorydel_confirm(int(l3))
             await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
@@ -220,24 +221,13 @@ async def callback(call, state: FSMContext):
             await state.set_state(models.admin_menu_editorState.price)
             await call.message.answer(replic_admin_menu_editor_reprice)
         elif l2 == 'menuaddv':
-            # await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
             await db.menu.add_new_variationprice(int(l3))
             text, markup = await replic_menu_menu_item(int(l3))
             await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-            # if os.path.exists(f'images/{int(l3)}.png'):
-            #     await call.message.answer_photo(photo=FSInputFile(f'images/{int(l3)}.png'), caption=text, reply_markup=markup)
-            # else:
-            #     await call.message.answer(text, reply_markup=markup)
         elif l2 == 'menudelv':
-            # await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
             await db.menu.del_last_variationprice(int(l3))
             text, markup = await replic_menu_menu_item(int(l3))
             await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-            # if os.path.exists(f'images/{int(l3)}.png'):
-            #     await call.message.answer_photo(photo=FSInputFile(f'images/{int(l3)}.png'), caption=text,
-            #                                     reply_markup=markup)
-            # else:
-            #     await call.message.answer(text, reply_markup=markup)
         elif l2 == 'menudel':
             category_id = await db.menu.get_item_category_by_id(int(l3))
             await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)

@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="a">
-      <change afterPath="$PROJECT_DIR$/images/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virazh_bot/admin/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/db.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/admin/admin_messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/admin_messages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/admin/keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/keyboards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/admin/replics.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/replics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/bot.py" afterDir="false" />
-    </list>
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="tg menu add ready" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -185,12 +173,21 @@
       <option name="project" value="LOCAL" />
       <updated>1720034742634</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="tg menu add ready">
+      <option name="closed" value="true" />
+      <created>1720106987012</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1720106987012</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="a" />
-    <option name="LAST_COMMIT_MESSAGE" value="a" />
+    <MESSAGE value="tg menu add ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="tg menu add ready" />
   </component>
 </project>
