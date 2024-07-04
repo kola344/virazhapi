@@ -3,6 +3,10 @@ from config import database_folder
 
 order = db.orders()
 tg_admin = db.tg_admins()
-async def initialize():
-    await order.connect()
-    await tg_admin.connect()
+menu = db.menu()
+categories = db.categories()
+async def initialize(folder = 'database/'):
+    await order.connect(folder)
+    await tg_admin.connect(folder)
+    await menu.connect(folder)
+    await categories.connect(folder)

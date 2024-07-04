@@ -5,10 +5,9 @@ from virazh_bot.admin.admin_messages import router as admin_router
 from virazh_bot.bot_init import bot, dp
 import db
 
-dp.include_router(admin_router)
-
 async def bot_starter():
     print('virazh running')
+    dp.include_router(admin_router)
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 

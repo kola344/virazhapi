@@ -1,6 +1,7 @@
 import time
 import aiosqlite
 import asyncio
+import config
 
 #TG
 class tg_admins:
@@ -42,6 +43,11 @@ class tg_admins:
             await self.db.execute('DELETE FROM tg_admins WHERE id = ?', (admin_id,))
             await self.db.commit()
 
+    async def get_admin_user_id_by_id(self, admin_id):
+        cursor = await self.db.execute('SELECT user_id FROM tg_admins WHERE id = ?', (admin_id, ))
+        data = await cursor.fetchone()
+        return data[0]
+
 
 class orders:
     def __init__(self):
@@ -50,10 +56,139 @@ class orders:
     async def connect(self, folder='database/'):
         self.db = await aiosqlite.connect(f'{folder}db.db')
 
+class categories:
+    def __init__(self):
+        self.db = None
+
+    async def connect(self, folder='database/'):
+        self.db = await aiosqlite.connect(f'{folder}db.db')
+
+    async def check_category_by_name(self, name):
+        cursor = await self.db.execute('SELECT * FROM categories WHERE name = ?', (name,))
+        return await cursor.fetchone() is not None
+
+    async def check_category_by_id(self, category_id):
+        cursor = await self.db.execute('SELECT * FROM categories WHERE id = ?', (category_id, ))
+        return await cursor.fetchone() is not None
+
+    async def get_category_by_id(self, category_id):
+        cursor = await self.db.execute('SELECT * FROM categories WHERE id = ?', (category_id,))
+        data = await cursor.fetchone()
+        return {"id": data[0], "name": data[1], "description": data[2]}
+
+    async def get_categories(self):
+        result = []
+        cursor = await self.db.execute('SELECT * FROM categories')
+        for i in await cursor.fetchall():
+            result.append({"id": i[0], "name": i[1]})
+        return result
+
+    async def add_category(self, name):
+        if not await self.check_category_by_name(name):
+            cursor = await self.db.execute('INSERT INTO categories (name) VALUES (?)', (name, ))
+            await self.db.commit()
+            new_id = cursor.lastrowid
+            return new_id
+
+    async def del_category(self, category_id):
+        await self.db.execute('DELETE FROM categories WHERE id = ?', (category_id,))
+        await self.db.commit()
+        menu_db = menu()
+        await menu_db.connect()
+        await menu_db.del_all_items(category_id)
+
+class menu:
+    def __init__(self):
+        self.db = None
+
+    async def connect(self, folder='database/'):
+        self.db = await aiosqlite.connect(f'{folder}db.db')
+
+    async def get_menu_by_category_id(self, category_id):
+        cursor = await self.db.execute("SELECT * FROM menu WHERE category = ?", (category_id, ))
+        result = []
+        for item in await cursor.fetchall():
+            prices = item[4].split('::')
+            variations = item[6].split('::')
+            result.append({"id": item[0], "name": item[1], "info": item[2], "subinfo": item[3], "price": prices, "category": item[5], "variations": variations, "image_url": f'{config.main_url}/images?id={item[0]}'})
+        return result
+
+    async def add_item(self, category_id):
+        cursor = await self.db.execute('INSERT INTO menu (name, price, category, variations) VALUES (?, ?, ?, ?)', ('Позиция', 'Цена', category_id, 'Вариация'))
+        await self.db.commit()
+        new_id = cursor.lastrowid
+        return new_id
+
+    async def get_item_info_by_id(self, item_id):
+        cursor = await self.db.execute('SELECT * FROM menu WHERE id = ?', (item_id, ))
+        data = await cursor.fetchone()
+        prices = data[4].split('::')
+        variations = data[6].split('::')
+        return {"id": data[0], "name": data[1], "info": data[2], "subinfo": data[3], "price": prices, "category": data[5], "variations": variations, "image_url": f'{config.main_url}/images?id={item_id}'}
+
+    async def get_item_category_by_id(self, item_id):
+        cursor = await self.db.execute('SELECT category FROM menu WHERE id = ?', (item_id,))
+        data = await cursor.fetchone()
+        return data[0]
+
+    async def rename_item(self, item_id, new_name):
+        await self.db.execute('UPDATE menu SET name = ? WHERE id = ?', (new_name, item_id))
+        await self.db.commit()
+
+    async def reinfo_item(self, item_id, new_info):
+        await self.db.execute('UPDATE menu SET info = ? WHERE id = ?', (new_info, item_id))
+        await self.db.commit()
+
+    async def resubinfo_item(self, item_id, new_subinfo):
+        await self.db.execute('UPDATE menu SET subinfo = ? WHERE id = ?', (new_subinfo, item_id))
+        await self.db.commit()
+
+    async def get_variations(self, item_id):
+        cursor = await self.db.execute("SELECT variations FROM menu WHERE id = ?", (item_id,))
+        data = await cursor.fetchone()
+        return data[0].split('::')
+
+    async def revariations_item(self, item_id, new_variations):
+        await self.db.execute('UPDATE menu SET variations = ? WHERE id = ?', ('::'.join(new_variations), item_id))
+        await self.db.commit()
+
+    async def get_prices(self, item_id):
+        cursor = await self.db.execute("SELECT price FROM menu WHERE id = ?", (item_id,))
+        data = await cursor.fetchone()
+        return data[0].split('::')
+
+    async def reprice_item(self, item_id, new_price):
+        print('Полученные прайсы' + str(new_price))
+        await self.db.execute('UPDATE menu SET price = ? WHERE id = ?', ('::'.join(new_price), item_id))
+        await self.db.commit()
+
+    async def del_all_items(self, category_id):
+        await self.db.execute('DELETE FROM menu WHERE category = ?', (category_id,))
+        await self.db.commit()
+
+    async def add_new_variationprice(self, item_id):
+        variations = await self.get_variations(item_id)
+        variations.append('Вариация')
+        prices = await self.get_prices(item_id)
+        prices.append('Цена')
+        await self.reprice_item(item_id, prices)
+        await self.revariations_item(item_id, variations)
+
+    async def del_last_variationprice(self, item_id):
+        variations = await self.get_variations(item_id)
+        prices = await self.get_prices(item_id)
+        await self.reprice_item(item_id, prices[:-1])
+        await self.revariations_item(item_id, variations[:-1])
+
+    async def del_item(self, item_id):
+        await self.db.execute('DELETE FROM menu WHERE id = ?', (item_id,))
+        await self.db.commit()
+
+
 async def main():
     tg = tg_admins()
     await tg.connect('')
-    print(await tg.get_admins_user_ids())
+    print(await tg.add_admin(1659397548, 'Коля'))
 
 if __name__ == '__main__':
     asyncio.run(main())
