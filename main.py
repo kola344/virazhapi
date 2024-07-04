@@ -7,11 +7,15 @@ import config
 from virazh_bot.admin.admin_messages import router as admin_router
 from aiogram import Bot, Dispatcher
 from typing import Any
+from routers.api.info.menu import router as menu_router
 
 app = FastAPI()
 
+app.include_router(menu_router, prefix="/api/info/menu", tags=["menu"])
+
 @app.get('/')
 async def index_page():
+    '''Ахахахахахахаххахахахахахахахахх'''
     try:
         return {"Status": True, "init": 'Success'}
     except Exception as e:
@@ -19,6 +23,7 @@ async def index_page():
 
 @app.post('/bot_hook')
 async def webhook(update: dict[str, Any]):
+    '''АХАХАХХАХАХАХАХАХАХАХ'''
     await dp.feed_webhook_update(bot=bot, update=Update(**update))
     return {'status': 'ok'}
 
