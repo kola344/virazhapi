@@ -8,6 +8,8 @@ from virazh_bot.admin.admin_messages import router as admin_router
 from aiogram import Bot, Dispatcher
 from typing import Any
 from routers.api.info.menu import router as menu_router
+import os
+from fastapi.responses import FileResponse
 
 app = FastAPI()
 
@@ -38,6 +40,13 @@ async def on_shutdown():
     pass
     #await bot_init.bot.delete_webhook()
     #await bot_init.bot.session.close()
+
+@app.get('/images/{image}')
+async def get_menu_imagesPage(image: str):
+    file_path = f'images/{image}'
+    if os.path.exists(file_path):
+        return FileResponse(file_path)
+    return FileResponse('icons/notfound.jpg')
 
 if __name__ == '__main__':
     import uvicorn

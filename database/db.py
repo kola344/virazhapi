@@ -110,7 +110,7 @@ class menu:
         for item in await cursor.fetchall():
             prices = item[4].split('::')
             variations = item[6].split('::')
-            result.append({"id": item[0], "name": item[1], "info": item[2], "subinfo": item[3], "price": prices, "category": item[5], "variations": variations, "image_url": f'{config.main_url}/images?id={item[0]}'})
+            result.append({"id": item[0], "name": item[1], "info": item[2], "subinfo": item[3], "price": prices, "category": item[5], "variations": variations, "image_url": f'{config.main_url}/images/{item[0]}.png'})
         return result
 
     async def add_item(self, category_id):
@@ -124,7 +124,7 @@ class menu:
         data = await cursor.fetchone()
         prices = data[4].split('::')
         variations = data[6].split('::')
-        return {"id": data[0], "name": data[1], "info": data[2], "subinfo": data[3], "price": prices, "category": data[5], "variations": variations, "image_url": f'{config.main_url}/images?id={item_id}'}
+        return {"id": data[0], "name": data[1], "info": data[2], "subinfo": data[3], "price": prices, "category": data[5], "variations": variations, "image_url": f'{config.main_url}/images/{item_id}.png'}
 
     async def get_item_category_by_id(self, item_id):
         cursor = await self.db.execute('SELECT category FROM menu WHERE id = ?', (item_id,))
