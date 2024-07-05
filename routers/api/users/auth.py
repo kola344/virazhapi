@@ -18,6 +18,7 @@ async def get_user_keyPage(item: auth_get_key_by_phoneModel):
     if item.phone in auth_codes:
         if item.code == auth_codes[item.phone]:
             data = await db.users.get_key_by_phone_number(item.phone)
+            auth_codes.pop(item.phone)
             return {"status": True, "info": "success", "key": data}
         return {"status": False, "info": "incorrect code", "key": ""}
     return {"status": False, "info": "phone not found", "key": ""}

@@ -11,3 +11,4 @@ async def initialize(folder = 'database/'):
     await tg_admin.connect(folder)
     await menu.connect(folder)
     await categories.connect(folder)
+    await users.connect()

@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="tg menu add ready">
-      <change afterPath="$PROJECT_DIR$/models/api/users/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/api/users/auth.py" afterDir="false" />
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="auth ready">
+      <change afterPath="$PROJECT_DIR$/qodana.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/db.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/api/info/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/api/info/menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/api/users/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/api/users/auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +26,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -58,6 +57,23 @@
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
+  <component name="QodanaHighlightedReportService">
+    <option name="localRunNotPublishedPersistedInfo">
+      <LocalReportPersistedInfo>
+        <option name="path" value="/private/var/folders/l0/8cq03w6961x5ysk7kpm6rbch0000gn/T/qodana_output/qodana.sarif.json" />
+        <option name="reportGuid" value="ee852b96-cfd0-4b88-8d86-fd13953f78f7" />
+        <option name="reportName" value="virazhapi/qodana/2024-07-06" />
+      </LocalReportPersistedInfo>
+    </option>
+  </component>
+  <component name="QodanaIsSelectedPersistenceService">
+    <option name="selectedOrLoading" value="true" />
+  </component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="/private/var/folders/l0/8cq03w6961x5ysk7kpm6rbch0000gn/T/qodana_output/qodana.sarif.json" reportGuid="ee852b96-cfd0-4b88-8d86-fd13953f78f7" reportId="virazhapi/qodana/2024-07-06" />
+    </option>
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -235,13 +251,22 @@
       <option name="project" value="LOCAL" />
       <updated>1720209465634</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="auth ready">
+      <option name="closed" value="true" />
+      <created>1720214443828</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1720214443828</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="a" />
     <MESSAGE value="tg menu add ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="tg menu add ready" />
+    <MESSAGE value="auth ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="auth ready" />
   </component>
 </project>

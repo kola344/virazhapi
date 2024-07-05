@@ -229,13 +229,13 @@ class users:
         await bot.send_message(-4253301518, f'Код подтверждения: {auth_codes[phone_number]}.')
 
     async def get_key_by_phone_number(self, phone_number):
-        cursor = await self.db.execute("SELECT phone_number FROM users WHERE id = ?", (phone_number,))
+        cursor = await self.db.execute("SELECT key FROM users WHERE phone_number = ?", (phone_number,))
         data = await cursor.fetchone()
         return data[0]
 
     async def get_user_data_by_key(self, key):
-        cursor = await self.db.execute("SELECT * FROM users WHERE id = ?", (key,))
-        data = await cursor.fetchall()
+        cursor = await self.db.execute("SELECT * FROM users WHERE key = ?", (key,))
+        data = await cursor.fetchone()
         return {"id": data[0], "name": data[1], "phone_number": data[2], "tg_id": data[3],
                 "tg_first_name": data[4], "tg_last_name": data[5],
                 "tg_username": data[6], "key": data[7], "active_order": data[8]}
