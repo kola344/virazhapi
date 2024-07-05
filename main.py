@@ -8,12 +8,14 @@ from virazh_bot.admin.admin_messages import router as admin_router
 from aiogram import Bot, Dispatcher
 from typing import Any
 from routers.api.info.menu import router as menu_router
+from routers.api.users.auth import router as users_router
 import os
 from fastapi.responses import FileResponse
 
 app = FastAPI()
 
 app.include_router(menu_router, prefix="/api/info/menu", tags=["menu"])
+app.include_router(users_router, prefix="/api/users/auth", tags=["user_auth"])
 
 @app.get('/')
 async def index_page():

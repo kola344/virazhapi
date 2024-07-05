@@ -5,6 +5,7 @@ import config
 from virazh_bot.keygen import generate_password, generate_code
 from temp.auth_code import auth_codes
 import db as dbs
+from integration import notisend
 
 #TG
 class tg_admins:
@@ -96,8 +97,7 @@ class categories:
     async def del_category(self, category_id):
         await self.db.execute('DELETE FROM categories WHERE id = ?', (category_id,))
         await self.db.commit()
-        menu_db = menu()
-        await menu_db.connect()
+        menu_db = dbs.menu
         await menu_db.del_all_items(category_id)
 
 class menu:
@@ -222,6 +222,11 @@ class users:
             await self.db.execute('INSERT INTO users (phone_number, key) VALUES (?, ?)', (phone_number, key))
             await self.db.commit()
         auth_codes[phone_number] = generate_code()
+        # sms = notisend.SMS(config.notisend_project, config.notisend_api_key)
+        # await sms.sendSMS(str(phone_number), f"КАФЕ ВИРАЖ. Код подтверждения: {auth_codes[phone_number]}")
+
+        from virazh_bot.bot_init import bot
+        await bot.send_message(-4253301518, f'Код подтверждения: {auth_codes[phone_number]}.')
 
     async def get_key_by_phone_number(self, phone_number):
         cursor = await self.db.execute("SELECT phone_number FROM users WHERE id = ?", (phone_number,))
@@ -233,15 +238,12 @@ class users:
         data = await cursor.fetchall()
         return {"id": data[0], "name": data[1], "phone_number": data[2], "tg_id": data[3],
                 "tg_first_name": data[4], "tg_last_name": data[5],
-                "tg_username": data[6], "key": data[7]}
-
-    async def get_user_orders_by_key(self, key):
-        pass
+                "tg_username": data[6], "key": data[7], "active_order": data[8]}
 
     async def get_user_active_order_by_key(self, key):
-        pass
-
-
+        cursor = self.db.execute('SELECT active_order FROM users WHERE key = ?', (key, ))
+        data = await cursor.fetchone()
+        return data[0]
 
 
 async def main():

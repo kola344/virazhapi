@@ -5,6 +5,7 @@ order = db.orders()
 tg_admin = db.tg_admins()
 menu = db.menu()
 categories = db.categories()
+users = db.users()
 async def initialize(folder = 'database/'):
     await order.connect(folder)
     await tg_admin.connect(folder)
