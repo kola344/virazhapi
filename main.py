@@ -35,7 +35,7 @@ async def webhook(update: dict[str, Any]):
 async def on_startup():
     await db.initialize()
     dp.include_router(admin_router)
-    await bot.set_webhook(config.webhook_url)
+    await bot.set_webhook(config.webhook_url, drop_pending_updates=True)
 
 @app.on_event('shutdown')
 async def on_shutdown():
