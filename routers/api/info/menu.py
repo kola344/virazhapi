@@ -26,3 +26,9 @@ async def get_menu_by_categoryPage(item: get_menu_by_categoryModel):
         как должно выглядеть на сайте: цена за 40см = 800, цена за половинку = 450'''
     data = await db.menu.get_menu_by_category_id(category_id=item.category_id)
     return {"status": True, "info": "success", "data": data}
+
+@router.post('/get_all_menu')
+async def get_all_menuPage():
+    '''Возвращает полное меню'''
+    data = await db.menu.get_all_menu()
+    return {"status": True, "info": "success", "data": data}

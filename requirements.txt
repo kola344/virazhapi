@@ -2,3 +2,4 @@ uvicorn
 fastapi
 aiogram
 aiosqlite
+aiohttp

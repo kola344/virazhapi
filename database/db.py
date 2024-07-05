@@ -2,6 +2,9 @@ import time
 import aiosqlite
 import asyncio
 import config
+from virazh_bot.keygen import generate_password, generate_code
+from temp.auth_code import auth_codes
+import db as dbs
 
 #TG
 class tg_admins:
@@ -158,7 +161,6 @@ class menu:
         return data[0].split('::')
 
     async def reprice_item(self, item_id, new_price):
-        print('Полученные прайсы' + str(new_price))
         await self.db.execute('UPDATE menu SET price = ? WHERE id = ?', ('::'.join(new_price), item_id))
         await self.db.commit()
 
@@ -183,6 +185,63 @@ class menu:
     async def del_item(self, item_id):
         await self.db.execute('DELETE FROM menu WHERE id = ?', (item_id,))
         await self.db.commit()
+
+    async def get_all_menu(self):
+        categories = await dbs.categories.get_categories()
+        result = []
+        for category in categories:
+            items = await self.get_menu_by_category_id(category["id"])
+            result.append({"category_id": category["id"], "name":category["name"], "items": items})
+        return result
+
+class users:
+    def __init__(self):
+        self.db = None
+
+    async def connect(self, folder='database/'):
+        self.db = await aiosqlite.connect(f'{folder}db.db')
+
+    async def check_user_by_id(self, user_id):
+        cursor = await self.db.execute('SELECT * FROM users WHERE id = ?', (user_id,))
+        return await cursor.fetchone() is not None
+
+    async def check_user_by_phone_number(self, phone_number):
+        cursor = await self.db.execute('SELECT * FROM users WHERE phone_number = ?', (phone_number,))
+        return await cursor.fetchone() is not None
+
+    async def check_user_by_key(self, key):
+        cursor = await self.db.execute('SELECT * FROM users WHERE key = ?', (key,))
+        return await cursor.fetchone() is not None
+
+    async def auth_user_phone(self, phone_number):
+        if not await self.check_user_by_phone_number(phone_number):
+            while 1:
+                key = generate_password(16)
+                if key != self.check_user_by_key(key):
+                    break
+            await self.db.execute('INSERT INTO users (phone_number, key) VALUES (?, ?)', (phone_number, key))
+            await self.db.commit()
+        auth_codes[phone_number] = generate_code()
+
+    async def get_key_by_phone_number(self, phone_number):
+        cursor = await self.db.execute("SELECT phone_number FROM users WHERE id = ?", (phone_number,))
+        data = await cursor.fetchone()
+        return data[0]
+
+    async def get_user_data_by_key(self, key):
+        cursor = await self.db.execute("SELECT * FROM users WHERE id = ?", (key,))
+        data = await cursor.fetchall()
+        return {"id": data[0], "name": data[1], "phone_number": data[2], "tg_id": data[3],
+                "tg_first_name": data[4], "tg_last_name": data[5],
+                "tg_username": data[6], "key": data[7]}
+
+    async def get_user_orders_by_key(self, key):
+        pass
+
+    async def get_user_active_order_by_key(self, key):
+        pass
+
+
 
 
 async def main():
