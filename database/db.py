@@ -60,6 +60,37 @@ class orders:
     async def connect(self, folder='database/'):
         self.db = await aiosqlite.connect(f'{folder}db.db')
 
+    async def add_order(self, data, delivery_at, comment, order_by, address, date, price):
+        cursor = await self.db.execute('INSERT INTO orders (data, delivery_at, comment, order_by, address, status, closed, date, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', (str(data), delivery_at, comment, order_by, address, "🕙 В обработке", 0, date, price))
+        await self.db.commit()
+        new_id = cursor.lastrowid
+        return new_id
+
+    async def update_text(self, order_id, text):
+        await self.db.execute('UPDATE orders SET text = ? WHERE id = ?', (text, order_id))
+        await self.db.commit()
+
+    async def update_message_user_id(self, order_id, message_id):
+        await self.db.execute('UPDATE orders SET message_user_id = ? WHERE id = ?', (message_id, order_id))
+        await self.db.execute()
+
+    async def update_message_id(self, order_id, message_id):
+        await self.db.execute('UPDATE orders SET message_id = ? WHERE id = ?', (message_id, order_id))
+        await self.db.commit()
+    async def set_status(self, status, order_id):
+        await self.db.execute('UPDATE orders SET status = ? WHERE id = ?', (status, order_id))
+        await self.db.commit()
+
+    async def get_order_data(self, order_id):
+        cursor = await self.db.execute('SELECT * FROM orders WHERE id = ?', (order_id,))
+        data = await cursor.fetchone()
+        return {"id": data[0], "data": eval(data[1]), "text": data[2], "delivery_at": data[3], "comment": data[4],
+                "order_by": data[5], "type": data[6], "address": data[7], "status": data[8],
+                "message_id": data[9], "closed": data[10], "date": data[11], "price": data[12]}
+
+    async def close_order(self, order_id):
+        await self.db.execute('UPDATE orders SET closed = ? WHERE id = ?', (1, order_id))
+
 class categories:
     def __init__(self):
         self.db = None
@@ -78,7 +109,7 @@ class categories:
     async def get_category_by_id(self, category_id):
         cursor = await self.db.execute('SELECT * FROM categories WHERE id = ?', (category_id,))
         data = await cursor.fetchone()
-        return {"id": data[0], "name": data[1], "description": data[2]}
+        return {"id": data[0], "name": data[1]}
 
     async def get_categories(self):
         result = []
@@ -114,6 +145,18 @@ class menu:
             prices = item[4].split('::')
             variations = item[6].split('::')
             result.append({"id": item[0], "name": item[1], "info": item[2], "subinfo": item[3], "price": prices, "category": item[5], "variations": variations, "image_url": f'{config.main_url}/images/{item[0]}.png'})
+        return result
+
+    async def get_menu_by_item_ids(self, item_ids: list):
+        cursor = await self.db.execute(f'SELECT * FROM menu WHERE id IN ({", ".join([str(i) for i in item_ids])})')
+        result = []
+        for item in await cursor.fetchall():
+            prices = item[4].split('::')
+            variations = item[6].split('::')
+            category_data = await dbs.categories.get_category_by_id(item[5])
+            result.append({"id": item[0], "name": item[1], "info": item[2], "subinfo": item[3], "prices": prices,
+                           "category": category_data["name"], "variations": variations,
+                           "image_url": f'{config.main_url}/images/{item[0]}.png'})
         return result
 
     async def add_item(self, category_id):
@@ -233,6 +276,11 @@ class users:
         data = await cursor.fetchone()
         return data[0]
 
+    async def get_phone_by_key(self, key):
+        cursor = await self.db.execute("SELECT phone_number FROM users WHERE key = ?", (key, ))
+        data = await cursor.fetchone()
+        return data[0]
+
     async def get_user_data_by_key(self, key):
         cursor = await self.db.execute("SELECT * FROM users WHERE key = ?", (key,))
         data = await cursor.fetchone()
@@ -241,15 +289,32 @@ class users:
                 "tg_username": data[6], "key": data[7], "active_order": data[8]}
 
     async def get_user_active_order_by_key(self, key):
-        cursor = self.db.execute('SELECT active_order FROM users WHERE key = ?', (key, ))
+        cursor = await self.db.execute('SELECT active_order FROM users WHERE key = ?', (key, ))
         data = await cursor.fetchone()
         return data[0]
 
+    async def get_user_tg_id_by_key(self, key):
+        cursor = await self.db.execute('SELECT tg_id FROM users WHERE key = ?', (key, ))
+        data = await cursor.fetchone()
+        return data[0]
+
+    async def add_tg_data_with_key(self, key, tg_id, tg_first_name, tg_last_name, tg_username):
+        await self.db.execute('UPDATE users SET tg_id = ?, tg_first_name = ?, tg_last_name = ?, tg_username = ? WHERE key = ?', (tg_id, tg_first_name, tg_last_name, tg_username, key))
+        await self.db.commit()
+
+    async def check_tg_connected_by_key(self, key):
+        cursor = await self.db.execute("SELECT tg_id FROM users WHERE key = ?", (key, ))
+        data = await cursor.fetchone()
+        return data[0] is not None
+
+    async def update_name_by_key(self, key, name):
+        await self.db.execute('UPDATE users SET name = ? WHERE key = ?', (name, key))
+        await self.db.commit()
 
 async def main():
-    tg = tg_admins()
+    tg = users()
     await tg.connect('')
-    print(await tg.add_admin(1659397548, 'Коля'))
+    print(await tg.check_tg_connected_by_key('ImZAb2OxCR2rcXCA'))
 
 if __name__ == '__main__':
     asyncio.run(main())

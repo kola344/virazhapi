@@ -5,10 +5,13 @@ from aiogram.types import Update
 from virazh_bot.bot_init import bot, dp
 import config
 from virazh_bot.admin.admin_messages import router as admin_router
+from virazh_bot.user.user_messages import router as user_router
 from aiogram import Bot, Dispatcher
 from typing import Any
 from routers.api.info.menu import router as menu_router
 from routers.api.users.auth import router as users_router
+from routers.api.users.telegram import router as telegram_router
+from routers.api.users.orders import router as orders_router
 import os
 from fastapi.responses import FileResponse
 
@@ -16,6 +19,8 @@ app = FastAPI()
 
 app.include_router(menu_router, prefix="/api/info/menu", tags=["menu"])
 app.include_router(users_router, prefix="/api/users/auth", tags=["user_auth"])
+app.include_router(telegram_router, prefix='/api/users/telegram', tags=["telegram"])
+app.include_router(orders_router, prefix='/api/users/orders', tags=["orders"])
 
 @app.get('/')
 async def index_page():
@@ -35,6 +40,7 @@ async def webhook(update: dict[str, Any]):
 async def on_startup():
     await db.initialize()
     dp.include_router(admin_router)
+    dp.include_router(user_router)
     await bot.set_webhook(config.webhook_url, drop_pending_updates=True)
 
 @app.on_event('shutdown')
