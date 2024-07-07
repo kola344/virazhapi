@@ -40,5 +40,5 @@ async def get_menu_categoriesPage(item: add_orderModel):
         await db.orders.update_text(order_id, text)
         await orders_bot.send_order_to_chat(text, item.user_key, order_id)
         carts[item.user_key] = []
-        return {"status": False, "info": "success", "order_id": order_id}
+        return {"status": True, "info": "success", "order_id": order_id}
     return {"status": False, "info": 'time is not available', "order_id": ''}

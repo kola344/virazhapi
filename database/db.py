@@ -94,6 +94,11 @@ class orders:
         data = await cursor.fetchone()
         return data[0]
 
+    async def get_text(self, order_id):
+        curspr = await self.db.execute('SELECT text FROM orders WHERE id = ?', (order_id, ))
+        data = await curspr.fetchone()
+        return data[0]
+
     async def close_order(self, order_id):
         await self.db.execute('UPDATE orders SET closed = ? WHERE id = ?', (1, order_id))
 
