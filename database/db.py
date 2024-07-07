@@ -327,7 +327,7 @@ class users:
         await self.db.commit()
 
     async def get_orders_history(self, key):
-        cursor = await self.db.execute('SELECT * FROM orders WHERE order_by', (key,))
+        cursor = await self.db.execute('SELECT * FROM orders WHERE order_by = ?', (key,))
         orders = []
         for order in await cursor.fetchall():
             orders.append({"order_id": order[0], "data": eval(order[1]), "text": order[2],

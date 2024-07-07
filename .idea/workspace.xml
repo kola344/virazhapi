@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="beta 2" />
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="beta 2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/db.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/api/users/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/api/users/cart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/api/users/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/api/users/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/times_and_shift.py" beforeDir="false" afterPath="$PROJECT_DIR$/times_and_shift.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virazh_bot/functions/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/functions/order.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -347,7 +355,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720370377075</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="beta 2">
+      <option name="closed" value="true" />
+      <created>1720370760226</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1720370760226</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

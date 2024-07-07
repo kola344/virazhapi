@@ -10,7 +10,7 @@ from routers.api.users.cart_data import carts
 router = APIRouter()
 
 @router.post('/get_orders_history')
-async def get_orders_history(item: get_order_historyModel):
+async def get_orders_historyPage(item: get_order_historyModel):
     history = await db.users.get_orders_history(item.user_key)
     return {"status": True, "info": "success", "history": history}
 
@@ -24,20 +24,20 @@ async def add_orderPage(item: add_orderModel):
     if item.delivery_at in get_available_times():
         await db.users.update_name_by_key(item.user_key, item.name)
         phone_number = await db.users.get_phone_by_key(item.user_key)
-        item_ids = []
-        items_info = {}
-        for i in carts[item.user_key]:
-            item_ids.append(i["item"])
-            items_info[i["item"]] = i["variation"]
-        data = await db.menu.get_menu_by_item_ids(item_ids)
+        # item_ids = []
+        # items_info = {}
+        # for i in carts[item.user_key]:
+        #     item_ids.append(i["item"])
+        #     items_info[i["item"]] = i["variation"]
+        # data = await db.menu.get_menu_by_item_ids(item_ids)
         order_subtext = ''
         price = 0
-        for i in data:
+        for i in carts[item.user_key]:
             try:
-                price += int(i["prices"][items_info[i["id"]]])
+                price += int(i["price"])
             except:
                 price = '?'
-            order_subtext += f'\n{i["name"]} - {i["variations"][items_info[i["id"]]]}: {i["prices"][items_info[i["id"]]]}'
+            order_subtext += f'\n{i["name"]} - {i["variation"]}: {i["price"]}'
         current_date = datetime.now()
         date = current_date.strftime('%d.%m.%Y')
         order_id = await db.orders.add_order(carts[item.user_key], item.delivery_at, item.comment, item.user_key, item.address, date, price)

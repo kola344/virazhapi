@@ -12,7 +12,8 @@ router = APIRouter()
 async def add_to_cartPage(item: add_to_cartModel):
     if not item.user_key in cart_data.carts:
         cart_data.carts[item.user_key] = []
-    cart_data.carts[item.user_key].append({"item": item.item_id, "variation": item.variation_id})
+    item_data = await db.menu.get_item_info_by_id(item.item_id)
+    cart_data.carts[item.user_key].append({"item_id": item.item_id, "variation_id": item.variation_id, "variation": item_data["variations"][item.variation_id], "price": item_data["price"][item.variation_id], "name": item_data["name"], "info": item_data["info"], "subinfo": item_data["subinfo"]})
     return {"status": True, "info": "success", "cart": cart_data.carts[item.user_key]}
 
 # У меня есть словарь [{"item": 1, "variation": 0}, {"item": 2, "variation": 2}, ...] Как мне удалить элемент, у которого item = 2?
