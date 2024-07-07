@@ -12,7 +12,7 @@ def new_stat():
 def add_completed_order(day = 'today', price = 0):
     if day == 'today':
         today = datetime.today().strftime('%d.%m.%Y')
-    with open(f'shift_stats/{day}.json', 'r', encoding='utf-8') as f:
+    with open(f'shift_stats/{today}.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
         data["orders_count"] += 1
         data["completed_count"] += 1
@@ -20,7 +20,7 @@ def add_completed_order(day = 'today', price = 0):
 
 def add_cancelled_order(day = 'today'):
     today = datetime.today().strftime('%d.%m.%Y')
-    with open(f'shift_stats/{day}.json', 'r', encoding='utf-8') as f:
+    with open(f'shift_stats/{today}.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
         data["orders_count"] += 1
         data["cancelled_count"] += 1
