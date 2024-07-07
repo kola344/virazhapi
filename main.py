@@ -12,6 +12,7 @@ from routers.api.info.menu import router as menu_router
 from routers.api.users.auth import router as users_router
 from routers.api.users.telegram import router as telegram_router
 from routers.api.users.orders import router as orders_router
+from routers.api.users.cart import router as cart_router
 import os
 from fastapi.responses import FileResponse
 
@@ -21,6 +22,7 @@ app.include_router(menu_router, prefix="/api/info/menu", tags=["menu"])
 app.include_router(users_router, prefix="/api/users/auth", tags=["user_auth"])
 app.include_router(telegram_router, prefix='/api/users/telegram', tags=["telegram"])
 app.include_router(orders_router, prefix='/api/users/orders', tags=["orders"])
+app.include_router(cart_router, prefix='/api/users/cart', tags=["cart"])
 
 @app.get('/')
 async def index_page():

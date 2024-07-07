@@ -4,25 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="auth ready">
-      <change afterPath="$PROJECT_DIR$/available_times.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/api/users/orders.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/api/users/telegram.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routers/api/users/orders.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routers/api/users/telegram.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virazh_bot/functions/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virazh_bot/functions/order.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virazh_bot/user/keyboards.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virazh_bot/user/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virazh_bot/user/replics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virazh_bot/user/user_messages.py" afterDir="false" />
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="orders beta">
+      <change afterPath="$PROJECT_DIR$/models/api/users/cart.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routers/api/users/cart.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routers/api/users/cart_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/db.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/temp.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/temp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/api/users/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/api/users/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/api/users/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/api/users/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virazh_bot/functions/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/functions/order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virazh_bot/manager/manager_messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/manager/manager_messages.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virazh_bot/manager/replics.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/manager/replics.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +271,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720215941862</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="orders beta">
+      <option name="closed" value="true" />
+      <created>1720292833250</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1720292833250</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -283,6 +287,7 @@
     <MESSAGE value="a" />
     <MESSAGE value="tg menu add ready" />
     <MESSAGE value="auth ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="auth ready" />
+    <MESSAGE value="orders beta" />
+    <option name="LAST_COMMIT_MESSAGE" value="orders beta" />
   </component>
 </project>

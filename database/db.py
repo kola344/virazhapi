@@ -77,6 +77,7 @@ class orders:
     async def update_message_id(self, order_id, message_id):
         await self.db.execute('UPDATE orders SET message_id = ? WHERE id = ?', (message_id, order_id))
         await self.db.commit()
+
     async def set_status(self, status, order_id):
         await self.db.execute('UPDATE orders SET status = ? WHERE id = ?', (status, order_id))
         await self.db.commit()
@@ -87,6 +88,11 @@ class orders:
         return {"id": data[0], "data": eval(data[1]), "text": data[2], "delivery_at": data[3], "comment": data[4],
                 "order_by": data[5], "type": data[6], "address": data[7], "status": data[8],
                 "message_id": data[9], "closed": data[10], "date": data[11], "price": data[12]}
+
+    async def get_user_message_id(self, order_id):
+        cursor = await self.db.execute('SELECT message_user_id FROM orders WHERE id = ?', (order_id, ))
+        data = await cursor.fetchone()
+        return data[0]
 
     async def close_order(self, order_id):
         await self.db.execute('UPDATE orders SET closed = ? WHERE id = ?', (1, order_id))

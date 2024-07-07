@@ -12,7 +12,6 @@ class category_item(BaseModel):
 
 
 class add_orderModel(BaseModel):
-    data: List[category_item]
     delivery_at: str
     comment: str
     user_key: str
