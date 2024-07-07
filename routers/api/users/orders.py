@@ -19,9 +19,9 @@ async def get_available_timesPage():
     return {"status": True, "info": "success", "available_times": get_available_times()}
 
 @router.post('/add_order')
-async def get_menu_categoriesPage(item: add_orderModel):
+async def add_orderPage(item: add_orderModel):
     '''Возвращает результат оформления заказа'''
-    if item.delivery_at in available_times:
+    if item.delivery_at in get_available_times():
         await db.users.update_name_by_key(item.user_key, item.name)
         phone_number = await db.users.get_phone_by_key(item.user_key)
         item_ids = []
