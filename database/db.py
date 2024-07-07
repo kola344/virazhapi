@@ -332,7 +332,7 @@ class users:
         for order in await cursor.fetchall():
             orders.append({"order_id": order[0], "data": eval(order[1]), "text": order[2],
                            "delivery_at": order[3], "comment": order[4], "order_by": order[5],
-                           "address": order[6], "status": order[7], "date": order[9], "price": order[10]})
+                           "address": order[6], "status": order[7], "date": order[10], "price": order[9]})
         return orders
 
 async def main():

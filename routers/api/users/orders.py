@@ -24,12 +24,6 @@ async def add_orderPage(item: add_orderModel):
     if item.delivery_at in get_available_times():
         await db.users.update_name_by_key(item.user_key, item.name)
         phone_number = await db.users.get_phone_by_key(item.user_key)
-        # item_ids = []
-        # items_info = {}
-        # for i in carts[item.user_key]:
-        #     item_ids.append(i["item"])
-        #     items_info[i["item"]] = i["variation"]
-        # data = await db.menu.get_menu_by_item_ids(item_ids)
         order_subtext = ''
         price = 0
         for i in carts[item.user_key]:

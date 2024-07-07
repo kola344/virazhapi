@@ -58,6 +58,7 @@ async def manager_callback(call):
 
 @router.callback_query(F.data.startswith('order'))
 async def callback(call):
+    print(call.data)
     user_id = call.message.chat.id
     calls = str(call.data).split(sep='.')
     l1 = calls[0]

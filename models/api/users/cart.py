@@ -7,7 +7,7 @@ class add_to_cartModel(BaseModel):
 
 class delete_from_cartModel(BaseModel):
     user_key: str
-    item_id: int
+    item_index: int
 
 class user_cartModel(BaseModel):
     user_key: str

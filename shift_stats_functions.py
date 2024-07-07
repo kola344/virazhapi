@@ -10,13 +10,17 @@ def new_stat():
         json.dump({"orders_count": 0, "completed_count": 0, "cancelled_count": 0, "summ": 0}, f)
 
 def add_completed_order(day = 'today', price = 0):
-    if day == 'today':
-        today = datetime.today().strftime('%d.%m.%Y')
+    today = datetime.today().strftime('%d.%m.%Y')
     with open(f'shift_stats/{today}.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
         data["orders_count"] += 1
         data["completed_count"] += 1
-        data["summ"] += price
+        try:
+            data["summ"] += int(price)
+        except Exception as e:
+            print(e)
+    with open(f'shift_stats/{today}.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f)
 
 def add_cancelled_order(day = 'today'):
     today = datetime.today().strftime('%d.%m.%Y')
@@ -24,3 +28,5 @@ def add_cancelled_order(day = 'today'):
         data = json.load(f)
         data["orders_count"] += 1
         data["cancelled_count"] += 1
+    with open(f'shift_stats/{today}.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f)
