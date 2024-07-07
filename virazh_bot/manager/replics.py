@@ -57,9 +57,6 @@ async def replic_order_manager_markup(selected_status, order_id):
             keyboard.append([InlineKeyboardButton(text=f'➡️ {config.order_statuses[i]}', callback_data=f'order.set:{order_id}.cancelled')])
         else:
             keyboard.append([InlineKeyboardButton(text=config.order_statuses[i], callback_data=f'order.set:{order_id}.completed')])
-    keyboard.append([InlineKeyboardButton(text='Действия', callback_data=f'none')])
-    keyboard.append([InlineKeyboardButton(text='❌ Отменить заказ', callback_data=f'order.cancel.{order_id}')])
-    keyboard.append([InlineKeyboardButton(text='✔️ Заказ выполнен', callback_data=f'order.complete.{order_id}')])
     if await db.orders.get_user_message_id(order_id) != None:
         keyboard.append([InlineKeyboardButton(text='🟢 Telegram', callback_data=f'none')])
     else:

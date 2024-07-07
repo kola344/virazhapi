@@ -11,6 +11,7 @@ import db
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 import os
+from aiogram.types import ReplyKeyboardRemove
 
 router = Router()
 
@@ -20,6 +21,8 @@ async def admin_menueditpriceFunc(message: Message, state: FSMContext):
     rate = order_data["rate"]
     order_id = order_data["order_id"]
     await bot.send_message(config.feedback_chat, f'Новый отзыв на заказ #{order_id} - {rate}')
+    await message.answer(replic_feedback_sended, reply_markup=ReplyKeyboardRemove())
+    await state.clear()
     if message.text != 'Отправить':
         await bot.copy_message(config.feedback_chat, message.chat.id, message_id=message.message_id)
 
