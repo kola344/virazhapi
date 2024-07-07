@@ -271,7 +271,7 @@ class users:
         if not await self.check_user_by_phone_number(phone_number):
             while 1:
                 key = generate_password(16)
-                if key != self.check_user_by_key(key):
+                if key != await self.check_user_by_key(key):
                     break
             await self.db.execute('INSERT INTO users (phone_number, key) VALUES (?, ?)', (phone_number, key))
             await self.db.commit()
