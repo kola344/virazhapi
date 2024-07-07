@@ -6,13 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="orders beta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/db.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/manager/manager_messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/manager/manager_messages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/manager/replics.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/manager/replics.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +45,7 @@
     "Python.keygen.executor": "Run",
     "Python.main.executor": "Run",
     "Python.menu.executor": "Run",
+    "Python.orders.executor": "Run",
     "Python.replics.executor": "Run",
     "Python.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -282,7 +276,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720343288956</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="orders beta">
+      <option name="closed" value="true" />
+      <created>1720346436994</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1720346436994</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
