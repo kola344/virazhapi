@@ -6,11 +6,11 @@ import db
 async def send_order_to_chat(text, user_key, order_id):
     keyboard = []
     #info_buttons
-    keyboard.append([InlineKeyboardButton(text='Статусы', callback_data=f'no_using')])
+    keyboard.append([InlineKeyboardButton(text='Статусы', callback_data=f'na')])
     #statuses
     for i in config.order_statuses:
         keyboard.append([InlineKeyboardButton(text=config.order_statuses[i], callback_data=f'order.set:{order_id}.{i}')])
-    keyboard.append([InlineKeyboardButton(text='Действия', callback_data=f'no_using')])
+    keyboard.append([InlineKeyboardButton(text='Действия', callback_data=f'na')])
     keyboard.append([InlineKeyboardButton(text='❌ Отменить заказ', callback_data=f'order.cancel.{order_id}')])
     keyboard.append([InlineKeyboardButton(text='✔️ Заказ выполнен', callback_data=f'order.complete.{order_id}')])
 
@@ -19,7 +19,7 @@ async def send_order_to_chat(text, user_key, order_id):
     message = await bot.send_message(config.orders_chat, text, reply_markup=markup)
     await db.orders.update_message_id(order_id, message.message_id)
     user_id = await db.users.get_user_tg_id_by_key(user_key)
-    btn = InlineKeyboardButton(text='🕙 В обработке', callback_data=f'no_using')
+    btn = InlineKeyboardButton(text='🕙 В обработке', callback_data=f'na')
     markup = InlineKeyboardMarkup(inline_keyboard=[[btn]])
     try:
         message = await bot.send_message(user_id, text, reply_markup=markup)
