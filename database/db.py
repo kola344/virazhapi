@@ -5,7 +5,7 @@ import config
 from virazh_bot.keygen import generate_password, generate_code
 from temp.auth_code import auth_codes
 import db as dbs
-from integration import notisend
+from integration import sms_code
 
 #TG
 class tg_admins:
@@ -276,8 +276,7 @@ class users:
             await self.db.execute('INSERT INTO users (phone_number, key) VALUES (?, ?)', (phone_number, key))
             await self.db.commit()
         auth_codes[phone_number] = generate_code()
-        # sms = notisend.SMS(config.notisend_project, config.notisend_api_key)
-        # await sms.sendSMS(str(phone_number), f"КАФЕ ВИРАЖ. Код подтверждения: {auth_codes[phone_number]}")
+        #await sms_code.send_code(phone_number)
 
         from virazh_bot.bot_init import bot
         await bot.send_message(-4253301518, f'Код подтверждения: {auth_codes[phone_number]}.')
@@ -289,6 +288,11 @@ class users:
 
     async def get_phone_by_key(self, key):
         cursor = await self.db.execute("SELECT phone_number FROM users WHERE key = ?", (key, ))
+        data = await cursor.fetchone()
+        return data[0]
+
+    async def get_tg_id_by_phone_number(self, phone_number):
+        cursor = await self.db.execute('SELECT tg_id FROM users WHERE phone_number = ?', (phone_number, ))
         data = await cursor.fetchone()
         return data[0]
 

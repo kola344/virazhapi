@@ -20,7 +20,11 @@ replic_admin_menu_editor_reprice_err = 'Ошибка. Введите прави�
 
 def replic_reg_new_admin_keygen():
     temp.reg_admin_key = f'reg_admin_' + keygen.generate_password(12)
-    return f'Ссылка на регистрацию нового администратра:\nhttps://t.me/kafevirazh_bot?start={temp.reg_admin_key}'
+    return f'Ссылка на регистрацию нового администратор:\nhttps://t.me/kafevirazh_bot?start={temp.reg_admin_key}'
+
+def replic_reg_new_manager_keygen():
+    temp.reg_manager_key = f'reg_manager_' + keygen.generate_password(12)
+    return f'Ссылка на регистрацию нового администратора:\nhttps://t.me/kafevirazh_bot?start={temp.reg_manager_key}'
 
 async def replic_menu_admins():
     admins = await db.tg_admin.get_admins_list()
