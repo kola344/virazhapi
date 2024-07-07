@@ -329,10 +329,12 @@ class users:
     async def get_orders_history(self, key):
         cursor = await self.db.execute('SELECT * FROM orders WHERE order_by = ?', (key,))
         orders = []
-        for order in await cursor.fetchall():
+        fetched = await cursor.fetchall()
+        for order in fetched:
             orders.append({"order_id": order[0], "data": eval(order[1]), "text": order[2],
                            "delivery_at": order[3], "comment": order[4], "order_by": order[5],
-                           "address": order[6], "status": order[7], "date": order[10], "price": order[9]})
+                           "address": order[6], "status": order[7], "date": order[10], "price": order[11]})
+        print(orders)
         return orders
 
 async def main():
