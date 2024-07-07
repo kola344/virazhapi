@@ -1,17 +1,22 @@
 from fastapi import APIRouter
 import db
-from models.api.users.orders import add_orderModel
+from models.api.users.orders import add_orderModel, get_order_historyModel
 import os
-from available_times import available_times, shift
+from times_and_shift import available_times, shift, get_available_times
 from virazh_bot.functions import order as orders_bot
 from datetime import datetime
 from routers.api.users.cart_data import carts
 
 router = APIRouter()
 
+@router.post('/get_orders_history')
+async def get_orders_history(item: get_order_historyModel):
+    history = await db.users.get_orders_history(item.user_key)
+    return {"status": True, "info": "success", "history": history}
+
 @router.get('/get_available_times')
 async def get_available_timesPage():
-    return {"status": True, "info": "success", "available_times": available_times}
+    return {"status": True, "info": "success", "available_times": get_available_times()}
 
 @router.post('/add_order')
 async def get_menu_categoriesPage(item: add_orderModel):

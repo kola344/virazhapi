@@ -1,15 +1,8 @@
 from pydantic import BaseModel
 from typing import List
 
-class menu_items(BaseModel):
-    item_id: int
-    variation: int
-    price: int
-
-class category_item(BaseModel):
-    category_id: int
-    items: List[menu_items]
-
+class get_order_historyModel(BaseModel):
+    user_key: str
 
 class add_orderModel(BaseModel):
     delivery_at: str
@@ -17,3 +10,4 @@ class add_orderModel(BaseModel):
     user_key: str
     address: str
     name: str
+

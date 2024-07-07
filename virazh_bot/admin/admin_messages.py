@@ -128,10 +128,12 @@ async def reg_admin_command(message: Message):
     else:
         await message.answer(replic_403)
 
-@router.message(F.text == '/reg_manager')
-async def reg_manager_command(message: Message):
+@router.message(F.text == '/manager')
+async def manager_panel(message: Message):
     if await db.tg_admin.check_admin_by_user_id(message.chat.id):
-        await message.answer(replic_re)
+        await message.answer(replic_manager_menu, reply_markup=keyboards.manager_menu)
+    else:
+        await message.answer(replic_403)
 
 @router.message(F.text == '/admin')
 async def admin_panel(message: Message):

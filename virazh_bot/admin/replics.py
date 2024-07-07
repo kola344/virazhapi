@@ -5,7 +5,7 @@ from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove, InlineKeyboa
 import os
 
 replic_403 = 'Отказано в доступе'
-replic_admin_reg_success = 'Вы были зарегистрированы в качестве администратора'
+replic_admin_reg_success = 'Вы были зарегистрированы в как администратор'
 replic_admin_menu = 'Панель админа'
 replic_admin_cannot_delete_self = 'Вы не можете удалить себя'
 replic_admin_adding_new_category_name = 'Добавление новой категории.\nВведите название'
@@ -17,6 +17,7 @@ replic_admin_menu_editor_rephoto = 'Загрузите новое изображ
 replic_admin_menu_editor_revariation = 'Введите новую вариацию'
 replic_admin_menu_editor_reprice = 'Введите новую цену'
 replic_admin_menu_editor_reprice_err = 'Ошибка. Введите правильную цену'
+replic_manager_menu = 'Панель менеджера'
 
 def replic_reg_new_admin_keygen():
     temp.reg_admin_key = f'reg_admin_' + keygen.generate_password(12)
