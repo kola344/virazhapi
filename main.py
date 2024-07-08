@@ -29,6 +29,7 @@ app.include_router(cart_router, prefix='/api/users/cart', tags=["cart"])
 async def index_page():
     '''Ахахахахахахаххахахахахахахахахх'''
     try:
+        await db.initialize()
         return {"Status": True, "init": 'Success'}
     except Exception as e:
         return {"Status": False, "init": f"err: {e}"}

@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="postgre connected and tg success">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/6.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/admin/admin_messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/admin_messages.py" afterDir="false" />
-    </list>
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="ready_to_host beta 1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -501,7 +494,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720451120632</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="ready_to_host beta 1">
+      <option name="closed" value="true" />
+      <created>1720466133818</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1720466133818</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -526,6 +527,7 @@
     <MESSAGE value="beta 2" />
     <MESSAGE value="beta 3" />
     <MESSAGE value="postgre connected and tg success" />
-    <option name="LAST_COMMIT_MESSAGE" value="postgre connected and tg success" />
+    <MESSAGE value="ready_to_host beta 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="ready_to_host beta 1" />
   </component>
 </project>
