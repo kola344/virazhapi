@@ -10,4 +10,5 @@ class add_orderModel(BaseModel):
     user_key: str
     address: str
     name: str
+    payment: str
 

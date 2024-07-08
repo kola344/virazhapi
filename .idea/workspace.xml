@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="beta 2">
+      <change afterPath="$PROJECT_DIR$/database/old_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/db.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/api/users/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/api/users/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/api/users/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/api/users/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/times_and_shift.py" beforeDir="false" afterPath="$PROJECT_DIR$/times_and_shift.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -366,7 +373,47 @@
       <option name="project" value="LOCAL" />
       <updated>1720384134975</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="beta 2">
+      <option name="closed" value="true" />
+      <created>1720390640194</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1720390640194</updated>
+    </task>
+    <task id="LOCAL-00034" summary="beta 2">
+      <option name="closed" value="true" />
+      <created>1720391933791</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1720391933791</updated>
+    </task>
+    <task id="LOCAL-00035" summary="beta 2">
+      <option name="closed" value="true" />
+      <created>1720391961039</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1720391961039</updated>
+    </task>
+    <task id="LOCAL-00036" summary="beta 2">
+      <option name="closed" value="true" />
+      <created>1720391965801</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1720391965801</updated>
+    </task>
+    <task id="LOCAL-00037" summary="beta 2">
+      <option name="closed" value="true" />
+      <created>1720392360941</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1720392360941</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

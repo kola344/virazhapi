@@ -6,16 +6,6 @@ from virazh_bot.keygen import generate_password, generate_code
 from temp.auth_code import auth_codes
 import db as dbs
 from integration import sms_code
-# import asyncpg
-
-# class tg_admins:
-#     def __init__(self, db: asyncpg.connection.Connection):
-#         self.db = db
-#         self.db.execute('''CREATE TABLE IF NOT EXISTS tg_admins (
-#                          id SERIAL PRIMARY KEY,
-#                          user_id INT,
-#                          name TEXT)''')
-
 
 #TG
 class tg_admins:

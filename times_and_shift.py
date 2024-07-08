@@ -12,7 +12,10 @@ times = ["00:00", "00:20", "00:40", "01:00", "02:00",
          "18:40", "19:00", "19:20", "19:40", "20:00", "20:20", "20:40", "21:00",
          "21:20", "21:40", "22:00", "22:20", "22:40", "23:00", "23:20", "23:40"]
 
-def get_available_times():
+remove_times = ["08:00", "08:20", "08:40", "09:00", "09:20", "09:40", "10:00", "10:20", "10:40", "11:00",
+                "11:20", "11:40"]
+
+def get_available_times(order_type):
     return times
     # Текущая дата и время
     current_time = datetime.now()
@@ -25,6 +28,10 @@ def get_available_times():
 
     # Фильтрация доступных времен, которые больше минимального допустимого времени
     filtered_times = [time.strftime("%H:%M") for time in available_times_dt if time.time() > min_order_time.time()]
+    if order_type == 'delivery':
+        for i in remove_times:
+            if i in filtered_times:
+                filtered_times.remove(i)
 
     # Вывод результата
     return filtered_times
