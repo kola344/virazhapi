@@ -45,7 +45,7 @@ class tg_admins:
 
     async def del_admin_by_id(self, admin_id):
         if await self.check_admin_by_user_id(admin_id):
-            await self.db.execute('''SELECT FROM tg_admins WHERE id = $1''', admin_id)
+            await self.db.execute('''DELETE FROM tg_admins WHERE id = $1''', admin_id)
 
     async def get_admin_user_id_by_id(self, admin_id):
         row = await self.db.fetchrow('''SELECT user_id FROM tg_admins WHERE id = $1''', admin_id)
