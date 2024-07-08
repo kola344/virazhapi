@@ -64,6 +64,7 @@ class orders:
         await self.db.execute('''CREATE TABLE IF NOT EXISTS orders (
                                                  id SERIAL PRIMARY KEY,
                                                  data TEXT,
+                                                 text TEXT,
                                                  delivery_at TEXT,
                                                  comment TEXT,
                                                  order_by TEXT,
@@ -119,7 +120,7 @@ class orders:
                 "delivery_at": row['delivery_at'],
                 "comment": row['comment'],
                 "order_by": row['order_by'],
-                "type": row['type'],
+                "payment": row['payment'],
                 "address": row['address'],
                 "status": row['status'],
                 "message_id": row['message_id'],
@@ -154,7 +155,7 @@ class categories:
         self.db = db
 
     async def create_table(self):
-        await self.db.execute('''CREATE TABLE IF NOT EXISTS tg_admins (
+        await self.db.execute('''CREATE TABLE IF NOT EXISTS categories (
                                          id SERIAL PRIMARY KEY,
                                          name TEXT)''')
 
@@ -209,7 +210,7 @@ class menu:
         self.db = db
 
     async def create_table(self):
-        await self.db.execute('''CREATE TABLE IF NOT EXISTS tg_admins (
+        await self.db.execute('''CREATE TABLE IF NOT EXISTS menu (
                                             id SERIAL PRIMARY KEY,
                                             name TEXT,
                                             info TEXT,
@@ -377,10 +378,10 @@ class users:
         self.db = db
 
     async def create_table(self):
-        await self.db.execute('''CREATE TABLE IF NOT EXISTS tg_admins (
+        await self.db.execute('''CREATE TABLE IF NOT EXISTS users (
                                          id SERIAL PRIMARY KEY,
                                          name TEXT,
-                                         phone_number INT,
+                                         phone_number BIGINT,
                                          tg_id INT,
                                          tg_first_name TEXT,
                                          tg_last_name TEXT,

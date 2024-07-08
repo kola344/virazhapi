@@ -26,7 +26,10 @@ async def get_available_times_pickupPage():
 @router.post('/add_order')
 async def add_orderPage(item: add_orderModel):
     '''Возвращает результат оформления заказа'''
-    if item.delivery_at in get_available_times():
+    order_type = 'pickup'
+    if item.address != 'Самовывоз':
+        order_type = 'delivery'
+    if item.delivery_at in get_available_times(order_type):
         await db.users.update_name_by_key(item.user_key, item.name)
         phone_number = await db.users.get_phone_by_key(item.user_key)
         order_subtext = ''

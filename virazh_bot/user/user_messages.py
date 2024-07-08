@@ -31,7 +31,7 @@ async def admin_menueditpriceFunc(message: Message, state: FSMContext):
 @router.message(F.text.startswith('/start connect_'))
 async def start_connect_command(message: Message):
     key = message.text[15:]
-    if db.users.check_user_by_key(key):
+    if await db.users.check_user_by_key(key):
         await db.users.add_tg_data_with_key(key, message.chat.id, message.from_user.first_name, message.from_user.last_name, message.from_user.username)
         await message.answer(replic_tg_connected)
     else:
