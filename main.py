@@ -42,6 +42,10 @@ async def webhook(update: dict[str, Any]):
 @app.on_event('startup')
 async def on_startup():
     await db.initialize()
+    for image in await db.images.get_images():
+        if not os.path.exists(f'images/{image["item_id"]}'):
+            with open(f'images/{image["item_id"]}.png', 'wb') as f:
+                f.write(image["data"])
     dp.include_router(admin_router)
     dp.include_router(user_router)
     dp.include_router(manager_router)

@@ -57,6 +57,8 @@ async def admin_menueditphotoFunc(message: Message, state: FSMContext):
     file_info = await bot.get_file(photo.file_id)
     file_path = file_info.file_path
     await bot.download_file(file_path, f'images/{item_id}.png')
+    with open(f'images/{item_id}.png', 'rb') as f:
+        await db.images.add_image(item_id, f.read())
     text, markup = await replic_menu_menu_item(item_id)
     if os.path.exists(f'images/{item_id}.png'):
         await message.answer_photo(photo=FSInputFile(f'images/{item_id}.png'), caption=text, reply_markup=markup)

@@ -7,6 +7,7 @@ menu = db.menu()
 categories = db.categories()
 users = db.users()
 orders = db.orders()
+images = db.images()
 async def initialize(folder = 'database/'):
     db = await asyncpg.connect(
         host="82.97.248.66",
@@ -24,3 +25,5 @@ async def initialize(folder = 'database/'):
     await users.create_table()
     await orders.connect(db)
     await orders.create_table()
+    await images.connect(db)
+    await images.create_table()

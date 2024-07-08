@@ -473,6 +473,26 @@ class users:
             })
         return orders
 
+class images:
+    def __init__(self):
+        self.db = None
+
+    async def connect(self, db: asyncpg.connection.Connection):
+        self.db = db
+
+    async def create_table(self):
+        await self.db.execute('''CREATE TABLE IF NOT EXISTS images (
+                                            id SERIAL PRIMARY KEY,
+                                            item_id INT,
+                                            data BYTEA)''')
+
+    async def add_image(self, item_id, data):
+        await self.db.execute('''INSERT INTO images (item_id, data) VALUES ($1, $2)''', item_id, data)
+
+    async def get_images(self):
+        cursor = await self.db.fetch('''SELECT * FROM images''')
+        return [dict(data) for data in cursor]
+
 async def main():
     tg = users()
     await tg.connect('')
