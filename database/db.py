@@ -18,22 +18,23 @@ class tg_admins:
         self.db = db
 
     async def create_table(self):
-        self.db.execute('''CREATE TABLE IF NOT EXISTS tg_admins (
+        await self.db.execute('''CREATE TABLE IF NOT EXISTS tg_admins (
                                  id SERIAL PRIMARY KEY,
                                  user_id INT,
                                  name TEXT)''')
 
     async def check_admin_by_id(self, admin_id):
-        row = self.db.fetchrow('''SELECT 1 FROM tg_admins WHERE id = $1''', admin_id)
+        row = await self.db.fetchrow('''SELECT 1 FROM tg_admins WHERE id = $1''', admin_id)
         return row is not None
 
     async def check_admin_by_user_id(self, user_id):
-        row = await self.db.fetchrow('SELECT user_id FROM tg_admins WHERE user_id = $1', user_id)
+        row = await self.db.fetchrow('SELECT 1 FROM tg_admins WHERE user_id = $1', user_id)
+        print(row)
         return row is not None
 
     async def add_admin(self, user_id, name):
-        if not await self.check_admin_by_user_id(user_id):
-            inserted_id = await self.db.fetchval('''INSERT INTO tg_admins (user_id, name) VALUES ($1, $2)''', user_id, name)
+        if not await self.check_admin_by_id(user_id):
+            await self.db.execute('''INSERT INTO tg_admins (user_id, name) VALUES ($1, $2)''', user_id, name)
 
     async def get_admins_list(self):
         cursor = await self.db.fetch('''SELECT * FROM tg_admins''')
@@ -44,7 +45,8 @@ class tg_admins:
         return [data[0] for data in cursor]
 
     async def del_admin_by_id(self, admin_id):
-        if await self.check_admin_by_user_id(admin_id):
+        if await self.check_admin_by_id(admin_id):
+            print('deleting')
             await self.db.execute('''DELETE FROM tg_admins WHERE id = $1''', admin_id)
 
     async def get_admin_user_id_by_id(self, admin_id):
@@ -59,7 +61,7 @@ class orders:
         self.db = db
 
     async def create_table(self):
-        self.db.execute('''CREATE TABLE IF NOT EXISTS orders (
+        await self.db.execute('''CREATE TABLE IF NOT EXISTS orders (
                                                  id SERIAL PRIMARY KEY,
                                                  data TEXT,
                                                  delivery_at TEXT,
@@ -152,7 +154,7 @@ class categories:
         self.db = db
 
     async def create_table(self):
-        self.db.execute('''CREATE TABLE IF NOT EXISTS tg_admins (
+        await self.db.execute('''CREATE TABLE IF NOT EXISTS tg_admins (
                                          id SERIAL PRIMARY KEY,
                                          name TEXT)''')
 
@@ -207,7 +209,7 @@ class menu:
         self.db = db
 
     async def create_table(self):
-        self.db.execute('''CREATE TABLE IF NOT EXISTS tg_admins (
+        await self.db.execute('''CREATE TABLE IF NOT EXISTS tg_admins (
                                             id SERIAL PRIMARY KEY,
                                             name TEXT,
                                             info TEXT,
@@ -375,7 +377,7 @@ class users:
         self.db = db
 
     async def create_table(self):
-        self.db.execute('''CREATE TABLE IF NOT EXISTS tg_admins (
+        await self.db.execute('''CREATE TABLE IF NOT EXISTS tg_admins (
                                          id SERIAL PRIMARY KEY,
                                          name TEXT,
                                          phone_number INT,
