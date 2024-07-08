@@ -89,6 +89,6 @@ async def callback(call):
                 mess = await bot.send_message(chat_id=user_tg_id, text=order_text, reply_markup=user_markup)
                 await db.orders.update_message_user_id(order_id, mess.message_id)
                 markup, user_markup = await replic_order_manager_markup(l3, order_id)
-                await bot.edit_message_text(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+                await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
             except Exception as e:
                 print(e)

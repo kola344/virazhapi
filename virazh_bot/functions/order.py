@@ -9,6 +9,7 @@ async def send_order_to_chat(text, user_key, order_id):
     keyboard.append([InlineKeyboardButton(text='Статусы', callback_data=f'none')])
     #statuses
     for i in config.order_statuses:
+        print(i, config.order_statuses[i])
         keyboard.append([InlineKeyboardButton(text=config.order_statuses[i], callback_data=f'order.set:{order_id}.{i}')])
 
     markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
