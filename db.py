@@ -1,6 +1,7 @@
 from database import db
 from config import database_folder
 import asyncpg
+from asyncpg import create_pool
 
 tg_admin = db.tg_admins()
 menu = db.menu()
@@ -9,12 +10,13 @@ users = db.users()
 orders = db.orders()
 images = db.images()
 async def initialize(folder = 'database/'):
-    db = await asyncpg.connect(
-        host="82.97.248.66",
-        database="default_db",
-        user="gen_user",
-        password="mGk-base)=-"
-    )
+    db = await create_pool(user='gen_user', password='mGk-base)=-', database='default_db', host="82.97.248.66")
+    # db = await asyncpg.connect(
+    #     host="82.97.248.66",
+    #     database="default_db",
+    #     user="gen_user",
+    #     password="mGk-base)=-"
+    # )
     await tg_admin.connect(db)
     await tg_admin.create_table()
     await menu.connect(db)
