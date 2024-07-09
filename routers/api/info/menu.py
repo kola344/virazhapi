@@ -9,7 +9,6 @@ router = APIRouter()
 @router.get('/get_menu_categories')
 async def get_menu_categoriesPage():
     '''Возвращает категории меню.'''
-
     data = await db.categories.get_categories()
     return {"status": True, "info": "success", "data": data}
 

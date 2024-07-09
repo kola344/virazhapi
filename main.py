@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Response
 import asyncio
 import db
 from aiogram.types import Update
@@ -16,8 +16,17 @@ from routers.api.users.orders import router as orders_router
 from routers.api.users.cart import router as cart_router
 import os
 from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 app.include_router(menu_router, prefix="/api/info/menu", tags=["menu"])
 app.include_router(users_router, prefix="/api/users/auth", tags=["user_auth"])
@@ -64,6 +73,15 @@ async def get_menu_imagesPage(image: str):
     if os.path.exists(file_path):
         return FileResponse(file_path)
     return FileResponse('icons/notfound.jpg')
+
+@app.middleware("http")
+async def add_cache_control_header(request: Request, call_next):
+    response: Response = await call_next(request)
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, proxy-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    response.headers["Surrogate-Control"] = "no-store"
+    return response
 
 if __name__ == '__main__':
     import uvicorn

@@ -1,8 +1,8 @@
-import asyncio
-
-from virazh_bot import bot
-
-asyncio.run(bot.main())
+# import asyncio
+#
+# from virazh_bot import bot
+#
+# asyncio.run(bot.main())
 
 # import asyncpg
 # import asyncio
@@ -26,3 +26,5 @@ asyncio.run(bot.main())
 #     await db.execute("DROP TABLE orders")
 #
 # asyncio.run(run())
+import requests
+print(requests.get('http://127.0.0.1:5500/api/info/menu/get_all_menu').headers)
