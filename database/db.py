@@ -21,7 +21,7 @@ class tg_admins:
         async with self.db.acquire() as connection:
             await connection.execute('''CREATE TABLE IF NOT EXISTS tg_admins (
                                      id SERIAL PRIMARY KEY,
-                                     user_id INT,
+                                     user_id BIGINT,
                                      name TEXT)''')
 
     async def check_admin_by_id(self, admin_id):
@@ -417,7 +417,7 @@ class users:
                                              id SERIAL PRIMARY KEY,
                                              name TEXT,
                                              phone_number BIGINT,
-                                             tg_id INT,
+                                             tg_id BIGINT,
                                              tg_first_name TEXT,
                                              tg_last_name TEXT,
                                              tg_username TEXT,
