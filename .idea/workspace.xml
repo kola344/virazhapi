@@ -69,7 +69,7 @@
       <recent name="$PROJECT_DIR$/integration" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="virazhapi" />
       <option name="ENV_FILES" value="" />
@@ -135,14 +135,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00001" summary="a">
-      <option name="closed" value="true" />
-      <created>1719988639911</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1719988639911</updated>
     </task>
     <task id="LOCAL-00002" summary="a">
       <option name="closed" value="true" />
@@ -528,7 +520,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720543148748</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="ready_to_host beta 1">
+      <option name="closed" value="true" />
+      <created>1720588227253</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1720588227253</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

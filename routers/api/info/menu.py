@@ -26,7 +26,7 @@ async def get_menu_by_categoryPage(item: get_menu_by_categoryModel):
     data = await db.menu.get_menu_by_category_id(category_id=item.category_id)
     return {"status": True, "info": "success", "data": data}
 
-@router.get('/get_all_menu')
+@router.post('/get_all_menu')
 async def get_all_menuPage():
     '''Возвращает полное меню'''
     data = await db.menu.get_all_menu()
