@@ -27,7 +27,7 @@ remove_times = ["08:00", "08:20", "08:40", "09:00", "09:20", "09:40", "10:00", "
 
 def get_available_times(order_type):
     if order_type == 'delivery':
-        filtered_times = times
+        filtered_times = times.copy()
         for i in remove_times:
             if i in filtered_times:
                 filtered_times.remove(i)
