@@ -31,6 +31,7 @@ def get_available_times(order_type):
         for i in remove_times:
             if i in filtered_times:
                 filtered_times.remove(i)
+        return filtered_times
     else:
         return times
     # return times
