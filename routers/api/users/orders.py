@@ -15,11 +15,11 @@ async def get_orders_historyPage(item: get_order_historyModel):
     history = await db.users.get_orders_history(item.user_key)
     return {"status": True, "info": "success", "history": history[::-1]}
 
-@router.post('/get_available_times_delivery')
+@router.get('/get_available_times_delivery')
 async def get_available_times_deliveryPage():
     return {"status": True, "info": "success", "available_times": get_available_times('delivery')}
 
-@router.post('/get_available_times_pickup')
+@router.get('/get_available_times_pickup')
 async def get_available_times_pickupPage():
     return {"status": True, "info": "success", "available_times": get_available_times('pickup')}
 
