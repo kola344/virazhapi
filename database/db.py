@@ -448,10 +448,7 @@ class users:
                         break
                 await connection.execute('INSERT INTO users (phone_number, key) VALUES ($1, $2)', phone_number, key)
             auth_codes[phone_number] = generate_code()
-            #await sms_code.send_code(phone_number)
-
-            from virazh_bot.bot_init import bot
-            await bot.send_message(-4253301518, f'Код подтверждения: {auth_codes[phone_number]}.')
+            await sms_code.send_code(phone_number)
 
     async def get_key_by_phone_number(self, phone_number):
         async with self.db.acquire() as connection:
