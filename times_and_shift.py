@@ -16,7 +16,7 @@ remove_times = ["08:00", "08:20", "08:40", "09:00", "09:20", "09:40", "10:00", "
                 "11:20", "11:40"]
 
 def get_available_times(order_type):
-    return times
+    # return times
     # Текущая дата и время
     current_time = datetime.now()
 
