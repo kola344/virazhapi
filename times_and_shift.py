@@ -26,15 +26,14 @@ remove_times = ["08:00", "08:20", "08:40", "09:00", "09:20", "09:40", "10:00", "
                 "11:20", "11:40"]
 
 def get_available_times(order_type):
-    if order_type == 'delivery':
-        filtered_times = times.copy()
-        for i in remove_times:
-            if i in filtered_times:
-                filtered_times.remove(i)
-        return filtered_times
-    else:
-        return times
-    # return times
+    # if order_type == 'delivery':
+    #     filtered_times = times.copy()
+    #     for i in remove_times:
+    #         if i in filtered_times:
+    #             filtered_times.remove(i)
+    #     return filtered_times
+    # else:
+    #     return times
     # Текущая дата и время
     current_time = datetime.now()
 
