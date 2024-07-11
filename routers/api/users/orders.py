@@ -38,7 +38,7 @@ async def add_orderPage(item: add_orderModel):
             try:
                 price += int(i["price"])
             except:
-                price = '?'
+                price = 0
             order_subtext += f'\n{i["name"]} - {i["variation"]}: {i["price"]}'
         current_date = datetime.now()
         date = current_date.strftime('%d.%m.%Y')
