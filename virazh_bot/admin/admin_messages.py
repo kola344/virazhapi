@@ -20,9 +20,7 @@ async def admin_menueditpriceFunc(message: Message, state: FSMContext):
         item = models.admin_menu_data[message.chat.id]
         item_id, price_id = item[0], item[1]
         prices = await db.menu.get_prices(item_id)
-        print('прайсы ' + str(prices))
         prices[price_id] = price
-        print("+ прайсы" + str(prices))
         await db.menu.reprice_item(item_id, prices)
         text, markup = await replic_menu_menu_item(item_id)
         if os.path.exists(f'images/{item_id}.png'):
@@ -109,8 +107,6 @@ async def admin_addcategoryFunc(message: Message, state: FSMContext):
 
 @router.message(F.text.startswith('/start reg_admin_'))
 async def start_admin_reg_command(message: Message):
-    print(message.text)
-    print(1)
     try:
         key = message.text.split()[1]
         if key == temp.reg_admin_key:
@@ -164,8 +160,9 @@ async def callback(call, state: FSMContext):
                 await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
         elif l2 == 'deactivate':
             await db.menu.deactivate(int(l3))
+            await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
             text, markup = await replic_deactivated_menu()
-            await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            await bot.send_message(text=text, chat_id=user_id, reply_markup=markup)
         elif l2 == 'activate':
             await db.menu.activate(int(l3))
             text, markup = await replic_deactivated_menu()

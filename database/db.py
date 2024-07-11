@@ -35,8 +35,8 @@ class tg_admins:
             return row is not None
 
     async def add_admin(self, user_id, name):
-        async with self.db.acquire() as connection:
-            if not await self.check_admin_by_id(user_id):
+        if not await self.check_admin_by_user_id(user_id):
+            async with self.db.acquire() as connection:
                 await connection.execute('''INSERT INTO tg_admins (user_id, name) VALUES ($1, $2)''', user_id, name)
 
     async def get_admins_list(self):
@@ -258,7 +258,7 @@ class menu:
                 INSERT INTO deactivated_menu (id, name, info, subinfo, price, category, variations, image_url)
                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
                 RETURNING id
-            ''', item_id, name, info, subinfo, price, category, variations, image_url)
+            ''', item_id, name, info, subinfo,  '::'.join(price), category, '::'.join(variations), image_url)
             return new_id
 
     async def add_activated_item(self, item_id, name, info, subinfo, price, category, variations, image_url):
@@ -267,7 +267,7 @@ class menu:
                 INSERT INTO menu (id, name, info, subinfo, price, category, variations, image_url)
                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
                 RETURNING id
-            ''', item_id, name, info, subinfo, price, category, variations, image_url)
+            ''', item_id, name, info, subinfo, '::'.join(price), category, '::'.join(variations), image_url)
             return new_id
 
     async def get_deactivated_menu(self):
@@ -321,8 +321,7 @@ class menu:
     async def deactivate(self, item_id):
         item_data = await self.get_item_info_by_id(item_id)
         await self.del_item(item_id)
-        await self.add_deactivated_item(item_id, item_data["name"], item_data["info"], item_data["subinfo"], item_data["price"],
-                                        item_data["category"], item_data["variations"], item_data["image_url"])
+        await self.add_deactivated_item(item_id, item_data['name'], item_data["info"], item_data["subinfo"], item_data["price"], item_data["category"], item_data["variations"], item_data["image_url"])
 
     async def activate(self, item_id):
         item_data = await self.get_deactivated_item_info_by_id(item_id)
