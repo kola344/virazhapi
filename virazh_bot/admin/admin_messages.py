@@ -159,6 +159,17 @@ async def callback(call, state: FSMContext):
             elif l3 == 'categories':
                 text, markup = await replic_menu_categories()
                 await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            elif l3 == 'deactivated':
+                text, markup = await replic_deactivated_menu()
+                await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+        elif l2 == 'deactivate':
+            await db.menu.deactivate(int(l3))
+            text, markup = await replic_deactivated_menu()
+            await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+        elif l2 == 'activate':
+            await db.menu.activate(int(l3))
+            text, markup = await replic_deactivated_menu()
+            await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
         elif l2 == 'main':
             if l3 == 'main':
                 await bot.edit_message_text(replic_admin_menu, chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.menu)
@@ -241,5 +252,6 @@ async def callback(call, state: FSMContext):
             category_id = await db.menu.get_item_category_by_id(int(l3))
             await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
             await db.menu.del_item(int(l3))
+            await db.menu.del_image(int(l3))
             text, markup = await replic_menu_category(category_id)
             await call.message.answer(text, reply_markup=markup)

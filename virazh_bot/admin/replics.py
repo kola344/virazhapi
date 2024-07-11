@@ -69,7 +69,6 @@ def replic_menu_categorydel_confirm(category_id):
 
 async def replic_menu_menu_item(item_id, category_id = None):
     data = await db.menu.get_item_info_by_id(item_id)
-    print(data)
     if category_id == None:
         category_id = data["category"]
     keyboard = []
@@ -82,10 +81,22 @@ async def replic_menu_menu_item(item_id, category_id = None):
     keyboard.append([InlineKeyboardButton(text='➕ Добавить вариацию', callback_data=f'admin.menuaddv.{item_id}')])
     keyboard.append([InlineKeyboardButton(text='➖ Убрать вариацию', callback_data=f'admin.menudelv.{item_id}')])
     keyboard.append([InlineKeyboardButton(text='❌ Удалить товар', callback_data=f'admin.menudel.{item_id}')])
+    keyboard.append([InlineKeyboardButton(text='🔴 Деактивировать', callback_data=f'admin.deactivate.{item_id}')])
     keyboard.append([InlineKeyboardButton(text='⬅️ Назад', callback_data=f'admin.category.{category_id}')])
     markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
     text = f'{data["name"]}\n{data["subinfo"]}\n\n{data["info"]}'
     return text, markup
+
+async def replic_deactivated_menu():
+    text = 'Деактивированные товары. Нажмите, чтобы активировать'
+    menu = await db.menu.get_deactivated_menu()
+    keyboard = []
+    for i in menu:
+        keyboard.append([InlineKeyboardButton(text=i["name"], callback_data=f"admin.activate.{i['id']}")])
+    keyboard.append([InlineKeyboardButton(text='⬅️ Назад', callback_data=f'admin.main.main')])
+    markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
+    return text, markup
+
 
 
 
