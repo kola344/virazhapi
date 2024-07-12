@@ -6,7 +6,7 @@ import os
 
 router = APIRouter()
 
-@router.get('/get_menu_categories')
+@router.post('/get_menu_categories')
 async def get_menu_categoriesPage():
     '''Возвращает категории меню.'''
     data = await db.categories.get_categories()
