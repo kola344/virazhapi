@@ -9,3 +9,5 @@ adding_category_button = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='❌
 
 manager_menu = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='Смена', callback_data='manager.shift.info')],
                                                      [InlineKeyboardButton(text='Время', callback_data='manager.time.info')]])
+
+loading_menu = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='🕙 Обработка...', callback_data='none')]])

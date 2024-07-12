@@ -16,6 +16,7 @@ from aiogram.fsm.context import FSMContext
 import os
 from datetime import datetime
 import shift_stats_functions
+import traceback
 
 router = Router()
 
@@ -26,6 +27,7 @@ async def manager_callback(call):
     l1 = calls[0]
     l2 = calls[1]
     l3 = calls[2]
+    await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
     if l2 == 'shift':
         if l3 == 'info':
             text, markup = await replic_shift_info()
@@ -53,8 +55,7 @@ async def manager_callback(call):
         await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
     elif l2 == 'menu':
         if l3 == 'main':
-            await bot.edit_message_text(replic_manager_menu, chat_id=user_id, message_id=call.message.message_id,
-                                        reply_markup=keyboards.manager_menu)
+            await bot.edit_message_text(replic_manager_menu, chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.manager_menu)
 
 @router.callback_query(F.data.startswith('order'))
 async def callback(call):
@@ -66,6 +67,7 @@ async def callback(call):
     l3 = calls[2]
     func = ''
     order_id = 0
+    await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
     if ':' in l2:
         splited_l2 = l2.split(sep=':')
         func, order_id = splited_l2[0], int(splited_l2[1])
@@ -80,11 +82,9 @@ async def callback(call):
         order_text = await db.orders.get_text(order_id)
         try:
             await bot.delete_message(chat_id=user_tg_id, message_id=user_message_id)
-            mess = await bot.edit_message_text(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            mess = await bot.send_message(chat_id=user_tg_id, text=order_text, reply_markup=user_markup)
             await db.orders.update_message_user_id(order_id, mess.message_id)
-            await bot.edit_message_reply_markup(chat_id=user_tg_id, message_id=user_message_id, reply_markup=user_markup)
         except Exception as e:
-            print(e)
             try:
                 mess = await bot.send_message(chat_id=user_tg_id, text=order_text, reply_markup=user_markup)
                 await db.orders.update_message_user_id(order_id, mess.message_id)

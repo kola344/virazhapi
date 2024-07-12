@@ -37,6 +37,12 @@ async def start_connect_command(message: Message):
     else:
         await message.answer(replic_incorrect_key)
 
+@router.callback_query(F.data == 'none')
+async def none_button_callback(call):
+    await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.none_button)
+    await asyncio.sleep(1)
+    await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=call.message.reply_markup)
+
 @router.callback_query(F.data.startswith('user'))
 async def callback(call, state: FSMContext):
     user_id = call.message.chat.id
@@ -44,6 +50,7 @@ async def callback(call, state: FSMContext):
     l1 = calls[0]
     l2 = calls[1]
     l3 = calls[2]
+    await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
     if l2 == 'like':
         models.user_feedback_data[user_id] = {"order_id": int(l3), "rate": "👍"}
         await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.order_completed)

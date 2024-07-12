@@ -148,6 +148,7 @@ async def callback(call, state: FSMContext):
         l1 = calls[0]
         l2 = calls[1]
         l3 = calls[2]
+        await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
         if l2 == 'menu':
             if l3 == 'admins':
                 text, markup = await replic_menu_admins()

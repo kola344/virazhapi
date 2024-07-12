@@ -5,3 +5,5 @@ manager_menu = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text=
                                                      [InlineKeyboardButton(text='Время', callback_data='manager.time.info')]])
 order_cancelled = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='❌ Заказ отменен', callback_data='none')]])
 order_completed = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='✅ Заказ выполнен', callback_data='none')]])
+
+loading_menu = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='🕙 Обработка...', callback_data='none')]])

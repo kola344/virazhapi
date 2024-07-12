@@ -25,7 +25,6 @@ async def replic_time_info():
     return text, markup
 
 async def replic_shift_info():
-    print(times_and_shift.shift)
     today = datetime.today().strftime('%d.%m.%Y')
     if os.path.exists(f'shift_stats/{today}.json'):
         with open(f'shift_stats/{today}.json', 'r', encoding='utf-8') as f:
@@ -54,7 +53,6 @@ async def replic_order_manager_markup(selected_status, order_id):
         keyboard.append([InlineKeyboardButton(text='Статусы', callback_data=f'none')])
         # statuses
         for i in config.order_statuses:
-            print(i, config.order_statuses[i])
             if i == selected_status:
                 keyboard.append([InlineKeyboardButton(text=f'➡️ {config.order_statuses[i]}', callback_data=f'order.set:{order_id}.{i}')])
             else:
