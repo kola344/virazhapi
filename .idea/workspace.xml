@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="ready 1">
-      <change afterPath="$PROJECT_DIR$/images/18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/23.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/admin/admin_messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/admin_messages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/admin/keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/keyboards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/manager/keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/manager/keyboards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/manager/manager_messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/manager/manager_messages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/manager/replics.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/manager/replics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/user/keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/user/keyboards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/user/user_messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/user/user_messages.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +70,7 @@
       <recent name="$PROJECT_DIR$/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="virazhapi" />
       <option name="ENV_FILES" value="" />
@@ -149,22 +136,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00016" summary="tg menu add ready">
-      <option name="closed" value="true" />
-      <created>1720209465634</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1720209465634</updated>
-    </task>
-    <task id="LOCAL-00017" summary="auth ready">
-      <option name="closed" value="true" />
-      <created>1720214443828</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1720214443828</updated>
     </task>
     <task id="LOCAL-00018" summary="auth ready">
       <option name="closed" value="true" />
@@ -542,7 +513,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720764443909</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="ready 1">
+      <option name="closed" value="true" />
+      <created>1720811218691</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1720811218691</updated>
+    </task>
+    <task id="LOCAL-00066" summary="ready 1">
+      <option name="closed" value="true" />
+      <created>1720811361817</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1720811361817</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
