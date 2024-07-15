@@ -63,12 +63,6 @@ async def on_startup():
     dp.include_router(manager_router)
     await bot.set_webhook(config.webhook_url, drop_pending_updates=True)
 
-@app.on_event('shutdown')
-async def on_shutdown():
-    pass
-    #await bot_init.bot.delete_webhook()
-    #await bot_init.bot.session.close()
-
 @app.get('/images/{image}')
 async def get_menu_imagesPage(image: str):
     file_path = f'images/{image}'

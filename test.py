@@ -1,8 +1,8 @@
-import asyncio
-
-from virazh_bot import bot
-
-asyncio.run(bot.main())
+# import asyncio
+#
+# from virazh_bot import bot
+#
+# asyncio.run(bot.main())
 
 # import asyncpg
 # import asyncio
@@ -37,3 +37,41 @@ asyncio.run(bot.main())
 #     print(await db.tg_admin.check_admin_by_user_id(5042670643))
 #
 # asyncio.run(main())
+
+
+# from locust import HttpUser, TaskSet, task, between
+#
+# class UserBehavior(TaskSet):
+#     @task(1)
+#     def index(self):
+#         self.client.get("/")
+#
+# class WebsiteUser(HttpUser):
+#     tasks = [UserBehavior]
+#     wait_time = between(1, 5)
+#     host = "http://cafevirage.vercel.app"  # Укажите ваш URL
+
+from locust import HttpUser, TaskSet, task, between
+
+class UserBehavior(TaskSet):
+    @task
+    def post_request(self):
+        self.client.post("/api/info/menu/get_all_menu")
+
+class WebsiteUser(HttpUser):
+    tasks = [UserBehavior]
+    wait_time = between(1, 5)
+    host = "http://virazhapi.onrender.com"
+
+# from selenium import webdriver
+# import time
+#
+# url = "http://yourwebsite.com"
+#
+# driver = webdriver.Chrome()
+# start_time = time.time()
+# driver.get(url)
+# end_time = time.time()
+# driver.quit()
+#
+# print(f"Page Load Time: {end_time - start_time} seconds")
