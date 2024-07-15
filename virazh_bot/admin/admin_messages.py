@@ -142,114 +142,117 @@ async def admin_panel(message: Message):
 
 @router.callback_query(F.data.startswith('admin'))
 async def callback(call, state: FSMContext):
-    user_id = call.message.chat.id
-    if await db.tg_admin.check_admin_by_user_id(user_id):
-        calls = str(call.data).split(sep='.')
-        l1 = calls[0]
-        l2 = calls[1]
-        l3 = calls[2]
-        await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
-        if l2 == 'menu':
-            if l3 == 'admins':
-                text, markup = await replic_menu_admins()
-                await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-            elif l3 == 'categories':
-                text, markup = await replic_menu_categories()
-                await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-            elif l3 == 'deactivated':
+    try:
+        user_id = call.message.chat.id
+        if await db.tg_admin.check_admin_by_user_id(user_id):
+            calls = str(call.data).split(sep='.')
+            l1 = calls[0]
+            l2 = calls[1]
+            l3 = calls[2]
+            await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
+            if l2 == 'menu':
+                if l3 == 'admins':
+                    text, markup = await replic_menu_admins()
+                    await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+                elif l3 == 'categories':
+                    text, markup = await replic_menu_categories()
+                    await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+                elif l3 == 'deactivated':
+                    text, markup = await replic_deactivated_menu()
+                    await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            elif l2 == 'deactivate':
+                await db.menu.deactivate(int(l3))
+                await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
+                text, markup = await replic_deactivated_menu()
+                await bot.send_message(text=text, chat_id=user_id, reply_markup=markup)
+            elif l2 == 'activate':
+                await db.menu.activate(int(l3))
                 text, markup = await replic_deactivated_menu()
                 await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-        elif l2 == 'deactivate':
-            await db.menu.deactivate(int(l3))
-            await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
-            text, markup = await replic_deactivated_menu()
-            await bot.send_message(text=text, chat_id=user_id, reply_markup=markup)
-        elif l2 == 'activate':
-            await db.menu.activate(int(l3))
-            text, markup = await replic_deactivated_menu()
-            await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-        elif l2 == 'main':
-            if l3 == 'main':
-                await bot.edit_message_text(replic_admin_menu, chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.menu)
-        elif l2 == 'del':
-            admin_id = await db.tg_admin.get_admin_user_id_by_id(int(l3))
-            if user_id != admin_id:
-                await db.tg_admin.del_admin_by_id(int(l3))
-            else:
-                await bot.edit_message_text(replic_admin_cannot_delete_self, chat_id=user_id, message_id=call.message.message_id)
-                await asyncio.sleep(2)
-            text, markup = await replic_menu_admins()
-            await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-        elif l2 == 'categories':
-            if l3 == 'add':
-                await state.set_state(models.admin_categoryState.add_new_category_name)
-                await bot.edit_message_text(replic_admin_adding_new_category_name, chat_id=user_id, message_id=call.message.message_id)
-        elif l2 == 'category':
-            await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
-            text, markup = await replic_menu_category(int(l3))
-            await call.message.answer(text, reply_markup=markup)
-        elif l2 == 'categorydel':
-            text, markup = replic_menu_categorydel_confirm(int(l3))
-            await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-        elif l2 == 'categorydelcon':
-            await db.categories.del_category(int(l3))
-            text, markup = await replic_menu_categories()
-            await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-        elif l2 == 'menuadd':
-            item_id = await db.menu.add_item(int(l3))
-            text, markup = await replic_menu_menu_item(item_id, int(l3))
-            await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-        elif l2 == 'menuitem':
-            await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
-            text, markup = await replic_menu_menu_item(int(l3))
-            if os.path.exists(f'images/{l3}.png'):
-                await call.message.answer_photo(photo=FSInputFile(f'images/{l3}.png'), caption=text, reply_markup=markup)
-            else:
+            elif l2 == 'main':
+                if l3 == 'main':
+                    await bot.edit_message_text(replic_admin_menu, chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.menu)
+            elif l2 == 'del':
+                admin_id = await db.tg_admin.get_admin_user_id_by_id(int(l3))
+                if user_id != admin_id:
+                    await db.tg_admin.del_admin_by_id(int(l3))
+                else:
+                    await bot.edit_message_text(replic_admin_cannot_delete_self, chat_id=user_id, message_id=call.message.message_id)
+                    await asyncio.sleep(2)
+                text, markup = await replic_menu_admins()
+                await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            elif l2 == 'categories':
+                if l3 == 'add':
+                    await state.set_state(models.admin_categoryState.add_new_category_name)
+                    await bot.edit_message_text(replic_admin_adding_new_category_name, chat_id=user_id, message_id=call.message.message_id)
+            elif l2 == 'category':
+                await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
+                text, markup = await replic_menu_category(int(l3))
                 await call.message.answer(text, reply_markup=markup)
-        elif l2 == 'mrename':
-            await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
-            models.admin_menu_data[user_id] = int(l3)
-            await state.set_state(models.admin_menu_editorState.name)
-            await call.message.answer(replic_admin_menu_editor_rename)
-        elif l2 == 'mreinfo':
-            await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
-            models.admin_menu_data[user_id] = int(l3)
-            await state.set_state(models.admin_menu_editorState.info)
-            await call.message.answer(replic_admin_menu_editor_reinfo)
-        elif l2 == 'mresub':
-            await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
-            models.admin_menu_data[user_id] = int(l3)
-            await state.set_state(models.admin_menu_editorState.subinfo)
-            await call.message.answer(replic_admin_menu_editor_resubinfo)
-        elif l2 == 'mrei':
-            await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
-            models.admin_menu_data[user_id] = int(l3)
-            await state.set_state(models.admin_menu_editorState.photo)
-            await call.message.answer(replic_admin_menu_editor_rephoto)
-        elif 'rmv' in l1:
-            await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
-            item_id, variation_id = int(l2), int(l3)
-            models.admin_menu_data[user_id] = [item_id, variation_id]
-            await state.set_state(models.admin_menu_editorState.variation)
-            await call.message.answer(replic_admin_menu_editor_revariation)
-        elif 'rmp' in l1:
-            await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
-            item_id, price_id = int(l2), int(l3)
-            models.admin_menu_data[user_id] = [item_id, price_id]
-            await state.set_state(models.admin_menu_editorState.price)
-            await call.message.answer(replic_admin_menu_editor_reprice)
-        elif l2 == 'menuaddv':
-            await db.menu.add_new_variationprice(int(l3))
-            text, markup = await replic_menu_menu_item(int(l3))
-            await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-        elif l2 == 'menudelv':
-            await db.menu.del_last_variationprice(int(l3))
-            text, markup = await replic_menu_menu_item(int(l3))
-            await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-        elif l2 == 'menudel':
-            category_id = await db.menu.get_item_category_by_id(int(l3))
-            await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
-            await db.menu.del_item(int(l3))
-            await db.menu.del_image(int(l3))
-            text, markup = await replic_menu_category(category_id)
-            await call.message.answer(text, reply_markup=markup)
+            elif l2 == 'categorydel':
+                text, markup = replic_menu_categorydel_confirm(int(l3))
+                await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            elif l2 == 'categorydelcon':
+                await db.categories.del_category(int(l3))
+                text, markup = await replic_menu_categories()
+                await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            elif l2 == 'menuadd':
+                item_id = await db.menu.add_item(int(l3))
+                text, markup = await replic_menu_menu_item(item_id, int(l3))
+                await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            elif l2 == 'menuitem':
+                await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
+                text, markup = await replic_menu_menu_item(int(l3))
+                if os.path.exists(f'images/{l3}.png'):
+                    await call.message.answer_photo(photo=FSInputFile(f'images/{l3}.png'), caption=text, reply_markup=markup)
+                else:
+                    await call.message.answer(text, reply_markup=markup)
+            elif l2 == 'mrename':
+                await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
+                models.admin_menu_data[user_id] = int(l3)
+                await state.set_state(models.admin_menu_editorState.name)
+                await call.message.answer(replic_admin_menu_editor_rename)
+            elif l2 == 'mreinfo':
+                await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
+                models.admin_menu_data[user_id] = int(l3)
+                await state.set_state(models.admin_menu_editorState.info)
+                await call.message.answer(replic_admin_menu_editor_reinfo)
+            elif l2 == 'mresub':
+                await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
+                models.admin_menu_data[user_id] = int(l3)
+                await state.set_state(models.admin_menu_editorState.subinfo)
+                await call.message.answer(replic_admin_menu_editor_resubinfo)
+            elif l2 == 'mrei':
+                await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
+                models.admin_menu_data[user_id] = int(l3)
+                await state.set_state(models.admin_menu_editorState.photo)
+                await call.message.answer(replic_admin_menu_editor_rephoto)
+            elif 'rmv' in l1:
+                await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
+                item_id, variation_id = int(l2), int(l3)
+                models.admin_menu_data[user_id] = [item_id, variation_id]
+                await state.set_state(models.admin_menu_editorState.variation)
+                await call.message.answer(replic_admin_menu_editor_revariation)
+            elif 'rmp' in l1:
+                await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
+                item_id, price_id = int(l2), int(l3)
+                models.admin_menu_data[user_id] = [item_id, price_id]
+                await state.set_state(models.admin_menu_editorState.price)
+                await call.message.answer(replic_admin_menu_editor_reprice)
+            elif l2 == 'menuaddv':
+                await db.menu.add_new_variationprice(int(l3))
+                text, markup = await replic_menu_menu_item(int(l3))
+                await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            elif l2 == 'menudelv':
+                await db.menu.del_last_variationprice(int(l3))
+                text, markup = await replic_menu_menu_item(int(l3))
+                await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            elif l2 == 'menudel':
+                category_id = await db.menu.get_item_category_by_id(int(l3))
+                await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
+                await db.menu.del_item(int(l3))
+                await db.menu.del_image(int(l3))
+                text, markup = await replic_menu_category(category_id)
+                await call.message.answer(text, reply_markup=markup)
+    except Exception as e:
+        print(e)
