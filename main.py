@@ -52,7 +52,7 @@ async def webhook(update: dict[str, Any]):
 @app.on_event('startup')
 async def on_startup():
     await db.initialize()
-    if not os.path.exists('/images'):
+    if not os.path.exists('images'):
         os.mkdir('images')
     for image in await db.images.get_images():
         if not os.path.exists(f'images/{image["item_id"]}'):
