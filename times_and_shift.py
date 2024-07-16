@@ -38,7 +38,7 @@ def get_available_times(order_type):
     current_time = datetime.now()
 
     # Минимальное допустимое время для заказа (через час от текущего времени)
-    min_order_time = current_time + timedelta(hours=1)
+    min_order_time = current_time + timedelta(hours=4)
 
     # Преобразование доступных времен в объекты datetime
     available_times_dt = [datetime.strptime(time, "%H:%M") for time in available_times]
