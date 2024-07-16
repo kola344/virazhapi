@@ -22,73 +22,79 @@ router = Router()
 
 @router.callback_query(F.data.startswith('manager'))
 async def manager_callback(call):
-    user_id = call.message.chat.id
-    calls = str(call.data).split(sep='.')
-    l1 = calls[0]
-    l2 = calls[1]
-    l3 = calls[2]
-    await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
-    if l2 == 'shift':
-        if l3 == 'info':
-            text, markup = await replic_shift_info()
-            await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-        elif l3 == 'true':
-            shift_stats_functions.new_stat()
-            text, markup = await replic_shift_info()
-            await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-        elif l3 == 'false':
-            times_and_shift.shift = False
-            times_and_shift.available_times = []
-            text, markup = await replic_shift_info()
-            await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-    elif l2 == 'time':
-        if l3 == 'info':
+    try:
+        user_id = call.message.chat.id
+        calls = str(call.data).split(sep='.')
+        l1 = calls[0]
+        l2 = calls[1]
+        l3 = calls[2]
+        await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
+        if l2 == 'shift':
+            if l3 == 'info':
+                text, markup = await replic_shift_info()
+                await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            elif l3 == 'true':
+                shift_stats_functions.new_stat()
+                text, markup = await replic_shift_info()
+                await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            elif l3 == 'false':
+                times_and_shift.shift = False
+                times_and_shift.available_times = []
+                text, markup = await replic_shift_info()
+                await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+        elif l2 == 'time':
+            if l3 == 'info':
+                text, markup = await replic_time_info()
+                await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+        elif l2 == 'timedel':
+            times_and_shift.available_times.remove(l3)
             text, markup = await replic_time_info()
             await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-    elif l2 == 'timedel':
-        times_and_shift.available_times.remove(l3)
-        text, markup = await replic_time_info()
-        await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-    elif l2 == 'timeadd':
-        times_and_shift.available_times.append(l3)
-        text, markup = await replic_time_info()
-        await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-    elif l2 == 'menu':
-        if l3 == 'main':
-            await bot.edit_message_text(replic_manager_menu, chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.manager_menu)
+        elif l2 == 'timeadd':
+            times_and_shift.available_times.append(l3)
+            text, markup = await replic_time_info()
+            await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+        elif l2 == 'menu':
+            if l3 == 'main':
+                await bot.edit_message_text(replic_manager_menu, chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.manager_menu)
+    except Exception as e:
+        print(e)
 
 @router.callback_query(F.data.startswith('order'))
 async def callback(call):
-    print(call.data)
-    user_id = call.message.chat.id
-    calls = str(call.data).split(sep='.')
-    l1 = calls[0]
-    l2 = calls[1]
-    l3 = calls[2]
-    func = ''
-    order_id = 0
-    await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
-    if ':' in l2:
-        splited_l2 = l2.split(sep=':')
-        func, order_id = splited_l2[0], int(splited_l2[1])
-    if func == 'set':
-        await db.orders.set_status(config.order_statuses[l3], order_id)
-        markup, user_markup = await replic_order_manager_markup(l3, order_id)
-        await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
-        order_data = await db.orders.get_order_data(order_id)
-        user_key = order_data["order_by"]
-        user_tg_id = await db.users.get_user_tg_id_by_key(user_key)
-        user_message_id = await db.orders.get_user_message_id(order_id)
-        order_text = await db.orders.get_text(order_id)
-        try:
-            await bot.delete_message(chat_id=user_tg_id, message_id=user_message_id)
-            mess = await bot.send_message(chat_id=user_tg_id, text=order_text, reply_markup=user_markup)
-            await db.orders.update_message_user_id(order_id, mess.message_id)
-        except Exception as e:
+    try:
+        print(call.data)
+        user_id = call.message.chat.id
+        calls = str(call.data).split(sep='.')
+        l1 = calls[0]
+        l2 = calls[1]
+        l3 = calls[2]
+        func = ''
+        order_id = 0
+        await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
+        if ':' in l2:
+            splited_l2 = l2.split(sep=':')
+            func, order_id = splited_l2[0], int(splited_l2[1])
+        if func == 'set':
+            await db.orders.set_status(config.order_statuses[l3], order_id)
+            markup, user_markup = await replic_order_manager_markup(l3, order_id)
+            await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            order_data = await db.orders.get_order_data(order_id)
+            user_key = order_data["order_by"]
+            user_tg_id = await db.users.get_user_tg_id_by_key(user_key)
+            user_message_id = await db.orders.get_user_message_id(order_id)
+            order_text = await db.orders.get_text(order_id)
             try:
+                await bot.delete_message(chat_id=user_tg_id, message_id=user_message_id)
                 mess = await bot.send_message(chat_id=user_tg_id, text=order_text, reply_markup=user_markup)
                 await db.orders.update_message_user_id(order_id, mess.message_id)
-                markup, user_markup = await replic_order_manager_markup(l3, order_id)
-                await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
             except Exception as e:
-                print(e)
+                try:
+                    mess = await bot.send_message(chat_id=user_tg_id, text=order_text, reply_markup=user_markup)
+                    await db.orders.update_message_user_id(order_id, mess.message_id)
+                    markup, user_markup = await replic_order_manager_markup(l3, order_id)
+                    await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+                except Exception as e:
+                    print(e)
+    except Exception as e:
+        print(e)

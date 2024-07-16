@@ -39,25 +39,31 @@ async def start_connect_command(message: Message):
 
 @router.callback_query(F.data == 'none')
 async def none_button_callback(call):
-    await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.none_button)
-    await asyncio.sleep(1)
-    await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=call.message.reply_markup)
+    try:
+        await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.none_button)
+        await asyncio.sleep(1)
+        await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=call.message.reply_markup)
+    except Exception as e:
+        print(e)
 
 @router.callback_query(F.data.startswith('user'))
 async def callback(call, state: FSMContext):
-    user_id = call.message.chat.id
-    calls = str(call.data).split(sep='.')
-    l1 = calls[0]
-    l2 = calls[1]
-    l3 = calls[2]
-    await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
-    if l2 == 'like':
-        models.user_feedback_data[user_id] = {"order_id": int(l3), "rate": "👍"}
-        await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.order_completed)
-        await call.message.answer(replic_feedback_to_send_liked, reply_markup=keyboards.feedback)
-        await state.set_state(models.user_feedbackState.feedback)
-    elif l2 == 'dislike':
-        models.user_feedback_data[user_id] = {"order_id": int(l3), "rate": "👎"}
-        await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.order_completed)
-        await call.message.answer(replic_feedback_to_send_disliked, reply_markup=keyboards.feedback)
-        await state.set_state(models.user_feedbackState.feedback)
+    try:
+        user_id = call.message.chat.id
+        calls = str(call.data).split(sep='.')
+        l1 = calls[0]
+        l2 = calls[1]
+        l3 = calls[2]
+        await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
+        if l2 == 'like':
+            models.user_feedback_data[user_id] = {"order_id": int(l3), "rate": "👍"}
+            await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.order_completed)
+            await call.message.answer(replic_feedback_to_send_liked, reply_markup=keyboards.feedback)
+            await state.set_state(models.user_feedbackState.feedback)
+        elif l2 == 'dislike':
+            models.user_feedback_data[user_id] = {"order_id": int(l3), "rate": "👎"}
+            await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.order_completed)
+            await call.message.answer(replic_feedback_to_send_disliked, reply_markup=keyboards.feedback)
+            await state.set_state(models.user_feedbackState.feedback)
+    except Exception as e:
+        print(e)
