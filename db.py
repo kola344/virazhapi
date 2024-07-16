@@ -9,6 +9,7 @@ categories = db.categories()
 users = db.users()
 orders = db.orders()
 images = db.images()
+text_table = db.text_table()
 async def initialize(folder = 'database/'):
     db = await create_pool(user='gen_user', password='mGk-base)=-', database='default_db', host="82.97.248.66")
     # db = await asyncpg.connect(
@@ -29,3 +30,5 @@ async def initialize(folder = 'database/'):
     await orders.create_table()
     await images.connect(db)
     await images.create_table()
+    await text_table.connect(db)
+    await text_table.create_table()

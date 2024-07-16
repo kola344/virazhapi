@@ -1,4 +1,6 @@
 import asyncio
+import traceback
+
 from aiogram import Bot, Dispatcher, Router, F
 from aiogram.types import Message, FSInputFile
 from virazh_bot import temp, keygen
@@ -11,6 +13,12 @@ from aiogram.fsm.context import FSMContext
 import os
 
 router = Router()
+
+@router.message(models.order_info_editorState.edit, F.text)
+async def admin_orderinfoeditFunc(message: Message, state: FSMContext):
+    await db.text_table.update_order_text(message.text)
+    await state.clear()
+    await message.answer(message.text, reply_markup=keyboards.order_info_menu)
 
 @router.message(models.admin_menu_editorState.price, F.text)
 async def admin_menueditpriceFunc(message: Message, state: FSMContext):
@@ -160,6 +168,13 @@ async def callback(call, state: FSMContext):
                 elif l3 == 'deactivated':
                     text, markup = await replic_deactivated_menu()
                     await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+                elif l3 == 'orderinfo':
+                    text = await db.text_table.get_order_text()
+                    await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.order_info_menu)
+            elif l2 == 'orderinfo':
+                if l3 == 'update':
+                    await bot.edit_message_text(replic_update_order_info, chat_id=user_id, message_id=call.message.message_id)
+                    await state.set_state(models.order_info_editorState.edit)
             elif l2 == 'deactivate':
                 await db.menu.deactivate(int(l3))
                 await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)

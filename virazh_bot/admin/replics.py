@@ -18,6 +18,7 @@ replic_admin_menu_editor_revariation = 'Введите новую вариаци
 replic_admin_menu_editor_reprice = 'Введите новую цену'
 replic_admin_menu_editor_reprice_err = 'Ошибка. Введите правильную цену'
 replic_manager_menu = 'Панель менеджера'
+replic_update_order_info = 'Введите новую информацию'
 
 def replic_reg_new_admin_keygen():
     temp.reg_admin_key = f'reg_admin_' + keygen.generate_password(12)
@@ -96,6 +97,7 @@ async def replic_deactivated_menu():
     keyboard.append([InlineKeyboardButton(text='⬅️ Назад', callback_data=f'admin.main.main')])
     markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
     return text, markup
+
 
 
 

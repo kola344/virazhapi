@@ -15,6 +15,11 @@ async def get_orders_historyPage(item: get_order_historyModel):
     history = await db.users.get_orders_history(item.user_key)
     return {"status": True, "info": "success", "history": history[::-1]}
 
+@router.post('/get_orders_info')
+async def get_orders_infoPage():
+    text = await db.text_table.get_order_text()
+    return {"status": True, "info": "success", "text": text}
+
 @router.get('/get_available_times_delivery')
 async def get_available_times_deliveryPage():
     return {"status": True, "info": "success", "available_times": get_available_times('delivery')}

@@ -21,3 +21,6 @@ class admin_menu_editorState(StatesGroup):
     variation = State()
     price = State()
     photo = State()
+
+class order_info_editorState(StatesGroup):
+    edit = State()

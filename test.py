@@ -1,8 +1,8 @@
-# import asyncio
-#
-# from virazh_bot import bot
-#
-# asyncio.run(bot.main())
+import asyncio
+
+from virazh_bot import bot
+
+asyncio.run(bot.main())
 
 # import asyncpg
 # import asyncio
@@ -51,17 +51,17 @@
 #     wait_time = between(1, 5)
 #     host = "http://cafevirage.vercel.app"  # Укажите ваш URL
 
-from locust import HttpUser, TaskSet, task, between
-
-class UserBehavior(TaskSet):
-    @task
-    def post_request(self):
-        self.client.post("/api/info/menu/get_all_menu")
-
-class WebsiteUser(HttpUser):
-    tasks = [UserBehavior]
-    wait_time = between(1, 5)
-    host = "http://virazhapi.onrender.com"
+# from locust import HttpUser, TaskSet, task, between
+#
+# class UserBehavior(TaskSet):
+#     @task
+#     def post_request(self):
+#         self.client.post("/api/info/menu/get_all_menu")
+#
+# class WebsiteUser(HttpUser):
+#     tasks = [UserBehavior]
+#     wait_time = between(1, 5)
+#     host = "http://virazhapi.onrender.com"
 
 # from selenium import webdriver
 # import time

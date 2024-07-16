@@ -633,6 +633,38 @@ class images:
             cursor = await connection.fetch('''SELECT * FROM images''')
             return [dict(data) for data in cursor]
 
+class text_table:
+    def __init__(self):
+        self.db = None
+
+    async def connect(self, db: asyncpg.connection.Connection):
+        self.db = db
+
+    async def create_table(self):
+        async with self.db.acquire() as connection:
+            await connection.execute('''CREATE TABLE IF NOT EXISTS text_table (
+                                                name TEXT,
+                                                text TEXT)''')
+
+    async def update_order_text(self, text):
+        async with self.db.acquire() as connection:
+            row = await connection.fetchrow('SELECT 1 FROM text_table WHERE name = $1', 'order_text')
+            if row is None:
+                await connection.execute('''INSERT INTO text_table (name, text) VALUES ($1, $2)''', 'order_text', text)
+            else:
+                await connection.execute('''
+                                UPDATE text_table SET text = $1 WHERE name = $2
+                            ''', text, 'order_text')
+
+    async def get_order_text(self):
+        async with self.db.acquire() as connection:
+            row = await connection.fetchrow('SELECT * FROM text_table WHERE name = $1', 'order_text')
+            if row is None:
+                await self.update_order_text('Нет информации')
+                return 'Нет информации'
+            else:
+                return row["text"]
+
 async def main():
     tg = users()
     await tg.connect('')
