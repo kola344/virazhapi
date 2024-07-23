@@ -46,6 +46,13 @@ async def none_button_callback(call):
     except Exception as e:
         print(e)
 
+@router.callback_query(F.data == 'nan')
+async def none_button_callback(call):
+    try:
+        await call.message.answer(replic_wait_please)
+    except Exception as e:
+        print(e)
+
 @router.callback_query(F.data.startswith('user'))
 async def callback(call, state: FSMContext):
     try:
