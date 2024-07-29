@@ -9,6 +9,7 @@ notisend_api_key = '9db0f92a080b0215ddef92266e5a7c9b'
 
 orders_chat = -1002200913229
 feedback_chat = -4172786643
+logs_chat = -4207648967
 
 order_statuses = {
     "1": "✅ Принят",

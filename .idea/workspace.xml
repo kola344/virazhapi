@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="release 1" />
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="fixed supergroup id">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,14 +136,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00027" summary="beta 1">
-      <option name="closed" value="true" />
-      <created>1720366689409</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1720366689409</updated>
     </task>
     <task id="LOCAL-00028" summary="beta 2">
       <option name="closed" value="true" />
@@ -527,7 +521,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721742492313</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="fixed supergroup id">
+      <option name="closed" value="true" />
+      <created>1721823830711</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1721823830711</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -558,6 +560,7 @@
     <MESSAGE value="activate/deactivate menu" />
     <MESSAGE value="ready 1" />
     <MESSAGE value="release 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="release 1" />
+    <MESSAGE value="fixed supergroup id" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed supergroup id" />
   </component>
 </project>
