@@ -14,4 +14,4 @@ async def send_code(phone_number):
     except Exception as e:
         print(e)
         sms = notisend.SMS(config.notisend_project, config.notisend_api_key)
-        await sms.sendSMS(str(phone_number), f"КАФЕ ВИРАЖ. Код: {auth_codes[phone_number]}")
+        await sms.sendSMS(str(phone_number), f"КАФЕ ВИРАЖ. Код: {auth_codes[phone_number]} для авторизации на сайте")

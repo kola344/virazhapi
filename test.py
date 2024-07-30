@@ -1,8 +1,8 @@
-import asyncio
-
-from virazh_bot import bot
-
-asyncio.run(bot.main())
+# import asyncio
+#
+# from virazh_bot import bot
+#
+# asyncio.run(bot.main())
 
 # import asyncpg
 # import asyncio
@@ -75,3 +75,21 @@ asyncio.run(bot.main())
 # driver.quit()
 #
 # print(f"Page Load Time: {end_time - start_time} seconds")
+
+
+
+
+import requests
+
+url = "https://direct.i-dgtl.ru/api/v1/verifier/send"
+headers = {
+    "Authorization": "Basic ODU4ODpvdnlFUEhXMlh0YmFhVmVqZk1mQVI5",
+    "Content-Type": "application/json"
+}
+json = {
+  "gatewayId": "Virazh",
+  "channelType": "SMS",
+  "destination": "79200671561"
+}
+
+print(requests.post(url, headers=headers, json=json).json())
