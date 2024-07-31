@@ -201,7 +201,7 @@ class categories:
     async def get_categories(self):
         async with self.db.acquire() as connection:
             rows = await connection.fetch('''
-                SELECT * FROM categories
+                SELECT * FROM categories ORDER BY id
             ''')
             return [dict(row) for row in rows]
 
@@ -273,7 +273,7 @@ class menu:
     async def get_deactivated_menu(self):
         async with self.db.acquire() as connection:
             rows = await connection.fetch('''
-                SELECT * FROM deactivated_menu
+                SELECT * FROM deactivated_menu ORDER BY id
             ''')
             result = []
             for item in rows:
@@ -334,7 +334,7 @@ class menu:
     async def get_menu_by_category_id(self, category_id):
         async with self.db.acquire() as connection:
             rows = await connection.fetch('''
-                SELECT * FROM menu WHERE category = $1
+                SELECT * FROM menu WHERE category = $1 ORDER BY id
             ''', category_id)
             result = []
             for item in rows:
@@ -355,7 +355,7 @@ class menu:
     async def get_menu_by_item_ids(self, item_ids):
         async with self.db.acquire() as connection:
             rows = await connection.fetch('''
-                SELECT * FROM menu WHERE id = ANY($1::int[])
+                SELECT * FROM menu WHERE id = ANY($1::int[]) ORDER BY id
             ''', item_ids)
             result = []
             for item in rows:
@@ -593,7 +593,7 @@ class users:
 
     async def get_orders_history(self, key):
         async with self.db.acquire() as connection:
-            rows = await connection.fetch('SELECT * FROM orders WHERE order_by = $1', key)
+            rows = await connection.fetch('SELECT * FROM orders WHERE order_by = $1 ORDER BY id', key)
             orders = []
             for order in rows:
                 orders.append({
@@ -608,7 +608,7 @@ class users:
                     "date": order['date'],
                     "price": order['price']
                 })
-            return orders
+            return orders[::-1]
 
 class images:
     def __init__(self):
