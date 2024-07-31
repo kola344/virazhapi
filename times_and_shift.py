@@ -51,6 +51,6 @@ def get_available_times(order_type):
                 filtered_times.remove(i)
 
     # Вывод результата
-    return filtered_times
+    return sorted(filtered_times)
 
 shift = False
