@@ -28,6 +28,10 @@ async def get_available_times_deliveryPage():
 async def get_available_times_pickupPage():
     return {"status": True, "info": "success", "available_times": get_available_times('pickup')}
 
+@router.get('/get_gift')
+async def get_giftPage():
+    return {"status": True, "info": "success", "gift": await db.text_table.get_gift()}
+
 @router.post('/add_order')
 async def add_orderPage(item: add_orderModel):
     '''Возвращает результат оформления заказа'''

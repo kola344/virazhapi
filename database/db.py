@@ -2,6 +2,7 @@ import time
 import aiosqlite
 import asyncio
 import config
+import db
 from virazh_bot.keygen import generate_password, generate_code
 from temp.auth_code import auth_codes
 import db as dbs
@@ -645,6 +646,33 @@ class text_table:
             await connection.execute('''CREATE TABLE IF NOT EXISTS text_table (
                                                 name TEXT,
                                                 text TEXT)''')
+
+    async def update_gift(self, text):
+        async with self.db.acquire() as connection:
+            row = await connection.fetchrow('SELECT 1 FROM text_table WHERE name = $1', 'gift')
+            if row is None:
+                await connection.execute('''INSERT INTO text_table (name, text) VALUES ($1, $2)''', 'gift', text)
+            else:
+                await connection.execute('''
+                                UPDATE text_table SET text = $1 WHERE name = $2
+                            ''', text, 'gift')
+
+    async def get_gift(self):
+        async with self.db.acquire() as connection:
+            row = await connection.fetchrow('SELECT * FROM text_table WHERE name = $1', 'gift')
+            if row is None:
+                return {}
+            else:
+                item_id = int(row["text"])
+                return await db.menu.get_item_info_by_id(item_id)
+
+    async def check_gift(self, item_id):
+        async with self.db.acquire() as connection:
+            row = await connection.fetchrow('SELECT * FROM text_table WHERE name = $1', 'gift')
+            if row is None:
+                return False
+            else:
+                return item_id == int(row["text"])
 
     async def update_order_text(self, text):
         async with self.db.acquire() as connection:

@@ -269,5 +269,14 @@ async def callback(call, state: FSMContext):
                 await db.menu.del_image(int(l3))
                 text, markup = await replic_menu_category(category_id)
                 await call.message.answer(text, reply_markup=markup)
+            elif l2 == 'gift':
+                await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
+                await db.text_table.update_gift(l3)
+                text, markup = await replic_menu_menu_item(int(l3))
+                if os.path.exists(f'images/{l3}.png'):
+                    await call.message.answer_photo(photo=FSInputFile(f'images/{l3}.png'), caption=text, reply_markup=markup)
+                else:
+                    await call.message.answer(text, reply_markup=markup)
+
     except Exception as e:
         print(e)
