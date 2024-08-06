@@ -12,3 +12,6 @@ class add_orderModel(BaseModel):
     name: str
     payment: str
 
+class get_giftModel(BaseModel):
+    user_key: str
+

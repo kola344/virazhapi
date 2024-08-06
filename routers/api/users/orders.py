@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 import db
 import routers.api.users.orders
-from models.api.users.orders import add_orderModel, get_order_historyModel
+from models.api.users.orders import add_orderModel, get_order_historyModel, get_giftModel
 import os
 from times_and_shift import available_times, shift, get_available_times
 from virazh_bot.functions import order as orders_bot
@@ -29,8 +29,17 @@ async def get_available_times_pickupPage():
     return {"status": True, "info": "success", "available_times": get_available_times('pickup')}
 
 @router.post('/get_gift')
-async def get_giftPage():
-    return {"status": True, "info": "success", "gift": await db.text_table.get_gift()}
+async def get_giftPage(item: get_giftModel):
+    price = 0
+    for i in carts[item.user_key]:
+        try:
+            price += int(i["price"])
+        except:
+            price = 0
+    if price >= 1000:
+        return {"status": True, "info": "success", "gift": await db.text_table.get_gift()}
+    else:
+        return {"status": True, "info": "success", "gift": {}}
 
 @router.post('/add_order')
 async def add_orderPage(item: add_orderModel):
