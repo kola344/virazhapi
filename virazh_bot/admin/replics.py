@@ -85,7 +85,6 @@ async def replic_menu_menu_item(item_id, category_id = None):
     keyboard.append([InlineKeyboardButton(text='🔴 Деактивировать', callback_data=f'admin.deactivate.{item_id}')])
     if not await db.text_table.check_gift(item_id):
         keyboard.append([InlineKeyboardButton(text='🎁 Сделать подарком', callback_data=f'admin.gift.{item_id}')])
-    keyboard.append([InlineKeyboardButton(text='')])
     keyboard.append([InlineKeyboardButton(text='⬅️ Назад', callback_data=f'admin.category.{category_id}')])
     markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
     text = f'{data["name"]}\n{data["subinfo"]}\n\n{data["info"]}'

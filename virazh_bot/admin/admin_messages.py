@@ -279,4 +279,5 @@ async def callback(call, state: FSMContext):
                     await call.message.answer(text, reply_markup=markup)
 
     except Exception as e:
+        traceback.print_exc()
         print(e)

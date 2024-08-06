@@ -1,18 +1,17 @@
-# import asyncio
-#
-# from virazh_bot import bot
-#
-# asyncio.run(bot.main())
+import asyncio
 
-# import asyncpg
-# import asyncio
-# async def run():
-#     import db
-#     await db.initialize()
-#     await db.tg_admin.add_admin(1659397548, 'Коля')
-#     print(await db.tg_admin.get_admins_list())
-#
-# asyncio.run(run())
+from virazh_bot import bot
+
+asyncio.run(bot.main())
+
+import asyncpg
+import asyncio
+async def run():
+    import db
+    await db.initialize()
+    print(await db.tg_admin.get_admins_list())
+
+asyncio.run(run())
 
 # import asyncpg
 # import asyncio
@@ -79,17 +78,17 @@
 
 
 
-import requests
-
-url = "https://direct.i-dgtl.ru/api/v1/verifier/send"
-headers = {
-    "Authorization": "Basic ODU4ODpvdnlFUEhXMlh0YmFhVmVqZk1mQVI5",
-    "Content-Type": "application/json"
-}
-json = {
-  "gatewayId": "Virazh",
-  "channelType": "SMS",
-  "destination": "79200671561"
-}
-
-print(requests.post(url, headers=headers, json=json).json())
+# import requests
+#
+# url = "https://direct.i-dgtl.ru/api/v1/verifier/send"
+# headers = {
+#     "Authorization": "Basic ODU4ODpvdnlFUEhXMlh0YmFhVmVqZk1mQVI5",
+#     "Content-Type": "application/json"
+# }
+# json = {
+#   "gatewayId": "Virazh",
+#   "channelType": "SMS",
+#   "destination": "79200671561"
+# }
+#
+# print(requests.post(url, headers=headers, json=json).json())
