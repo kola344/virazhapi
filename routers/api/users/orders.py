@@ -30,16 +30,17 @@ async def get_available_times_pickupPage():
 
 @router.post('/get_gift')
 async def get_giftPage(item: get_giftModel):
-    price = 0
-    for i in carts[item.user_key]:
-        try:
-            price += int(i["price"])
-        except:
-            price = 0
-    if price >= 1000:
-        return {"status": True, "info": "success", "gift": await db.text_table.get_gift()}
-    else:
+    if item.user_key in carts:
+        price = 0
+        for i in carts[item.user_key]:
+            try:
+                price += int(i["price"])
+            except:
+                price = 0
+        if price >= 1000:
+            return {"status": True, "info": "success", "gift": await db.text_table.get_gift()}
         return {"status": True, "info": "success", "gift": {}}
+    return {"status": True, "info": "success", "gift": {}}
 
 @router.post('/add_order')
 async def add_orderPage(item: add_orderModel):

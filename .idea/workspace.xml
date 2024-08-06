@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="added gift" />
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="fixed gift price" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,22 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00033" summary="beta 2">
-      <option name="closed" value="true" />
-      <created>1720390640194</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1720390640194</updated>
-    </task>
-    <task id="LOCAL-00034" summary="beta 2">
-      <option name="closed" value="true" />
-      <created>1720391933791</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1720391933791</updated>
     </task>
     <task id="LOCAL-00035" summary="beta 2">
       <option name="closed" value="true" />
@@ -527,7 +511,23 @@
       <option name="project" value="LOCAL" />
       <updated>1722936473363</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="fixed inline button">
+      <option name="closed" value="true" />
+      <created>1722937013796</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1722937013796</updated>
+    </task>
+    <task id="LOCAL-00083" summary="fixed gift price">
+      <option name="closed" value="true" />
+      <created>1722937372890</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1722937372890</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -564,6 +564,8 @@
     <MESSAGE value="sorted by id" />
     <MESSAGE value="sorted times" />
     <MESSAGE value="added gift" />
-    <option name="LAST_COMMIT_MESSAGE" value="added gift" />
+    <MESSAGE value="fixed inline button" />
+    <MESSAGE value="fixed gift price" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed gift price" />
   </component>
 </project>
