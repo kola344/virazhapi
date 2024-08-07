@@ -1,12 +1,11 @@
 from fastapi import APIRouter
 import db
-import routers.api.users.orders
 from models.api.users.orders import add_orderModel, get_order_historyModel, get_giftModel
 import os
 from times_and_shift import available_times, shift, get_available_times
 from virazh_bot.functions import order as orders_bot
 from datetime import datetime
-from routers.api.users.cart_data import carts
+from routers.api.users.cart_data import carts, gift_target
 
 router = APIRouter()
 
@@ -36,8 +35,8 @@ async def get_giftPage(item: get_giftModel):
             try:
                 price += int(i["price"])
             except:
-                price = 0
-        if price >= 1000:
+                price += 0
+        if price >= gift_target:
             return {"status": True, "info": "success", "gift": await db.text_table.get_gift()}
         return {"status": True, "info": "success", "gift": {}}
     return {"status": True, "info": "success", "gift": {}}
@@ -57,12 +56,16 @@ async def add_orderPage(item: add_orderModel):
             try:
                 price += int(i["price"])
             except:
-                price = 0
+                price += 0
             order_subtext += f'\n{i["name"]} - {i["variation"]}: {i["price"]}'
         current_date = datetime.now()
         date = current_date.strftime('%d.%m.%Y')
         order_id = await db.orders.add_order(carts[item.user_key], item.delivery_at, item.comment, item.user_key, item.address, date, price, item.payment)
-        text = f'ЗАКАЗ #{order_id}{order_subtext}\nИТОГО: {price}\n\nИмя: {item.name}\nАдрес доставки: {item.address}\nДоставикть к: {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nНомер: {phone_number}'
+        if price >= gift_target:
+            gift_data = await db.text_table.get_gift()
+            text = f'ЗАКАЗ #{order_id}{order_subtext}\n🎁{gift_data["name"]}: 0\nИТОГО: {price}\n\nИмя: {item.name}\nАдрес доставки: {item.address}\nДоставить к: {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nНомер: {phone_number}'
+        else:
+            text = f'ЗАКАЗ #{order_id}{order_subtext}\nИТОГО: {price}\n\nИмя: {item.name}\nАдрес доставки: {item.address}\nДоставить к: {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nНомер: {phone_number}'
         await db.orders.update_text(order_id, text)
         await orders_bot.send_order_to_chat(text, item.user_key, order_id)
         carts[item.user_key] = []

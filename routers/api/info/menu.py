@@ -9,7 +9,7 @@ router = APIRouter()
 @router.post('/get_menu_categories')
 async def get_menu_categoriesPage():
     '''Возвращает категории меню.'''
-    data = await db.categories.get_categories()
+    data = await db.categories.get_categories_with_if()
     return {"status": True, "info": "success", "data": data}
 
 @router.post('/get_menu_by_category')

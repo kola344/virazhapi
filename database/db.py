@@ -206,6 +206,11 @@ class categories:
             ''')
             return [dict(row) for row in rows]
 
+    async def get_categories_with_if(self):
+        async with self.db.acquire() as connection:
+            rows = await connection.fetch('''SELECT DISTINCT categories.id, categories.name FROM categories JOIN menu ON categories.id = menu.category ORDER BY categories.id''')
+            return [dict(row) for row in rows]
+
     async def add_category(self, name):
         async with self.db.acquire() as connection:
             if not await self.check_category_by_name(name):
@@ -486,7 +491,7 @@ class menu:
             await connection.execute('''DELETE FROM images WHERE item_id = $1''', item_id)
 
     async def get_all_menu(self):
-        categories = await dbs.categories.get_categories()
+        categories = await dbs.categories.get_categories_with_if()
         result = []
         for category in categories:
             items = await self.get_menu_by_category_id(category["id"])
