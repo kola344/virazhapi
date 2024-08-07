@@ -44,6 +44,8 @@ async def get_giftPage(item: get_giftModel):
 @router.post('/add_order')
 async def add_orderPage(item: add_orderModel):
     '''Возвращает результат оформления заказа'''
+    if carts[item.user_key] == []:
+        return {"status": False, "info": "cart is empty", "order_id": ''}
     order_type = 'pickup'
     if item.address != 'Самовывоз':
         order_type = 'delivery'
