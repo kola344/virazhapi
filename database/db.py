@@ -163,6 +163,13 @@ class orders:
                 UPDATE orders SET closed = $1 WHERE id = $2
             ''', 1, order_id)
 
+    async def get_orders_data_successful(self):
+        async with self.db.acquire() as connection:
+            rows = await connection.fetch('''
+                            SELECT * FROM orders ORDER BY id
+                        ''')
+            return [dict(row) for row in rows if row["status"] == '✅ Заказ выполнен']
+
 class categories:
     def __init__(self):
         self.db = None

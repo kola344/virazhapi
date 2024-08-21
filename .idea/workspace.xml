@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="fixed gift price" />
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="fixed gift price">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/virazhapi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/virazhapi.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
