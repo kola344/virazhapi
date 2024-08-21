@@ -23,4 +23,4 @@ async def report_orders():
         writer = csv.DictWriter(orders_file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(data)
-    return price, price/len(orders_data), len(orders_data)
+    return price, price//len(orders_data), len(orders_data)
