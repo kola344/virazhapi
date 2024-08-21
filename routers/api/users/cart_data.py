@@ -1,3 +1,3 @@
 carts = {}
 
-gift_target = 1000
+gift_target = 2000
