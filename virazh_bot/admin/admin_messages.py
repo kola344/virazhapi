@@ -173,8 +173,8 @@ async def callback(call, state: FSMContext):
                     text = await db.text_table.get_order_text()
                     await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.order_info_menu)
                 elif l3 == 'delivery_report':
-                    await report_orders()
-                    await bot.send_document(chat_id=user_id, document=FSInputFile(f'orders_report.csv'))
+                    text = await replic_orders_report()
+                    await bot.send_document(chat_id=user_id, document=FSInputFile(f'orders_report.csv'), caption=text)
             elif l2 == 'orderinfo':
                 if l3 == 'update':
                     await bot.edit_message_text(replic_update_order_info, chat_id=user_id, message_id=call.message.message_id)

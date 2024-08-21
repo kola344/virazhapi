@@ -3,6 +3,7 @@ import db
 import config
 from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove, InlineKeyboardMarkup, KeyboardButton, InlineKeyboardButton
 import os
+from virazh_bot.functions.orders_report import report_orders
 
 replic_403 = 'Отказано в доступе'
 replic_admin_reg_success = 'Вы были зарегистрированы в как администратор'
@@ -100,7 +101,9 @@ async def replic_deactivated_menu():
     markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
     return text, markup
 
-
+async def replic_orders_report():
+    price, average, count = await report_orders()
+    return f'Всего заказов: {count}\nОбщая сумма: {price}\nСредний чек: {average}'
 
 
 
