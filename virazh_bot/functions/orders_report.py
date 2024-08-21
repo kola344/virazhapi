@@ -2,7 +2,7 @@ import csv
 import db
 
 async def report_orders():
-    fieldnames = ["Номер заказа", "Текст заказа", "Дата заказа", "Доставить к", "Адрес", "Тип оплаты", "Сумма"]
+    fieldnames = ["id", "Номер заказа", "Текст заказа", "Дата заказа", "Доставить к", "Адрес", "Тип оплаты", "Сумма"]
     orders_data = await db.orders.get_orders_data_successful()
     data = []
 
