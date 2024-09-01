@@ -2,7 +2,7 @@ import csv
 import db
 
 async def report_orders():
-    fieldnames = ["id", "Номер заказа", "Текст заказа", "Дата заказа", "Доставить к", "Адрес", "Тип оплаты", "Сумма"]
+    fieldnames = ["id", "Номер заказа", "Телефон", "Дата заказа", "Доставить к", "Адрес", "Тип оплаты", "Сумма"]
     orders_data = await db.orders.get_orders_data_successful()
     data = []
     price = 0
@@ -11,7 +11,7 @@ async def report_orders():
         data.append({
             "id": order+1,
             "Номер заказа": i["id"],
-            "Текст заказа": i["text"],
+            "Телефон": i["text"][-10:],
             "Дата заказа": i["date"],
             "Доставить к": i["delivery_at"],
             "Адрес": i["address"],
