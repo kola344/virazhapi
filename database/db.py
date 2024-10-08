@@ -417,6 +417,11 @@ class menu:
                 }
             return None
 
+    async def check_item_by_id(self, item_id):
+        async with self.db.acquire() as connection:
+            row = await connection.fetchrow('SELECT 1 FROM menu WHERE id = $1', item_id)
+            return row is not None
+
     async def get_item_category_by_id(self, item_id):
         async with self.db.acquire() as connection:
             row = await connection.fetchrow('''
