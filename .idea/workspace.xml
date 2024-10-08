@@ -135,14 +135,6 @@
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
     </task>
-    <task id="LOCAL-00043" summary="beta 3">
-      <option name="closed" value="true" />
-      <created>1720445426262</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1720445426262</updated>
-    </task>
     <task id="LOCAL-00044" summary="beta 3">
       <option name="closed" value="true" />
       <created>1720450295642</created>
@@ -527,7 +519,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728395024495</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="added checking available items in user cart function">
+      <option name="closed" value="true" />
+      <created>1728395153885</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1728395153885</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

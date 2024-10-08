@@ -506,7 +506,7 @@ class menu:
         categories = await dbs.categories.get_categories_with_if()
         result = []
         for category in categories:
-            items = await self.get_menu_by_category_id(category["id"])
+            items = [i for i in await self.get_menu_by_category_id(category["id"]) if i["name"] != "Позиция"]
             result.append({
                 "category_id": category["id"],
                 "name": category["name"],
