@@ -181,8 +181,9 @@ async def callback(call, state: FSMContext):
                     await state.set_state(models.order_info_editorState.edit)
             elif l2 == 'deactivate':
                 await db.menu.deactivate(int(l3))
+                category_id = await db.menu.get_item_category_by_id(int(l3))
                 await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
-                text, markup = await replic_deactivated_menu()
+                text, markup = await replic_menu_category(category_id)
                 await bot.send_message(text=text, chat_id=user_id, reply_markup=markup)
             elif l2 == 'activate':
                 await db.menu.activate(int(l3))
