@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="edited text to phone number in order repo" />
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="added checking available items in user cart function" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,22 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00041" summary="beta 3">
-      <option name="closed" value="true" />
-      <created>1720443223309</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1720443223309</updated>
-    </task>
-    <task id="LOCAL-00042" summary="beta 3">
-      <option name="closed" value="true" />
-      <created>1720443677019</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1720443677019</updated>
     </task>
     <task id="LOCAL-00043" summary="beta 3">
       <option name="closed" value="true" />
@@ -527,7 +511,23 @@
       <option name="project" value="LOCAL" />
       <updated>1725194047183</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="fixed deactivate function (after deactivation bot sends category menu of this item)">
+      <option name="closed" value="true" />
+      <created>1728394143824</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1728394143824</updated>
+    </task>
+    <task id="LOCAL-00091" summary="added checking available items in user cart function">
+      <option name="closed" value="true" />
+      <created>1728395024495</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1728395024495</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -543,8 +543,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="tg menu add ready" />
-    <MESSAGE value="auth ready" />
     <MESSAGE value="beta" />
     <MESSAGE value="orders beta" />
     <MESSAGE value="beta 1" />
@@ -568,6 +566,8 @@
     <MESSAGE value="added orders report" />
     <MESSAGE value="deleted old sq db" />
     <MESSAGE value="edited text to phone number in order repo" />
-    <option name="LAST_COMMIT_MESSAGE" value="edited text to phone number in order repo" />
+    <MESSAGE value="fixed deactivate function (after deactivation bot sends category menu of this item)" />
+    <MESSAGE value="added checking available items in user cart function" />
+    <option name="LAST_COMMIT_MESSAGE" value="added checking available items in user cart function" />
   </component>
 </project>
