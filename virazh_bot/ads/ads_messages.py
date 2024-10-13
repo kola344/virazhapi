@@ -114,11 +114,12 @@ async def callback(call, state: FSMContext):
                         user = models.ads_data[user_id]
                         user.selected[l3] = False if user.selected[l3] else True
                         text, markup = await replic_creator_gpt(user)
-                        await bot.delete_message(chat_id=call.message.chat.id, message_id=call.message.message_id)
-                        if user.selected["image"]:
-                            await call.message.answer_photo(photo=FSInputFile(f'ad_temp/image.png'), caption=text, reply_markup=markup)
-                        else:
-                            await call.message.answer(text, reply_markup=markup)
+                        await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=markup)
+                        # await bot.delete_message(chat_id=call.message.chat.id, message_id=call.message.message_id)
+                        # if user.selected["image"]:
+                        #     await call.message.answer_photo(photo=FSInputFile(f'ad_temp/image.png'), caption=text, reply_markup=markup)
+                        # else:
+                        #     await call.message.answer(text, reply_markup=markup)
                 else:
                     user = models.AdsSettings()
                     await user.create_item()
