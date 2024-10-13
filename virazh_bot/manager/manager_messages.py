@@ -28,7 +28,7 @@ async def manager_callback(call):
         l1 = calls[0]
         l2 = calls[1]
         l3 = calls[2]
-        await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
+        #await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
         if l2 == 'shift':
             if l3 == 'info':
                 text, markup = await replic_shift_info()
@@ -71,7 +71,7 @@ async def callback(call):
         l3 = calls[2]
         func = ''
         order_id = 0
-        await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
+        #await bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=keyboards.loading_menu)
         if ':' in l2:
             splited_l2 = l2.split(sep=':')
             func, order_id = splited_l2[0], int(splited_l2[1])
