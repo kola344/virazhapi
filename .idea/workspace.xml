@@ -4,26 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="delete unused imports">
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="added /help command for admin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/api/users/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/api/users/orders.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/api/users/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/api/users/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/api/users/telegram.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/api/users/telegram.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shift_stats_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/shift_stats_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/times_and_shift.py" beforeDir="false" afterPath="$PROJECT_DIR$/times_and_shift.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/virazh_bot/admin/admin_messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/admin_messages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/admin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/admin/replics.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/replics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/ads/ads_messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/ads/ads_messages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/ads/keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/ads/keyboards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/ads/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/ads/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/functions/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/functions/order.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/virazh_bot/functions/orders_report.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/functions/orders_report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/manager/replics.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/manager/replics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/user/keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/user/keyboards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/user/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/user/replics.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/user/replics.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,14 +139,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00051" summary="ready_to_host beta 1">
-      <option name="closed" value="true" />
-      <created>1720589612697</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1720589612697</updated>
     </task>
     <task id="LOCAL-00052" summary="time normal">
       <option name="closed" value="true" />
@@ -547,7 +524,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728846550840</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="added /help command for admin">
+      <option name="closed" value="true" />
+      <created>1728847147512</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1728847147512</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -563,7 +548,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="time normal" />
     <MESSAGE value="price fixed" />
     <MESSAGE value="activate/deactivate menu" />
     <MESSAGE value="ready 1" />
@@ -588,6 +572,7 @@
     <MESSAGE value="edited ads" />
     <MESSAGE value="auto deleting replic_gpt_generation message" />
     <MESSAGE value="delete unused imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete unused imports" />
+    <MESSAGE value="added /help command for admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="added /help command for admin" />
   </component>
 </project>

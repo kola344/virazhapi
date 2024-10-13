@@ -1,5 +1,6 @@
 import csv
 import db
+from openpyxl import Workbook
 
 async def report_orders():
     fieldnames = ["id", "Номер заказа", "Телефон", "Дата заказа", "Доставить к", "Адрес", "Тип оплаты", "Сумма"]
@@ -23,4 +24,12 @@ async def report_orders():
         writer = csv.DictWriter(orders_file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(data)
+
+    wb = Workbook()
+    ws = wb.active
+    with open('orders_report.csv', 'r', encoding='utf-8') as f:
+        for row in csv.reader(f):
+            ws.append(row)
+    wb.save('orders_report.xlsx')
+
     return price, price//len(orders_data), len(orders_data)
