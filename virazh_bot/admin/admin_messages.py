@@ -125,6 +125,13 @@ async def start_admin_reg_command(message: Message):
         print(e)
         await message.answer(replic_403)
 
+@router.message(F.text == '/help')
+async def help_command(message: Message):
+    if await db.tg_admin.check_admin_by_user_id(message.chat.id):
+        await message.answer(replic_help_command)
+    else:
+        await message.answer(replic_403)
+
 @router.message(F.text == '/reg_admin')
 async def reg_admin_command(message: Message):
     if await db.tg_admin.check_admin_by_user_id(message.chat.id):

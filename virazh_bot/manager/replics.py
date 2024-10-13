@@ -65,6 +65,3 @@ async def replic_order_manager_markup(selected_status, order_id):
         markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
         user_markup = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text=config.order_statuses[selected_status], callback_data=f'orderr')]])
         return markup, user_markup
-
-
-

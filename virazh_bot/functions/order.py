@@ -24,4 +24,3 @@ async def send_order_to_chat(text, user_key, order_id):
         await db.orders.update_message_user_id(order_id, message.message_id)
     except:
         pass
-

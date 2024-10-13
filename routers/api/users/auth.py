@@ -32,5 +32,3 @@ async def get_user_dataPage(item: get_user_dataModel):
     '''Возвращает всю информацию о пользователе '''
     data = await db.users.get_user_data_by_key(item.key)
     return {"status": True, "info": 'success', "data": data}
-
-

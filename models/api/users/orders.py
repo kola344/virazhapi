@@ -13,4 +13,3 @@ class add_orderModel(BaseModel):
 
 class get_giftModel(BaseModel):
     user_key: str
-

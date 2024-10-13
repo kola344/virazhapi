@@ -16,5 +16,3 @@ async def get_connection_urlPage(item: get_connetion_urlModel):
     '''Возвращает ссылку для связки аккаунта клиента с тг'''
     url = f'{config.tg_url}?start=connect_{item.key}'
     return {"status": True, "info": "success", "url": url}
-
-
