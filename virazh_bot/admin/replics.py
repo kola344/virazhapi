@@ -18,7 +18,7 @@ replic_admin_menu_editor_reprice = 'Введите новую цену'
 replic_admin_menu_editor_reprice_err = 'Ошибка. Введите правильную цену'
 replic_manager_menu = 'Панель менеджера'
 replic_update_order_info = 'Введите новую информацию'
-replic_help_command = 'Основные команды:\n\n/admin - панель администратора\n/manager - панель менеджера\n/ads - рекламный кабинет'
+replic_help_command = 'Основные команды:\n\n/admin - панель администратора\n\n/manager - панель менеджера\n\n/ads - рекламный кабинет'
 
 def replic_reg_new_admin_keygen():
     temp.reg_admin_key = f'reg_admin_' + keygen.generate_password(12)
