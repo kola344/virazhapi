@@ -143,9 +143,10 @@ async def callback(call, state: FSMContext):
                 elif l3 == 'generate':
                     user = models.ads_data[user_id]
                     await bot.delete_message(chat_id=call.message.chat.id, message_id=call.message.message_id)
-                    await call.message.answer(replic_gpt_generation)
+                    message = await call.message.answer(replic_gpt_generation)
                     generated = await generate_ad(user)
                     user.generated = generated
+                    await bot.delete_message(chat_id=user_id, message_id=message.message_id)
                     if user.selected["image"]:
                         await call.message.answer_photo(photo=FSInputFile(f'ad_temp/image.png'), caption=generated, reply_markup=keyboards.gpt_menu_generated)
                     else:

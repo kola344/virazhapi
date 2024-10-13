@@ -4,22 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="fixed deactivation func">
-      <change afterPath="$PROJECT_DIR$/ad_temp/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ad_temp/image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integration/proxy_api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integration/vk.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integration/weather.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virazh_bot/ads/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virazh_bot/ads/ads_messages.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virazh_bot/ads/keyboards.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virazh_bot/ads/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virazh_bot/ads/replics.py" afterDir="false" />
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="edited ads">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/bot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,30 +136,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00046" summary="ready_to_host beta 1">
-      <option name="closed" value="true" />
-      <created>1720466133818</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1720466133818</updated>
-    </task>
-    <task id="LOCAL-00047" summary="ready_to_host beta 1">
-      <option name="closed" value="true" />
-      <created>1720467022090</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1720467022090</updated>
-    </task>
-    <task id="LOCAL-00048" summary="ready_to_host beta 1">
-      <option name="closed" value="true" />
-      <created>1720535488923</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1720535488923</updated>
     </task>
     <task id="LOCAL-00049" summary="ready_to_host beta 1">
       <option name="closed" value="true" />
@@ -543,7 +505,31 @@
       <option name="project" value="LOCAL" />
       <updated>1728419359635</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="added auto ads. Chatgpt withoiut virazh vk acoount">
+      <option name="closed" value="true" />
+      <created>1728844359635</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1728844359635</updated>
+    </task>
+    <task id="LOCAL-00096" summary="disabled loading keyboard">
+      <option name="closed" value="true" />
+      <created>1728844598080</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1728844598080</updated>
+    </task>
+    <task id="LOCAL-00097" summary="edited ads">
+      <option name="closed" value="true" />
+      <created>1728844676227</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1728844676227</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -559,9 +545,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="beta 1" />
-    <MESSAGE value="beta 2" />
-    <MESSAGE value="beta 3" />
     <MESSAGE value="postgre connected and tg success" />
     <MESSAGE value="ready_to_host beta 1" />
     <MESSAGE value="time normal" />
@@ -584,6 +567,9 @@
     <MESSAGE value="added checking available items in user cart function" />
     <MESSAGE value="items with name positions auto excepting when using get all menu func" />
     <MESSAGE value="fixed deactivation func" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed deactivation func" />
+    <MESSAGE value="added auto ads. Chatgpt withoiut virazh vk acoount" />
+    <MESSAGE value="disabled loading keyboard" />
+    <MESSAGE value="edited ads" />
+    <option name="LAST_COMMIT_MESSAGE" value="edited ads" />
   </component>
 </project>
