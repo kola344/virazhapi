@@ -7,6 +7,7 @@ import config
 from virazh_bot.admin.admin_messages import router as admin_router
 from virazh_bot.user.user_messages import router as user_router
 from virazh_bot.manager.manager_messages import router as manager_router
+from virazh_bot.ads.ads_messages import router as ads_router
 from aiogram import Bot, Dispatcher
 from typing import Any
 from routers.api.info.menu import router as menu_router
@@ -61,6 +62,7 @@ async def on_startup():
     dp.include_router(admin_router)
     dp.include_router(user_router)
     dp.include_router(manager_router)
+    dp.include_router(ads_router)
     await bot.set_webhook(config.webhook_url, drop_pending_updates=True)
 
 @app.get('/images/{image}')

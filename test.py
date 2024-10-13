@@ -4,15 +4,6 @@ from virazh_bot import bot
 
 asyncio.run(bot.main())
 
-import asyncpg
-import asyncio
-async def run():
-    import db
-    await db.initialize()
-    print(await db.tg_admin.get_admins_list())
-
-asyncio.run(run())
-
 # import asyncpg
 # import asyncio
 # async def run():

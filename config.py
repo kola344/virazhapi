@@ -21,3 +21,33 @@ order_statuses = {
     "cancelled": '❌ Заказ отменен',
     "completed": "✅ Заказ выполнен"
 }
+
+days_week = {
+    "Monday": "Понедельник",
+    "Tuesday": "Вторник",
+    "Wednesday": "Среда",
+    "Thursday": "Четверг",
+    "Friday": "Пятница",
+    "Saturday": "Суббота",
+    "Sunday": "Воскресенье"
+}
+
+weather_url = 'https://wttr.in/Ворсма?format=%C+%t&lang=ru'
+
+seasons = ["Зима", "Зима", "Весна", "Весна", "Весна", "Лето", "Лето", "Лето", "Осень", "Осень", "Осень", "Зима"]
+
+proxyapi_key = 'sk-XbCBpGK5n8EBTRap8krrFx3sAEANhXN8'
+gpt_prompt = 'Напиши рекламный пост ВКонтакте для рекламы сайта Кафе Вираж (kafevirazh.ru) - доставка еды (Сайт если что существует уже давно, не рекламируй его как новый продукт). В основном сайт рассчитан на роллы и пиццу, но также супы и вторые блюда. Тебе необходимо быть креативным.\nУчитывай следующую информацию:\n%info%\nПобольше эмодзи. Текст не форматируй'
+
+'''need to edit'''
+vk_token = 'vk1.a.fPqSTRlqAGrnKPi4G-EkaUPLdVYeoNwUxrwkjHQ95_Poi-U5ka-Y2Or-hQMHjGGZC2v710q4bqCnfOSTdbtQ98NJkyXSL9e9xaKJ50LdPx6aLPL5W0XrZrYy6cR4HBsn1QkcKi99_YmUZXTtImZV8K9RecCFiQVO4sbxh-y5aoTruBMEcpFDoI9Pl-M8PjRJycgvGNmAY27K5lpTxkxE9A'
+vk_id = "299464016"
+vk_username = 'flopppa123'
+
+#
+# vk_ads_token = 'vk1.a.FSjSa6maVYWJ3Y3xtsjR-VYlkNIiNXOlpS6c_DkSJTrbHXkIA5DF6u5iAsgd2xy0PqdjUdtEZF5rDCM_gUMQiIe3zG3AzkthmC7213Ukle7plZxHQj4A8On5SjyAm0C21cwuGGWL0LLM9hrZEMgVtBA2Jb-iqYw-CgTmwal2iFGaiEW7gU4bu3brOuOUt3DDR-pBw9lR_kGxbggBTx2iJw'
+# vk_ads_client_secret = '8XwYsdoVNdSA6pPeSQh6tob4iyeTX8iz6DqPZv0C9ENlkDA5OcZdOAZLtKgMwPUwS06h7r2kanGcJdVdaYfoHsvDfP9RQzu8ohr9MFhUXaNxzljvNv2SDF7n1wrh8ELK6iy0k5UipYkcVCGZrHGd3b5qYyZUMdI3FRjVOlIsPvMLG8T8wvM2LY0S73Dldafdvs9kqkJj4Y'
+# vk_ads_client_id = 'JDN7Lpea9DelD11u'
+'''
+VtQvTnFOKMAj6mXaAe0T8lh2ycy1GwU3kLlOoeOx5qoM8BlLgxHU2iZeOv88kPlBgWFAs3PO2NJZICAKQrgPrSpZz4wdsLzTr6TiQHasadywqEZf5DGPTZZ1wrCjPMeE079zUf2s4F5mFqntXdxrj0gBDA3Wb77j5Z0mEQ1S7CSRmAeFnoEawOd7uakA1ovCvPucOBzgjJfsieZTHPZKTxIS29xeCDVs6BByIxNnazxg3iY0MLwdngoi1p3LRiD
+'''
