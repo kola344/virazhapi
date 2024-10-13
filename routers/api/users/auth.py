@@ -2,7 +2,6 @@ from fastapi import APIRouter
 import db
 from models.api.users.auth import auth_phoneModel, auth_get_key_by_phoneModel, get_user_dataModel
 from temp.auth_code import auth_codes
-import os
 from virazh_bot.bot_logging import log_message
 
 router = APIRouter()

@@ -1,6 +1,4 @@
 from aiogram.fsm.state import State, StatesGroup
-from aiogram.fsm.context import FSMContext
-
 
 admin_category_data = {}
 class admin_category_adding:

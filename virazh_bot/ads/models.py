@@ -1,5 +1,4 @@
 from aiogram.fsm.state import State, StatesGroup
-from aiogram.fsm.context import FSMContext
 from datetime import datetime
 from config import days_week, seasons
 from integration.weather import get_weather

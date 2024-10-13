@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 import db
 from models.api.users.telegram import check_telegram_connectionModel, get_connetion_urlModel
-import os
 import config
 
 router = APIRouter()

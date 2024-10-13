@@ -1,23 +1,13 @@
-import asyncio
-import json
+from aiogram import Router, F
 
-from aiogram import Bot, Dispatcher, Router, F
-from aiogram.types import Message, FSInputFile
-
-import times_and_shift
-import config
-from virazh_bot import temp, keygen
 from virazh_bot.bot_init import bot
 from virazh_bot.manager.replics import *
-from virazh_bot.manager import keyboards, models
-import db
-from aiogram.fsm.state import State, StatesGroup
-from aiogram.fsm.context import FSMContext
-import os
-from datetime import datetime
-import shift_stats_functions
-import traceback
+from virazh_bot.manager import keyboards
 
+import db
+import shift_stats_functions
+
+from virazh_bot.bot_logging import log_message
 router = Router()
 
 @router.callback_query(F.data.startswith('manager'))
@@ -35,11 +25,13 @@ async def manager_callback(call):
                 await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
             elif l3 == 'true':
                 shift_stats_functions.new_stat()
+                await log_message('🟢 Смена открыта')
                 text, markup = await replic_shift_info()
                 await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
             elif l3 == 'false':
                 times_and_shift.shift = False
                 times_and_shift.available_times = []
+                await log_message('🔴 Смена закрыта')
                 text, markup = await replic_shift_info()
                 await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
         elif l2 == 'time':

@@ -1,6 +1,4 @@
 from database import db
-from config import database_folder
-import asyncpg
 from asyncpg import create_pool
 
 tg_admin = db.tg_admins()

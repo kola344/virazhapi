@@ -1,6 +1,4 @@
 import asyncio
-from aiogram import Bot, Dispatcher
-import config
 from virazh_bot.admin.admin_messages import router as admin_router
 from virazh_bot.user.user_messages import router as user_router
 from virazh_bot.manager.manager_messages import router as manager_router

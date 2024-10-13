@@ -1,16 +1,13 @@
 import asyncio
-from aiogram import Bot, Dispatcher, Router, F
-from aiogram.types import Message, FSInputFile
+from aiogram import  Router, F
+from aiogram.types import Message
 
 import config
-from virazh_bot import temp, keygen
 from virazh_bot.bot_init import bot
 from virazh_bot.user.replics import *
 from virazh_bot.user import keyboards, models
 import db
-from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
-import os
 from aiogram.types import ReplyKeyboardRemove
 
 router = Router()

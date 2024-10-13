@@ -1,9 +1,6 @@
 from fastapi import APIRouter
 import db
 from models.api.users.cart import add_to_cartModel, user_cartModel, delete_from_cartModel
-import os
-from virazh_bot.functions import order as orders_bot
-from datetime import datetime
 from routers.api.users import cart_data
 
 router = APIRouter()

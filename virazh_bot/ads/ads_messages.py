@@ -1,19 +1,15 @@
 import asyncio
 import traceback
 
-from aiogram import Bot, Dispatcher, Router, F
+from aiogram import Router, F
 from aiogram.types import Message, FSInputFile
 
 import integration.vk
-from virazh_bot import temp, keygen
 from virazh_bot.bot_init import bot
 from virazh_bot.ads.replics import *
 from virazh_bot.ads import keyboards, models
 import db
-from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
-import os
-from virazh_bot.functions.orders_report import report_orders
 from integration.proxy_api import generate_ad
 from virazh_bot.bot_logging import log_message
 

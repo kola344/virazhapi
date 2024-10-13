@@ -1,5 +1,3 @@
-import time
-import aiosqlite
 import asyncio
 import config
 import db
@@ -8,7 +6,6 @@ from temp.auth_code import auth_codes
 import db as dbs
 from integration import sms_code
 import asyncpg
-import json
 
 #TG
 class tg_admins:

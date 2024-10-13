@@ -1,8 +1,6 @@
 from virazh_bot import keygen, temp
 import db
-import config
-from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove, InlineKeyboardMarkup, KeyboardButton, InlineKeyboardButton
-import os
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from virazh_bot.functions.orders_report import report_orders
 
 replic_403 = 'Отказано в доступе'

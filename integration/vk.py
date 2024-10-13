@@ -1,5 +1,4 @@
 import aiohttp
-import asyncio
 from config import vk_token, vk_id, vk_username # Замените на ваш ID пользователя
 
 

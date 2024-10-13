@@ -1,8 +1,4 @@
-from virazh_bot import keygen, temp
-import db
-import config
-from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove, InlineKeyboardMarkup, KeyboardButton, InlineKeyboardButton
-import os
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from integration import proxy_api
 from virazh_bot.ads import keyboards
 from virazh_bot.bot_logging import log_message

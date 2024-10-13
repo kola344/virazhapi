@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from typing import List
 
 class get_order_historyModel(BaseModel):
     user_key: str

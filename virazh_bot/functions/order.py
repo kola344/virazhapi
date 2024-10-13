@@ -1,5 +1,5 @@
 from virazh_bot.bot_init import bot
-from aiogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton, KeyboardButton
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import config
 import db
 
