@@ -40,9 +40,9 @@ proxyapi_key = 'sk-XbCBpGK5n8EBTRap8krrFx3sAEANhXN8'
 gpt_prompt = 'Напиши рекламный пост ВКонтакте для рекламы сайта Кафе Вираж (kafevirazh.ru) - доставка еды (Сайт если что существует уже давно, не рекламируй его как новый продукт). В основном сайт рассчитан на роллы и пиццу, но также супы и вторые блюда. Тебе необходимо быть креативным.\nУчитывай следующую информацию:\n%info%\nПобольше эмодзи. Текст не форматируй'
 
 '''need to edit'''
-vk_token = 'vk1.a.fPqSTRlqAGrnKPi4G-EkaUPLdVYeoNwUxrwkjHQ95_Poi-U5ka-Y2Or-hQMHjGGZC2v710q4bqCnfOSTdbtQ98NJkyXSL9e9xaKJ50LdPx6aLPL5W0XrZrYy6cR4HBsn1QkcKi99_YmUZXTtImZV8K9RecCFiQVO4sbxh-y5aoTruBMEcpFDoI9Pl-M8PjRJycgvGNmAY27K5lpTxkxE9A'
-vk_id = "299464016"
-vk_username = 'flopppa123'
+vk_token = 'vk1.a.gEIywB5GD2TE7U7Z0leOC3KPVU5Y4dj0Ze8xQwH21uIK60Z_Op2ycE7uxbqpK0Qo_gw3YeojKIhemxsi7bqxElU0P56Bxr4uqM8pTGJLctGghE1fPsEyt9T462NfY2EVgAGdJH-uZuo3CHODnNLWY9wFdLZC0j3sGDCN1KpV4I_BFC3D87rQsDj4c1m_k3b77l86pWhhDakD9Hn9oTlMhA'
+vk_id = "567669280"
+vk_username = 'virash_kafe_vorsma'
 
 #
 # vk_ads_token = 'vk1.a.FSjSa6maVYWJ3Y3xtsjR-VYlkNIiNXOlpS6c_DkSJTrbHXkIA5DF6u5iAsgd2xy0PqdjUdtEZF5rDCM_gUMQiIe3zG3AzkthmC7213Ukle7plZxHQj4A8On5SjyAm0C21cwuGGWL0LLM9hrZEMgVtBA2Jb-iqYw-CgTmwal2iFGaiEW7gU4bu3brOuOUt3DDR-pBw9lR_kGxbggBTx2iJw'
