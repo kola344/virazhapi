@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="added /help command for admin">
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="updated replics.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/admin/admin_messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/admin_messages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/functions/orders_report.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/functions/orders_report.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,30 +136,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00052" summary="time normal">
-      <option name="closed" value="true" />
-      <created>1720590735211</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1720590735211</updated>
-    </task>
-    <task id="LOCAL-00053" summary="time normal">
-      <option name="closed" value="true" />
-      <created>1720591116144</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1720591116144</updated>
-    </task>
-    <task id="LOCAL-00054" summary="time normal">
-      <option name="closed" value="true" />
-      <created>1720596107346</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1720596107346</updated>
     </task>
     <task id="LOCAL-00055" summary="time normal">
       <option name="closed" value="true" />
@@ -532,7 +505,31 @@
       <option name="project" value="LOCAL" />
       <updated>1728847147512</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="added order report to xlsx">
+      <option name="closed" value="true" />
+      <created>1728848299444</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1728848299444</updated>
+    </task>
+    <task id="LOCAL-00102" summary="added order report to xlsx">
+      <option name="closed" value="true" />
+      <created>1728848305572</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1728848305572</updated>
+    </task>
+    <task id="LOCAL-00103" summary="updated replics.py">
+      <option name="closed" value="true" />
+      <created>1728848501870</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1728848501870</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -548,8 +545,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="price fixed" />
-    <MESSAGE value="activate/deactivate menu" />
     <MESSAGE value="ready 1" />
     <MESSAGE value="release 1" />
     <MESSAGE value="fixed supergroup id" />
@@ -573,6 +568,8 @@
     <MESSAGE value="auto deleting replic_gpt_generation message" />
     <MESSAGE value="delete unused imports" />
     <MESSAGE value="added /help command for admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="added /help command for admin" />
+    <MESSAGE value="added order report to xlsx" />
+    <MESSAGE value="updated replics.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated replics.py" />
   </component>
 </project>

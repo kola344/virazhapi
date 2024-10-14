@@ -11,5 +11,14 @@ class add_orderModel(BaseModel):
     name: str
     payment: str
 
+class send_order_daysModel(BaseModel):
+    delivery_at: str
+    comment: str
+    user_key: str
+    address: str
+    name: str
+    payment: str
+    date: str
+
 class get_giftModel(BaseModel):
     user_key: str

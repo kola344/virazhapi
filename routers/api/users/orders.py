@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 import db
-from models.api.users.orders import add_orderModel, get_order_historyModel, get_giftModel
-from times_and_shift import get_available_times
+from models.api.users.orders import add_orderModel, get_order_historyModel, get_giftModel, send_order_daysModel
+from times_and_shift import get_available_times, get_times_oth_days, oth_days_count
 from virazh_bot.functions import order as orders_bot
 from datetime import datetime
 from routers.api.users.cart_data import carts, gift_target
@@ -25,6 +25,13 @@ async def get_available_times_deliveryPage():
 @router.get('/get_available_times_pickup')
 async def get_available_times_pickupPage():
     return {"status": True, "info": "success", "available_times": get_available_times('pickup')}
+
+@router.get('/get_available_times_days')
+async def get_available_times_daysPage():
+    '''Возвращает список дней для заказа на несколько дней вперед и их доступное время для
+    pickup - самовывоза
+    delivery - доставка'''
+    return {"status": True, "info": "success", "available_days": get_times_oth_days(oth_days_count)}
 
 @router.post('/get_gift')
 async def get_giftPage(item: get_giftModel):
@@ -67,6 +74,39 @@ async def add_orderPage(item: add_orderModel):
             text = f'ЗАКАЗ #{order_id}{order_subtext}\n🎁{gift_data["name"]}: 0\nИТОГО: {price}\n\nИмя: {item.name}\nАдрес доставки: {item.address}\nДоставить к: {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nНомер: {phone_number}'
         else:
             text = f'ЗАКАЗ #{order_id}{order_subtext}\nИТОГО: {price}\n\nИмя: {item.name}\nАдрес доставки: {item.address}\nДоставить к: {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nНомер: {phone_number}'
+        await db.orders.update_text(order_id, text)
+        await orders_bot.send_order_to_chat(text, item.user_key, order_id)
+        carts[item.user_key] = []
+        return {"status": True, "info": "success", "order_id": order_id}
+    return {"status": False, "info": 'time is not available', "order_id": ''}
+
+@router.post('/send_order_days')
+async def send_order_daysPage(item: send_order_daysModel):
+    '''Возвращает результат оформления заказа на несколько дней вперед'''
+    if carts[item.user_key] == []:
+        return {"status": False, "info": "cart is empty", "order_id": ''}
+    order_type = 'pickup'
+    if item.address != 'Самовывоз':
+        order_type = 'delivery'
+    if item.delivery_at in get_available_times(order_type):
+        await db.users.update_name_by_key(item.user_key, item.name)
+        phone_number = await db.users.get_phone_by_key(item.user_key)
+        order_subtext = ''
+        price = 0
+        for i in carts[item.user_key]:
+            try:
+                price += int(i["price"])
+            except:
+                price += 0
+            order_subtext += f'\n{i["name"]} - {i["variation"]}: {i["price"]}'
+        current_date = datetime.now()
+        date = current_date.strftime('%d.%m.%Y')
+        order_id = await db.orders.add_order(carts[item.user_key], item.delivery_at, item.comment, item.user_key, item.address, date, price, item.payment)
+        if price >= gift_target:
+            gift_data = await db.text_table.get_gift()
+            text = f'ЗАКАЗ #{order_id}{order_subtext}\n🎁{gift_data["name"]}: 0\nИТОГО: {price}\n\nИмя: {item.name}\nАдрес доставки: {item.address}\nДоставить к: {item.date} {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nЭто предказаз. Доставить {item.date}\nНомер: {phone_number}'
+        else:
+            text = f'ЗАКАЗ #{order_id}{order_subtext}\nИТОГО: {price}\n\nИмя: {item.name}\nАдрес доставки: {item.address}\nДоставить к: {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nЭто предказаз. Доставить {item.date}\nНомер: {phone_number}'
         await db.orders.update_text(order_id, text)
         await orders_bot.send_order_to_chat(text, item.user_key, order_id)
         carts[item.user_key] = []
