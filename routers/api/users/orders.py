@@ -103,9 +103,9 @@ async def send_order_daysPage(item: send_order_daysModel):
     order_id = await db.orders.add_order(carts[item.user_key], item.delivery_at, item.comment, item.user_key, item.address, date, price, item.payment)
     if price >= gift_target:
         gift_data = await db.text_table.get_gift()
-        text = f'ЗАКАЗ #{order_id}{order_subtext}\n🎁{gift_data["name"]}: 0\nИТОГО: {price}\n\nИмя: {item.name}\nАдрес доставки: {item.address}\nДоставить к: {item.date} {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nЭто предказаз. Доставить {item.date}\nНомер: {phone_number}'
+        text = f'ЗАКАЗ #{order_id}{order_subtext}\n🎁{gift_data["name"]}: 0\nИТОГО: {price}\n\nИмя: {item.name}\nАдрес доставки: {item.address}\nДоставить к: {item.date} {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nЭто предзаказ. Доставить {item.date}\nНомер: {phone_number}'
     else:
-        text = f'ЗАКАЗ #{order_id}{order_subtext}\nИТОГО: {price}\n\nИмя: {item.name}\nАдрес доставки: {item.address}\nДоставить к: {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nЭто предказаз. Доставить {item.date}\nНомер: {phone_number}'
+        text = f'ЗАКАЗ #{order_id}{order_subtext}\nИТОГО: {price}\n\nИмя: {item.name}\nАдрес доставки: {item.address}\nДоставить к: {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nЭто предзаказ. Доставить {item.date}\nНомер: {phone_number}'
     await db.orders.update_text(order_id, text)
     await orders_bot.send_order_to_chat(text, item.user_key, order_id)
     carts[item.user_key] = []
