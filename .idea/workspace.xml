@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="added editor preorder days">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="edited times" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +68,7 @@
       <recent name="$PROJECT_DIR$/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.test">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="virazhapi" />
       <option name="ENV_FILES" value="" />
@@ -136,14 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00067" summary="ready 1">
-      <option name="closed" value="true" />
-      <created>1720812445509</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1720812445509</updated>
     </task>
     <task id="LOCAL-00068" summary="ready 1">
       <option name="closed" value="true" />
@@ -529,7 +519,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729017856510</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="edited times">
+      <option name="closed" value="true" />
+      <created>1729018979044</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1729018979044</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -545,7 +543,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sorted by id" />
     <MESSAGE value="sorted times" />
     <MESSAGE value="added gift" />
     <MESSAGE value="fixed inline button" />
@@ -570,6 +567,7 @@
     <MESSAGE value="added loading to orders" />
     <MESSAGE value="added preorder days config" />
     <MESSAGE value="added editor preorder days" />
-    <option name="LAST_COMMIT_MESSAGE" value="added editor preorder days" />
+    <MESSAGE value="edited times" />
+    <option name="LAST_COMMIT_MESSAGE" value="edited times" />
   </component>
 </project>
