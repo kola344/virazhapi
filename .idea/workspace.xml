@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="added preorder" />
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="edited preorder functions" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,14 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00058" summary="time normal">
-      <option name="closed" value="true" />
-      <created>1720598261273</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1720598261273</updated>
     </task>
     <task id="LOCAL-00059" summary="time normal">
       <option name="closed" value="true" />
@@ -527,7 +519,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728923996370</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="edited preorder functions">
+      <option name="closed" value="true" />
+      <created>1729009940172</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1729009940172</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -543,7 +543,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="release 1" />
     <MESSAGE value="fixed supergroup id" />
     <MESSAGE value="added log system" />
     <MESSAGE value="new code text" />
@@ -568,6 +567,7 @@
     <MESSAGE value="added order report to xlsx" />
     <MESSAGE value="updated replics.py" />
     <MESSAGE value="added preorder" />
-    <option name="LAST_COMMIT_MESSAGE" value="added preorder" />
+    <MESSAGE value="edited preorder functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="edited preorder functions" />
   </component>
 </project>
