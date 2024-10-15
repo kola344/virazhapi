@@ -45,7 +45,10 @@ async def replic_order_manager_markup(selected_status, order_id):
         markup_user = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='✅ Заказ выполнен', callback_data='none')], [InlineKeyboardButton(text='👎', callback_data=f'user.dislike.{order_id}'), InlineKeyboardButton(text='👍', callback_data=f'user.like.{order_id}')]])
         return keyboards.order_completed, markup_user
     elif selected_status == 'cancelled':
-        shift_stats_functions.add_cancelled_order('today')
+        try:
+            shift_stats_functions.add_cancelled_order('today')
+        except:
+            pass
         return keyboards.order_cancelled, keyboards.order_cancelled
     else:
         keyboard = []
