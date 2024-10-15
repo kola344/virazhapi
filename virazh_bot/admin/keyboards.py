@@ -10,7 +10,8 @@ menu = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='Упр�
 adding_category_button = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='❌ Отмена')]], resize_keyboard=True)
 
 manager_menu = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='Смена', callback_data='manager.shift.info')],
-                                                     [InlineKeyboardButton(text='Время', callback_data='manager.time.info')]])
+                                                     [InlineKeyboardButton(text='Время', callback_data='manager.time.info')],
+                                                     [InlineKeyboardButton(text='Дни предзаказа', callback_data='manager.preorder.menu')]])
 
 loading_menu = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='🕙 Обработка...', callback_data='none')]])
 

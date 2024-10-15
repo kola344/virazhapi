@@ -692,7 +692,7 @@ class text_table:
 
     async def get_preorder_days(self):
         async with self.db.acquire() as connection:
-            row = await connection.fetchrow('SELECT 1 FROM text_table WHERE name = $1', 'preorder_days')
+            row = await connection.fetchrow('SELECT * FROM text_table WHERE name = $1', 'preorder_days')
             if row is None:
                 return 0
             else:

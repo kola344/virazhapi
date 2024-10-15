@@ -1,17 +1,34 @@
 from aiogram import Router, F
+from aiogram.fsm.context import FSMContext
+from aiogram.types import Message
 
 from virazh_bot.bot_init import bot
 from virazh_bot.manager.replics import *
 from virazh_bot.manager import keyboards
+from virazh_bot.manager.models import edit_preorder_daysModel
 
 import db
 import shift_stats_functions
 
 from virazh_bot.bot_logging import log_message
+import traceback
 router = Router()
 
+@router.message(edit_preorder_daysModel.edit_state, F.text)
+async def admin_orderinfoeditFunc(message: Message, state: FSMContext):
+    try:
+        a = int(message.text)
+        await db.text_table.update_preorder_days(message.text)
+        text, markup = await replic_preorder_editor_menu()
+        await message.answer(text, reply_markup=markup)
+        await state.clear()
+    except Exception as e:
+        traceback.print_exc()
+        print(e)
+        await message.answer(replic_preorder_days_edit_err)
+
 @router.callback_query(F.data.startswith('manager'))
-async def manager_callback(call):
+async def manager_callback(call, state: FSMContext):
     try:
         user_id = call.message.chat.id
         calls = str(call.data).split(sep='.')
@@ -49,7 +66,15 @@ async def manager_callback(call):
         elif l2 == 'menu':
             if l3 == 'main':
                 await bot.edit_message_text(replic_manager_menu, chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.manager_menu)
+        elif l2 == 'preorder':
+            if l3 == 'menu':
+                text, markup = await replic_preorder_editor_menu()
+                await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+            elif l3 == 'edit':
+                await bot.edit_message_text(replic_preorder_days_edit, chat_id=user_id, message_id=call.message.message_id)
+                await state.set_state(edit_preorder_daysModel.edit_state)
     except Exception as e:
+        traceback.print_exc()
         print(e)
 
 @router.callback_query(F.data.startswith('order'))

@@ -11,6 +11,8 @@ import shift_stats_functions
 replic_manager_reg_success = 'Вы были зарегистрированы как менеджер'
 replic_403 = 'Отказано в доступе'
 replic_manager_menu = 'Панель менеджера'
+replic_preorder_days_edit = 'Введите новое значение'
+replic_preorder_days_edit_err = 'Введите число'
 
 async def replic_time_info():
     keyboard = []
@@ -68,3 +70,9 @@ async def replic_order_manager_markup(selected_status, order_id):
         markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
         user_markup = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text=config.order_statuses[selected_status], callback_data=f'orderr')]])
         return markup, user_markup
+
+async def replic_preorder_editor_menu():
+    preorder_days = await db.text_table.get_preorder_days()
+    text = f'Текущее количество доступных дней для предзаказа: {preorder_days}'
+    return text, keyboards.preorder_menu
+
