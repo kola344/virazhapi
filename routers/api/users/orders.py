@@ -20,7 +20,7 @@ async def get_orders_infoPage():
 
 @router.get('/get_order_times')
 async def get_order_timesPage():
-    return {"status": True, "info": "success", "order_times": get_order_times()}
+    return {"status": True, "info": "success", "order_times": await get_order_times()}
 
 @router.post('/get_gift')
 async def get_giftPage(item: get_giftModel):
