@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="added loading to orders" />
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="added loading to orders">
+      <change beforePath="$PROJECT_DIR$/database/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/api/users/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/api/users/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virazh_bot/manager/keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/manager/keyboards.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,14 +138,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00061" summary="price fixed">
-      <option name="closed" value="true" />
-      <created>1720674596101</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1720674596101</updated>
     </task>
     <task id="LOCAL-00062" summary="activate/deactivate menu">
       <option name="closed" value="true" />
@@ -527,7 +523,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729014204987</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="added loading to orders">
+      <option name="closed" value="true" />
+      <created>1729014502286</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1729014502286</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

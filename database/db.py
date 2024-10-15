@@ -680,6 +680,25 @@ class text_table:
                 item_id = int(row["text"])
                 return await db.menu.get_item_info_by_id(item_id)
 
+    async def update_preorder_days(self, text):
+        async with self.db.acquire() as connection:
+            row = await connection.fetchrow('SELECT 1 FROM text_table WHERE name = $1', 'preorder_days')
+            if row is None:
+                await connection.execute('''INSERT INTO text_table (name, text) VALUES ($1, $2)''', 'preorder_days', text)
+            else:
+                await connection.execute('''
+                UPDATE text_table SET text = $1 WHERE name = $2
+                ''', text, 'preorder_days')
+
+    async def get_preorder_days(self):
+        async with self.db.acquire() as connection:
+            row = await connection.fetchrow('SELECT 1 FROM text_table WHERE name = $1', 'preorder_days')
+            if row is None:
+                return 0
+            else:
+                preorder_days = int(row["text"])
+                return int(preorder_days)
+
     async def check_gift(self, item_id):
         async with self.db.acquire() as connection:
             row = await connection.fetchrow('SELECT * FROM text_table WHERE name = $1', 'gift')

@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
-
-oth_days_count = 3
+import db
 
 available_times = []
 
@@ -57,7 +56,8 @@ def get_available_times(order_type):
     # Вывод результата
     return sorted(filtered_times)
 
-def get_order_times():
+async def get_order_times():
+    oth_days_count = await db.text_table.get_preorder_days()
     oth_days = get_times_oth_days(oth_days_count)
     today = [{"date": datetime.now().strftime("%d.%m.%Y"), "pickup": get_available_times("pickup"), "delivery": get_available_times("delivery")}]
     return today + oth_days
