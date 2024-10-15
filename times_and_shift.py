@@ -31,7 +31,7 @@ def get_times_oth_days(days):
     today = datetime.now() + timedelta(hours=4)
 
     # Создаем список дат на 3 дня вперед
-    future_dates = [today + timedelta(days=i) for i in range(1, 4)]
+    future_dates = [today + timedelta(days=i) for i in range(days)]
 
     # Выводим даты в формате 'YYYY-MM-DD'
     formatted_dates = [{"date": date.strftime('%d.%m.%Y'), "pickup": times_oth_days_pickup, "delivery": times_oth_days_delivery} for date in future_dates]
@@ -56,5 +56,10 @@ def get_available_times(order_type):
 
     # Вывод результата
     return sorted(filtered_times)
+
+def get_order_times():
+    oth_days = get_times_oth_days(oth_days_count)
+    today = [{"date": datetime.now().strftime("%d.%m.%Y"), "pickup": get_available_times("pickup"), "delivery": get_available_times("delivery")}]
+    return today + oth_days
 
 shift = False

@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="updated replics.py">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="added preorder" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,30 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00055" summary="time normal">
-      <option name="closed" value="true" />
-      <created>1720596173116</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1720596173116</updated>
-    </task>
-    <task id="LOCAL-00056" summary="time normal">
-      <option name="closed" value="true" />
-      <created>1720596935609</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1720596935609</updated>
-    </task>
-    <task id="LOCAL-00057" summary="time normal">
-      <option name="closed" value="true" />
-      <created>1720597434321</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1720597434321</updated>
     </task>
     <task id="LOCAL-00058" summary="time normal">
       <option name="closed" value="true" />
@@ -529,7 +503,31 @@
       <option name="project" value="LOCAL" />
       <updated>1728848501870</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="added preorder">
+      <option name="closed" value="true" />
+      <created>1728923424220</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1728923424220</updated>
+    </task>
+    <task id="LOCAL-00105" summary="added preorder">
+      <option name="closed" value="true" />
+      <created>1728923824874</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1728923824874</updated>
+    </task>
+    <task id="LOCAL-00106" summary="added preorder">
+      <option name="closed" value="true" />
+      <created>1728923996370</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1728923996370</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -545,7 +543,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ready 1" />
     <MESSAGE value="release 1" />
     <MESSAGE value="fixed supergroup id" />
     <MESSAGE value="added log system" />
@@ -570,6 +567,7 @@
     <MESSAGE value="added /help command for admin" />
     <MESSAGE value="added order report to xlsx" />
     <MESSAGE value="updated replics.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated replics.py" />
+    <MESSAGE value="added preorder" />
+    <option name="LAST_COMMIT_MESSAGE" value="added preorder" />
   </component>
 </project>

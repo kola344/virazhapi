@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 import db
 from models.api.users.orders import add_orderModel, get_order_historyModel, get_giftModel, send_order_daysModel
-from times_and_shift import get_available_times, get_times_oth_days, oth_days_count
+from times_and_shift import get_available_times, get_times_oth_days, oth_days_count, get_order_times
 from virazh_bot.functions import order as orders_bot
 from datetime import datetime
 from routers.api.users.cart_data import carts, gift_target
@@ -26,12 +26,9 @@ async def get_available_times_deliveryPage():
 async def get_available_times_pickupPage():
     return {"status": True, "info": "success", "available_times": get_available_times('pickup')}
 
-@router.get('/get_available_times_days')
-async def get_available_times_daysPage():
-    '''Возвращает список дней для заказа на несколько дней вперед и их доступное время для
-    pickup - самовывоза
-    delivery - доставка'''
-    return {"status": True, "info": "success", "available_days": get_times_oth_days(oth_days_count)}
+@router.get('/get_order_times')
+async def get_order_timesPage():
+    return {"status": True, "info": "success", "order_times": get_order_times()}
 
 @router.post('/get_gift')
 async def get_giftPage(item: get_giftModel):
@@ -80,7 +77,7 @@ async def add_orderPage(item: add_orderModel):
         return {"status": True, "info": "success", "order_id": order_id}
     return {"status": False, "info": 'time is not available', "order_id": ''}
 
-@router.post('/send_order_days')
+@router.post('/send_order')
 async def send_order_daysPage(item: send_order_daysModel):
     '''Возвращает результат оформления заказа на несколько дней вперед'''
     if carts[item.user_key] == []:
