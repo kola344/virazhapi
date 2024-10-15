@@ -11,7 +11,7 @@ router = APIRouter()
 @router.post('/get_orders_history')
 async def get_orders_historyPage(item: get_order_historyModel):
     history = await db.users.get_orders_history(item.user_key)
-    return {"status": True, "info": "success", "history": history[::-1]}
+    return {"status": True, "info": "success", "history": history}
 
 @router.post('/get_orders_info')
 async def get_orders_infoPage():
