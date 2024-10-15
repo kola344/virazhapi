@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 import db
-from models.api.users.orders import add_orderModel, get_order_historyModel, get_giftModel, send_order_daysModel
-from times_and_shift import get_available_times, get_times_oth_days, oth_days_count, get_order_times
+from models.api.users.orders import get_order_historyModel, get_giftModel, send_order_daysModel
+from times_and_shift import get_order_times
 from virazh_bot.functions import order as orders_bot
 from datetime import datetime
 from routers.api.users.cart_data import carts, gift_target

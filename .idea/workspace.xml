@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="added preorder days config">
-      <change afterPath="$PROJECT_DIR$/virazh_bot/manager/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/admin/keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/keyboards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/manager/keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/manager/keyboards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/manager/manager_messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/manager/manager_messages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virazh_bot/manager/replics.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/manager/replics.py" afterDir="false" />
-    </list>
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="added editor preorder days" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,14 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00063" summary="ready 1">
-      <option name="closed" value="true" />
-      <created>1720678564807</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1720678564807</updated>
     </task>
     <task id="LOCAL-00064" summary="ready 1">
       <option name="closed" value="true" />
@@ -535,7 +519,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729016133634</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="added editor preorder days">
+      <option name="closed" value="true" />
+      <created>1729017279415</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1729017279415</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -551,7 +543,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="new code text" />
     <MESSAGE value="sorted by id" />
     <MESSAGE value="sorted times" />
     <MESSAGE value="added gift" />
@@ -576,6 +567,7 @@
     <MESSAGE value="edited preorder functions" />
     <MESSAGE value="added loading to orders" />
     <MESSAGE value="added preorder days config" />
-    <option name="LAST_COMMIT_MESSAGE" value="added preorder days config" />
+    <MESSAGE value="added editor preorder days" />
+    <option name="LAST_COMMIT_MESSAGE" value="added editor preorder days" />
   </component>
 </project>
