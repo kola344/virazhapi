@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="edited times" />
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="edited times">
+      <change afterPath="$PROJECT_DIR$/virazh_bot/functions/news.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virazh_bot/ads/ads_messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/ads/ads_messages.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virazh_bot/ads/keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/ads/keyboards.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virazh_bot/ads/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/ads/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virazh_bot/ads/replics.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/ads/replics.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,14 +142,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00068" summary="ready 1">
-      <option name="closed" value="true" />
-      <created>1721034503473</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1721034503474</updated>
     </task>
     <task id="LOCAL-00069" summary="ready 1">
       <option name="closed" value="true" />
@@ -527,7 +527,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729018979044</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="edited times">
+      <option name="closed" value="true" />
+      <created>1729019253829</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1729019253829</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

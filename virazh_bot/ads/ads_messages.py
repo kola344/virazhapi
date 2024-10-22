@@ -12,8 +12,15 @@ import db
 from aiogram.fsm.context import FSMContext
 from integration.proxy_api import generate_ad
 from virazh_bot.bot_logging import log_message
+from virazh_bot.functions import news
 
 router = Router()
+
+@router.message(models.NewsStates.news_edit)
+async def ads_news_editFunc(message: Message, state: FSMContext):
+    models.news_data[message.chat.id] = message.message_id
+    await message.answer(replic_news_got_message, reply_markup=keyboards.news_menu_created)
+    await state.clear()
 
 @router.message(models.AdsStates.item_edit)
 async def ads_item_editFunc(message: Message, state: FSMContext):
@@ -76,6 +83,15 @@ async def callback(call, state: FSMContext):
             if l2 == 'menu':
                 if l3 == 'main':
                     await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=replic_menu, reply_markup=keyboards.ads_menu)
+            elif l2 == 'news':
+                if l3 == 'send':
+                    if user_id in models.news_data:
+                        await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=replic_news_waiting)
+                        count_sended, count = await news.send_news(user_id, models.news_data[user_id])
+                        await log_message('✉️ Была создана рассылка')
+                        await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=replic_news_sended(count, count_sended))
+                    else:
+                        await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=replic_session_error)
             elif l2 == 'set':
                 if l3 == 'chatgpt':
                     await bot.delete_message(chat_id=call.message.chat.id, message_id=call.message.message_id)
@@ -85,6 +101,8 @@ async def callback(call, state: FSMContext):
                     await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=replic_vk_no_available)
                     await asyncio.sleep(2)
                     await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=replic_menu, reply_markup=keyboards.ads_menu)
+                elif l3 == 'news':
+                    await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=replic_news_menu, reply_markup=keyboards.news_menu)
             elif l2 == 'create':
                 if l3 == 'chatgpt':
                     user = models.AdsSettings()
@@ -92,6 +110,9 @@ async def callback(call, state: FSMContext):
                     models.ads_data[user_id] = user
                     text, markup = await replic_creator_gpt(user)
                     await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=text, reply_markup=markup)
+                elif l3 == 'news':
+                    await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=replic_news_create)
+                    await state.set_state(models.NewsStates.news_edit)
             elif l2 == 'select':
                 if user_id in models.ads_data:
                     if l3 == 'item':
@@ -147,6 +168,13 @@ async def callback(call, state: FSMContext):
                         await call.message.answer_photo(photo=FSInputFile(f'ad_temp/image.png'), caption=generated, reply_markup=keyboards.gpt_menu_generated)
                     else:
                         await call.message.answer(generated, reply_markup=keyboards.gpt_menu_generated)
+                elif l3 == 'telegram':
+                    user = models.ads_data[user_id]
+                    await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
+                    message = await call.message.answer(replic_gpt_publicating)
+                    count_sended, count = await news.send_news_by_gpt(user.generated, user.selected["image"])
+                    await log_message('✉️ Была создана рассылка ChatGPT')
+                    await bot.edit_message_text(chat_id=call.message.chat.id, message_id=message.message_id, text=replic_news_sended(count, count_sended))
                 elif l3 == 'publicate':
                     user = models.ads_data[user_id]
                     await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)

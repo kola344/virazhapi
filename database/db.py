@@ -518,6 +518,11 @@ class users:
     async def connect(self, db: asyncpg.connection.Connection):
         self.db = db
 
+    async def get_users_tg_ids(self):
+        async with self.db.acquire() as connection:
+            rows = await connection.fetch('SELECT tg_id FROM users')
+            return [row['tg_id'] for row in rows if row['tg_id'] is not None]
+
     async def create_table(self):
         async with self.db.acquire() as connection:
             await connection.execute('''CREATE TABLE IF NOT EXISTS users (

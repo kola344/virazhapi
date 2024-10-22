@@ -37,3 +37,7 @@ class AdsStates(StatesGroup):
     item_edit = State()
     prompt_edit = State()
     image_edit = State()
+
+news_data = {}
+class NewsStates(StatesGroup):
+    news_edit = State()
