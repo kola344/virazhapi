@@ -171,7 +171,7 @@ async def callback(call, state: FSMContext):
                 elif l3 == 'telegram':
                     user = models.ads_data[user_id]
                     await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
-                    message = await call.message.answer(replic_gpt_publicating)
+                    message = await call.message.answer(replic_news_waiting)
                     count_sended, count = await news.send_news_by_gpt(user.generated, user.selected["image"])
                     await log_message('✉️ Была создана рассылка ChatGPT')
                     await bot.edit_message_text(chat_id=call.message.chat.id, message_id=message.message_id, text=replic_news_sended(count, count_sended))

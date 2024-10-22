@@ -4,6 +4,7 @@ from virazh_bot import bot
 
 asyncio.run(bot.main())
 
+
 # import asyncpg
 # import asyncio
 # async def run():
