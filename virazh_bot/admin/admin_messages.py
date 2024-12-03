@@ -199,7 +199,7 @@ async def callback(call, state: FSMContext):
                 await db_log_message('disable_item', call.message, f'- INAME: {item_data["name"]}. IID: {l3}')
             elif l2 == 'activate':
                 await db.menu.activate(int(l3))
-                category_id = await db.menu.get_item_category_by_id(int(l3))
+                item_data = await db.menu.get_item_info_by_id(int(l3))
                 text, markup = await replic_deactivated_menu()
                 await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
                 await db_log_message('enable_item', call.message, f'- INAME: {item_data["name"]}. IID: {l3}')
