@@ -9,6 +9,7 @@ from virazh_bot.admin import keyboards, models
 import db
 from aiogram.fsm.context import FSMContext
 import os
+from database.db_logging import db_log_message
 
 router = Router()
 
@@ -17,6 +18,7 @@ async def admin_orderinfoeditFunc(message: Message, state: FSMContext):
     await db.text_table.update_order_text(message.text)
     await state.clear()
     await message.answer(message.text, reply_markup=keyboards.order_info_menu)
+    await db_log_message('edited_infoOrders', message)
 
 @router.message(models.admin_menu_editorState.price, F.text)
 async def admin_menueditpriceFunc(message: Message, state: FSMContext):
@@ -110,6 +112,7 @@ async def admin_addcategoryFunc(message: Message, state: FSMContext):
     text, markup = await replic_menu_category(category_id)
     await message.answer(text, reply_markup=markup)
     await state.clear()
+    await db_log_message('add_category', message)
 
 @router.message(F.text.startswith('/start reg_admin_'))
 async def start_admin_reg_command(message: Message):
@@ -119,6 +122,7 @@ async def start_admin_reg_command(message: Message):
             temp.reg_admin_key = None
             await db.tg_admin.add_admin(message.chat.id, message.from_user.first_name)
             await message.answer(replic_admin_reg_success, reply_markup=keyboards.to_menu)
+            await db_log_message('added_admin', message)
         else:
             await message.answer(replic_403)
     except Exception as e:
@@ -136,6 +140,7 @@ async def help_command(message: Message):
 async def reg_admin_command(message: Message):
     if await db.tg_admin.check_admin_by_user_id(message.chat.id):
         await message.answer(replic_reg_new_admin_keygen())
+        await db_log_message('add_admin', message, temp.reg_admin_key)
     else:
         await message.answer(replic_403)
 
@@ -186,14 +191,18 @@ async def callback(call, state: FSMContext):
                     await state.set_state(models.order_info_editorState.edit)
             elif l2 == 'deactivate':
                 category_id = await db.menu.get_item_category_by_id(int(l3))
+                item_data = await db.menu.get_item_by_id(int(l3))
                 await db.menu.deactivate(int(l3))
                 await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
                 text, markup = await replic_menu_category(category_id)
                 await bot.send_message(text=text, chat_id=user_id, reply_markup=markup)
+                await db_log_message('disable_item', call.message, f'- INAME: {item_data["name"]}. IID: {l3}')
             elif l2 == 'activate':
                 await db.menu.activate(int(l3))
+                item_data = await db.menu.get_item_by_id(int(l3))
                 text, markup = await replic_deactivated_menu()
                 await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+                await db_log_message('enable_item', call.message, f'- INAME: {item_data["name"]}. IID: {l3}')
             elif l2 == 'main':
                 if l3 == 'main':
                     await bot.edit_message_text(replic_admin_menu, chat_id=user_id, message_id=call.message.message_id, reply_markup=keyboards.menu)
@@ -201,6 +210,7 @@ async def callback(call, state: FSMContext):
                 admin_id = await db.tg_admin.get_admin_user_id_by_id(int(l3))
                 if user_id != admin_id:
                     await db.tg_admin.del_admin_by_id(int(l3))
+                    await db_log_message('del_admin', call.message, l3)
                 else:
                     await bot.edit_message_text(replic_admin_cannot_delete_self, chat_id=user_id, message_id=call.message.message_id)
                     await asyncio.sleep(2)
@@ -218,13 +228,16 @@ async def callback(call, state: FSMContext):
                 text, markup = replic_menu_categorydel_confirm(int(l3))
                 await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
             elif l2 == 'categorydelcon':
+                category_name = (await db.categories.get_category_by_id(int(l3)))['name']
                 await db.categories.del_category(int(l3))
                 text, markup = await replic_menu_categories()
                 await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+                await db_log_message('del_category', call.message, category_name)
             elif l2 == 'menuadd':
                 item_id = await db.menu.add_item(int(l3))
                 text, markup = await replic_menu_menu_item(item_id, int(l3))
                 await bot.edit_message_text(text, chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
+                await db_log_message('add_item', call.message, f'- CAT: {l3}. IID: {item_id}')
             elif l2 == 'menuitem':
                 await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
                 text, markup = await replic_menu_menu_item(int(l3))
@@ -275,10 +288,12 @@ async def callback(call, state: FSMContext):
             elif l2 == 'menudel':
                 category_id = await db.menu.get_item_category_by_id(int(l3))
                 await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
+                item_data = await db.menu.get_item_info_by_id(int(l3))
                 await db.menu.del_item(int(l3))
                 await db.menu.del_image(int(l3))
                 text, markup = await replic_menu_category(category_id)
                 await call.message.answer(text, reply_markup=markup)
+                await db_log_message('del_item', call.message, f"- IID: {l3}. INAME: {item_data['name']}")
             elif l2 == 'gift':
                 await bot.delete_message(chat_id=user_id, message_id=call.message.message_id)
                 await db.text_table.update_gift(l3)

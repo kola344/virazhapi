@@ -22,6 +22,7 @@ async def admin_orderinfoeditFunc(message: Message, state: FSMContext):
         text, markup = await replic_preorder_editor_menu()
         await message.answer(text, reply_markup=markup)
         await state.clear()
+        await log_message(f'✏️ Новое количество дней предзаказа: {a}')
     except Exception as e:
         traceback.print_exc()
         print(e)
