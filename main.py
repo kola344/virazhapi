@@ -50,20 +50,20 @@ async def webhook(update: dict[str, Any]):
     await dp.feed_webhook_update(bot=bot, update=Update(**update))
     return {'status': 'ok'}
 
-# @app.on_event('startup')
-# async def on_startup():
-#     await db.initialize()
-#     if not os.path.exists('images'):
-#         os.mkdir('images')
-#     for image in await db.images.get_images():
-#         if not os.path.exists(f'images/{image["item_id"]}'):
-#             with open(f'images/{image["item_id"]}.png', 'wb') as f:
-#                 f.write(image["data"])
-#     dp.include_router(admin_router)
-#     dp.include_router(user_router)
-#     dp.include_router(manager_router)
-#     dp.include_router(ads_router)
-#     await bot.set_webhook(config.webhook_url, drop_pending_updates=True)
+@app.on_event('startup')
+async def on_startup():
+    await db.initialize()
+    if not os.path.exists('images'):
+        os.mkdir('images')
+    for image in await db.images.get_images():
+        if not os.path.exists(f'images/{image["item_id"]}'):
+            with open(f'images/{image["item_id"]}.png', 'wb') as f:
+                f.write(image["data"])
+    dp.include_router(admin_router)
+    dp.include_router(user_router)
+    dp.include_router(manager_router)
+    dp.include_router(ads_router)
+    await bot.set_webhook(config.webhook_url, drop_pending_updates=True)
 
 @app.get('/images/{image}')
 async def get_menu_imagesPage(image: str):
