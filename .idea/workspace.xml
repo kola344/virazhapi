@@ -4,8 +4,210 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="added news in tg">
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="added db logging">
+      <change afterPath="$PROJECT_DIR$/images/100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/101.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/103.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/104.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/105.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/106.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/107.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/109.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/110.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/111.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/112.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/113.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/114.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/115.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/116.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/117.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/118.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/119.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/120.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/121.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/122.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/123.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/124.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/125.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/127.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/129.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/130.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/131.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/132.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/133.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/134.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/136.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/137.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/138.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/139.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/140.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/141.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/142.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/143.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/144.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/146.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/147.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/148.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/149.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/150.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/151.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/153.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/154.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/155.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/156.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/157.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/158.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/159.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/160.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/161.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/162.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/163.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/164.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/165.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/166.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/167.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/168.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/169.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/170.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/171.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/172.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/173.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/174.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/175.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/176.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/179.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/180.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/181.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/183.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/184.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/185.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/186.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/187.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/188.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/189.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/190.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/193.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/194.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/200.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/202.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/204.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/205.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/206.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/207.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/208.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/209.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/210.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/212.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/213.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/214.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/215.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/216.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/217.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/218.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/219.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/221.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/222.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/223.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/225.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/227.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/228.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/229.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/23.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/230.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/231.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/232.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/235.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/239.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/241.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/242.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/243.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/244.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/246.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/247.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/25.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/250.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/26.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/264.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/27.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/275.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/276.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/277.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/30.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/31.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/33.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/34.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/35.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/37.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/38.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/39.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/40.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/45.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/47.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/49.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/51.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/52.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/53.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/55.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/56.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/57.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/58.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/59.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/61.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/62.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/63.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/64.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/65.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/66.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/67.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/68.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/69.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/71.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/72.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/73.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/74.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/75.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/77.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/78.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/79.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/80.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/81.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/82.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/84.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/85.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/86.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/87.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/88.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/89.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/91.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/92.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/93.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/94.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/95.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/96.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/97.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/98.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/99.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/location.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,25 +239,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Python.admin_messages.executor&quot;: &quot;Run&quot;,
-    &quot;Python.bot.executor&quot;: &quot;Run&quot;,
-    &quot;Python.db.executor&quot;: &quot;Run&quot;,
-    &quot;Python.keygen.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.menu.executor&quot;: &quot;Run&quot;,
-    &quot;Python.orders.executor&quot;: &quot;Run&quot;,
-    &quot;Python.replics.executor&quot;: &quot;Run&quot;,
-    &quot;Python.shift_stats_functions.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/kolia/Documents/virazhapi&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.admin_messages.executor": "Run",
+    "Python.bot.executor": "Run",
+    "Python.db.executor": "Run",
+    "Python.keygen.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.menu.executor": "Run",
+    "Python.orders.executor": "Run",
+    "Python.replics.executor": "Run",
+    "Python.shift_stats_functions.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/Users/kolia/Documents/virazhapi",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="QodanaReportsService">
     <option name="descriptions">
       <ReportDescription localRun="true" path="/private/var/folders/l0/8cq03w6961x5ysk7kpm6rbch0000gn/T/qodana_output/qodana.sarif.json" reportGuid="ee852b96-cfd0-4b88-8d86-fd13953f78f7" reportId="virazhapi/qodana/2024-07-06" />
@@ -64,13 +266,14 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="virazhapi" />
       <option name="ENV_FILES" value="" />
@@ -136,30 +339,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00071" summary="ready 1">
-      <option name="closed" value="true" />
-      <created>1721061021757</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1721061021757</updated>
-    </task>
-    <task id="LOCAL-00072" summary="release 1">
-      <option name="closed" value="true" />
-      <created>1721122536404</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1721122536404</updated>
-    </task>
-    <task id="LOCAL-00073" summary="release 1">
-      <option name="closed" value="true" />
-      <created>1721123201617</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1721123201617</updated>
     </task>
     <task id="LOCAL-00074" summary="release 1">
       <option name="closed" value="true" />
@@ -529,7 +708,31 @@
       <option name="project" value="LOCAL" />
       <updated>1729628912731</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="added news in tg">
+      <option name="closed" value="true" />
+      <created>1733238373334</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1733238373334</updated>
+    </task>
+    <task id="LOCAL-00121" summary="added news in tg">
+      <option name="closed" value="true" />
+      <created>1733238635117</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1733238635117</updated>
+    </task>
+    <task id="LOCAL-00122" summary="added db logging">
+      <option name="closed" value="true" />
+      <created>1733238662133</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1733238662133</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -545,7 +748,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added gift" />
     <MESSAGE value="fixed inline button" />
     <MESSAGE value="fixed gift price" />
     <MESSAGE value="added orders report" />
@@ -570,6 +772,7 @@
     <MESSAGE value="added editor preorder days" />
     <MESSAGE value="edited times" />
     <MESSAGE value="added news in tg" />
-    <option name="LAST_COMMIT_MESSAGE" value="added news in tg" />
+    <MESSAGE value="added db logging" />
+    <option name="LAST_COMMIT_MESSAGE" value="added db logging" />
   </component>
 </project>
