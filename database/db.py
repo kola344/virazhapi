@@ -760,7 +760,7 @@ class LuckyTickets:
 
     async def get_users_by_ticket(self, ticket_id):
         async with self.db.acquire() as connection:
-            return await connection.fetchrow('''SELECT * FROM lucky_tickets WHERE ticket_id = $1''', ticket_id)
+            return await connection.fetch('''SELECT * FROM lucky_tickets WHERE ticket_id = $1''', ticket_id)
 
 async def main():
     tg = users()
