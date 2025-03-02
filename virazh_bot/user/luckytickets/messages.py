@@ -59,5 +59,5 @@ async def ticketsBack(call: CallbackQuery, state: FSMContext):
 @router.callback_query(F.data == 'ticket.add')
 async def addTicket(call: CallbackQuery, state: FSMContext):
     await state.set_state(models.user_addTicket.ticketAdd)
-    await state.update_data(messsage_id=call.message.message_id)
+    await state.update_data(message_id=call.message.message_id)
     await call.message.edit_text(replic_addTicket, reply_markup=keyboards.to_tickets_menu)
