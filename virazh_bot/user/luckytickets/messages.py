@@ -19,7 +19,7 @@ async def admTrackingFunc(message: Message, state: FSMContext):
 @router.message(models.admTracking.track)
 async def admTrackingFunc(message: Message):
     try:
-        splited = message.text.split('-')
+        splited = message.text.split('$')
         ticket_id = int(splited[0])
         prize = splited[1]
         users = await db.lucky_tickets.get_users_by_ticket(ticket_id)
