@@ -61,3 +61,10 @@ async def addTicket(call: CallbackQuery, state: FSMContext):
     await state.set_state(models.user_addTicket.ticketAdd)
     await state.update_data(message_id=call.message.message_id)
     await call.message.edit_text(replic_addTicket, reply_markup=keyboards.to_tickets_menu)
+
+@router.callback_query(F.data.startswith('ticket.del.'))
+async def delTicket(call: CallbackQuery):
+    track_id = int(call.data.split('.')[2])
+    await db.lucky_tickets.del_user_ticket(track_id)
+    text, markup = await replic_tickets(call.from_user.id)
+    await call.message.edit_text(text, reply_markup=markup)
