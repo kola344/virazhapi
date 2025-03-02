@@ -15,6 +15,7 @@ router = Router()
 
 @router.message(models.admTracking.track, F.text == '/stop')
 async def admTrackingFunc(message: Message, state: FSMContext):
+    await message.answer(str(message.from_user.url))
     await message.answer('stopped')
     await state.clear()
 
@@ -26,8 +27,13 @@ async def admTrackingFunc(message: Message):
         prize = splited[1]
         users = await db.lucky_tickets.get_users_by_ticket(ticket_id)
         for user in users:
-            await message.bot.send_message(user['user_id'], f'🎁 Поздравляем!\n🎫 Билет под номером {ticket_id} выигрышный!\n✔️ Ваш приз: {prize}\n\nℹ️ Забрать свой приз вы можете 8 марта с 16:00 в КАФЕ ВИРАЖ в течение всего месяца, показав свой Счастливый билет или показав это уведомление')
-            await message.answer(f'User {user["user_id"]} has won')
+            try:
+                await message.bot.send_message(user['user_id'], f'🎁 Поздравляем!\n🎫 Билет под номером {ticket_id} выигрышный!\n✔️ Ваш приз: {prize}\n\nℹ️ Забрать свой приз вы можете 8 марта с 16:00 в КАФЕ ВИРАЖ в течение всего месяца, показав свой Счастливый билет или показав это уведомление')
+            except:
+                pass
+            await message.answer(f"User <a href='tg://user?id={user['user_id']}'>{user['user_id']}</a> has won")
+        if not users:
+            await message.answer('no users')
     except:
         traceback.print_exc()
         await message.answer('Invalid data')
