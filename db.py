@@ -32,3 +32,5 @@ async def initialize(folder = 'database/'):
     await images.create_table()
     await text_table.connect(db)
     await text_table.create_table()
+    await lucky_tickets.connect(db)
+    await lucky_tickets.create_table()
