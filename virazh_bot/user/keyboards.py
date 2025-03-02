@@ -6,3 +6,5 @@ order_completed = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(te
 loading_menu = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='🕙 Обработка...', callback_data='none')]])
 
 none_button = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='❌ Кнопка не нажимается', callback_data='nan')]])
+
+main_menu = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='🎫 Счастливые билеты', callback_data='tickets.main.main')]])

@@ -8,6 +8,8 @@ users = db.users()
 orders = db.orders()
 images = db.images()
 text_table = db.text_table()
+lucky_tickets = db.LuckyTickets()
+
 async def initialize(folder = 'database/'):
     db = await create_pool(user='gen_user', password='mGk-base)=-', database='default_db', host="82.97.248.66")
     # db = await asyncpg.connect(

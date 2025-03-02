@@ -1,6 +1,6 @@
 import asyncio
 from aiogram import  Router, F
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 
 import config
 from virazh_bot.bot_init import bot
@@ -33,6 +33,14 @@ async def start_connect_command(message: Message):
         await message.answer(replic_tg_connected)
     else:
         await message.answer(replic_incorrect_key)
+
+@router.message(F.text == '/start')
+async def startCommand(message: Message):
+    await message.answer(replic_main_menu, reply_markup=keyboards.main_menu)
+
+@router.callback_query(F.data == 'usersMain_menu')
+async def main_menu(call: CallbackQuery):
+    await call.message.edit_text(replic_main_menu, reply_markup=keyboards.main_menu)
 
 @router.callback_query(F.data == 'none')
 async def none_button_callback(call):

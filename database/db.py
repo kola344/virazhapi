@@ -731,6 +731,37 @@ class text_table:
             else:
                 return row["text"]
 
+class LuckyTickets:
+    def __init__(self):
+        self.db = None
+
+    async def connect(self, db: asyncpg.connection.Connection):
+        self.db = db
+
+    async def create_table(self):
+        async with self.db.acquire() as connection:
+            await connection.execute('''CREATE TABLE IF NOT EXISTS lucky_tickets (
+                id SERIAL PRIMARY KEY,
+                ticket_id INT,
+                user_id BIGINT
+            )''')
+
+    async def get_user_tickets(self, user_id):
+        async with self.db.acquire() as connection:
+            return await connection.fetch('''SELECT * FROM lucky_tickets WHERE user_id = $1''', user_id)
+
+    async def add_user_ticket(self, user_id, ticket_id):
+        async with self.db.acquire() as connection:
+            await connection.execute('''INSERT INTO lucky_tickets (ticket_id, user_id) VALUES ($1, $2)''', ticket_id, user_id)
+
+    async def del_user_ticket(self, track_id):
+        async with self.db.acquire() as connection:
+            await connection.execute('''DELETE FROM lucky_tickets WHERE id = $1''', track_id)
+
+    async def get_users_by_ticket(self, ticket_id):
+        async with self.db.acquire() as connection:
+            return await connection.fetchrow('''SELECT * FROM lucky_tickets WHERE ticket_id = $1''', ticket_id)
+
 async def main():
     tg = users()
     await tg.connect('')

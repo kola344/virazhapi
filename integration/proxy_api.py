@@ -43,6 +43,7 @@ async def generate_ad(ad: AdsSettings):
     }
     async with aiohttp.ClientSession() as session:
         async with session.post('https://api.proxyapi.ru/openai/v1/chat/completions', ssl=False, headers=headers, json=json) as response:
+            print(response.json())
             if response.status == 200:
                 return (await response.json())["choices"][0]["message"]["content"]
             return "⚠️ Ошибка в генерации"
