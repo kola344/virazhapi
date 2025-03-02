@@ -1,4 +1,6 @@
 import asyncio
+import traceback
+
 from aiogram import Router, F
 from aiogram.types import Message, CallbackQuery
 
@@ -27,6 +29,7 @@ async def admTrackingFunc(message: Message):
             await message.bot.send_message(user['user_id'], f'🎁 Поздравляем!\n🎫 Билет под номером {ticket_id} выигрышный!\n✔️ Ваш приз: {prize}\n\nℹ️ Забрать свой приз вы можете 8 марта с 16:00 в КАФЕ ВИРАЖ в течение всего месяца, показав свой Счастливый билет или показав это уведомление')
             await message.answer(f'User {user["user_id"]} has won')
     except:
+        traceback.print_exc()
         await message.answer('Invalid data')
 
 @router.message(F.text == '/admTrack123')
