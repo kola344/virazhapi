@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="added db logging">
+    <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="lucky tickets">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integration/proxy_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/integration/proxy_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +71,7 @@
       <recent name="$PROJECT_DIR$/integration" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="virazhapi" />
       <option name="ENV_FILES" value="" />
@@ -139,78 +137,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00076" summary="fixed supergroup id">
-      <option name="closed" value="true" />
-      <created>1721823830711</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1721823830711</updated>
-    </task>
-    <task id="LOCAL-00077" summary="added log system">
-      <option name="closed" value="true" />
-      <created>1722273674726</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1722273674726</updated>
-    </task>
-    <task id="LOCAL-00078" summary="new code text">
-      <option name="closed" value="true" />
-      <created>1722373297277</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1722373297278</updated>
-    </task>
-    <task id="LOCAL-00079" summary="sorted by id">
-      <option name="closed" value="true" />
-      <created>1722439175455</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1722439175456</updated>
-    </task>
-    <task id="LOCAL-00080" summary="sorted times">
-      <option name="closed" value="true" />
-      <created>1722439564594</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1722439564594</updated>
-    </task>
-    <task id="LOCAL-00081" summary="added gift">
-      <option name="closed" value="true" />
-      <created>1722936473363</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1722936473363</updated>
-    </task>
-    <task id="LOCAL-00082" summary="fixed inline button">
-      <option name="closed" value="true" />
-      <created>1722937013796</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1722937013796</updated>
-    </task>
-    <task id="LOCAL-00083" summary="fixed gift price">
-      <option name="closed" value="true" />
-      <created>1722937372890</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1722937372890</updated>
-    </task>
-    <task id="LOCAL-00084" summary="added orders report">
-      <option name="closed" value="true" />
-      <created>1724264770823</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1724264770823</updated>
     </task>
     <task id="LOCAL-00085" summary="added orders report">
       <option name="closed" value="true" />
@@ -532,7 +458,79 @@
       <option name="project" value="LOCAL" />
       <updated>1735392984392</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="added db logging">
+      <option name="closed" value="true" />
+      <created>1740942448713</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1740942448713</updated>
+    </task>
+    <task id="LOCAL-00126" summary="lucky tickets">
+      <option name="closed" value="true" />
+      <created>1740942589499</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1740942589499</updated>
+    </task>
+    <task id="LOCAL-00127" summary="lucky tickets">
+      <option name="closed" value="true" />
+      <created>1740942664418</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1740942664418</updated>
+    </task>
+    <task id="LOCAL-00128" summary="lucky tickets">
+      <option name="closed" value="true" />
+      <created>1740942757353</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1740942757353</updated>
+    </task>
+    <task id="LOCAL-00129" summary="lucky tickets">
+      <option name="closed" value="true" />
+      <created>1740942873922</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1740942873922</updated>
+    </task>
+    <task id="LOCAL-00130" summary="lucky tickets">
+      <option name="closed" value="true" />
+      <created>1740943105210</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1740943105210</updated>
+    </task>
+    <task id="LOCAL-00131" summary="lucky tickets">
+      <option name="closed" value="true" />
+      <created>1740943223170</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1740943223170</updated>
+    </task>
+    <task id="LOCAL-00132" summary="lucky tickets">
+      <option name="closed" value="true" />
+      <created>1740944035848</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1740944035848</updated>
+    </task>
+    <task id="LOCAL-00133" summary="lucky tickets">
+      <option name="closed" value="true" />
+      <created>1740944141375</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1740944141375</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -548,7 +546,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixed inline button" />
     <MESSAGE value="fixed gift price" />
     <MESSAGE value="added orders report" />
     <MESSAGE value="deleted old sq db" />
@@ -573,6 +570,7 @@
     <MESSAGE value="edited times" />
     <MESSAGE value="added news in tg" />
     <MESSAGE value="added db logging" />
-    <option name="LAST_COMMIT_MESSAGE" value="added db logging" />
+    <MESSAGE value="lucky tickets" />
+    <option name="LAST_COMMIT_MESSAGE" value="lucky tickets" />
   </component>
 </project>
