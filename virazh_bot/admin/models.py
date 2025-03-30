@@ -22,3 +22,6 @@ class admin_menu_editorState(StatesGroup):
 
 class order_info_editorState(StatesGroup):
     edit = State()
+
+class bsendState(StatesGroup):
+    bsend = State()

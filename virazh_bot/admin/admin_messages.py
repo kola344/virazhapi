@@ -11,7 +11,26 @@ from aiogram.fsm.context import FSMContext
 import os
 from database.db_logging import db_log_message
 
+from integration import vk
+
 router = Router()
+
+@router.message(models.bsendState.bsend, F.photo)
+async def bsendFunc(message: Message, state: FSMContext):
+    photo = message.photo[-1]
+    file_info = await bot.get_file(photo.file_id)
+    file_path = file_info.file_path
+    photo_path = 'vkimage.png'
+    await bot.download_file(file_path, photo_path)
+    user_ids = await vk.get_friends_where_birthday()
+    try:
+        await vk.send_photo_to_friends(user_ids, photo_path)
+        await message.answer(await replic_bsendSended(len(user_ids)))
+        await state.clear()
+    except:
+        await message.answer(replic_bsendErr)
+        await state.clear()
+
 
 @router.message(models.order_info_editorState.edit, F.text)
 async def admin_orderinfoeditFunc(message: Message, state: FSMContext):
@@ -136,6 +155,11 @@ async def help_command(message: Message):
     else:
         await message.answer(replic_403)
 
+@router.message(F.text == '/bsend')
+async def bsendCommand(message: Message, state: FSMContext):
+    await state.set_state(models.bsendState.bsend)
+    await message.answer(replic_bsendPhoto)
+
 @router.message(F.text == '/reg_admin')
 async def reg_admin_command(message: Message):
     if await db.tg_admin.check_admin_by_user_id(message.chat.id):
@@ -152,7 +176,8 @@ async def manager_panel(message: Message):
         await message.answer(replic_403)
 
 @router.message(F.text == '/admin')
-async def admin_panel(message: Message):
+async def admin_panel(message: Message, state: FSMContext):
+    await state.clear()
     if await db.tg_admin.check_admin_by_user_id(message.chat.id):
         await message.answer(replic_admin_menu, reply_markup=keyboards.menu)
     else:
