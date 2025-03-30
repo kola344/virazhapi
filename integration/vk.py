@@ -3,6 +3,7 @@ import json
 import aiohttp
 from config import vk_token, vk_id, vk_username # Замените на ваш ID пользователя
 from datetime import datetime, timedelta
+import asyncio
 
 async def upload_image(session, image_path):
     # Получаем URL для загрузки изображения
@@ -137,6 +138,7 @@ async def send_photo_to_friends(friends_ids: list, photo_path: str):
                     "v": "5.131",
                     "peer_id": friend_id,
                     "attachment": attachment,
-                    "random_id": 0,
+                    "random_id": 0
                 },
             )
+            await asyncio.sleep(5)
