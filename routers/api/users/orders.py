@@ -29,7 +29,7 @@ async def get_giftPage(item: get_giftModel):
         price = 0
         for i in carts[item.user_key]:
             try:
-                price += int(i["price"])
+                price += int(i["total"])
             except:
                 price += 0
         if price >= gift_target:
