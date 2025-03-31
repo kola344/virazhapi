@@ -19,16 +19,30 @@ from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from virazh_bot.bot_logging import log_message
+from contextlib import asynccontextmanager
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await db.initialize()
+    if not os.path.exists('images'):
+        os.mkdir('images')
+    for image in await db.images.get_images():
+        if not os.path.exists(f'images/{image["item_id"]}'):
+            with open(f'images/{image["item_id"]}.png', 'wb') as f:
+                f.write(image["data"])
+    dp.include_router(admin_router)
+    dp.include_router(user_router)
+    dp.include_router(manager_router)
+    dp.include_router(ads_router)
+    dp.include_router(luckytickets_router)
+    print('setting webhook')
+    await bot.set_webhook(config.webhook_url, drop_pending_updates=True)
+    try:
+        yield
+    finally:
+        await bot.delete_webhook()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"]
-)
+app = FastAPI(lifespan=lifespan)
 
 app.include_router(menu_router, prefix="/api/info/menu", tags=["menu"])
 app.include_router(users_router, prefix="/api/users/auth", tags=["user_auth"])
@@ -51,47 +65,12 @@ async def webhook(update: dict[str, Any]):
     await dp.feed_webhook_update(bot=bot, update=Update(**update))
     return {'status': 'ok'}
 
-@app.on_event('startup')
-async def on_startup():
-    await db.initialize()
-    if not os.path.exists('images'):
-        os.mkdir('images')
-    for image in await db.images.get_images():
-        if not os.path.exists(f'images/{image["item_id"]}'):
-            with open(f'images/{image["item_id"]}.png', 'wb') as f:
-                f.write(image["data"])
-    dp.include_router(admin_router)
-    dp.include_router(user_router)
-    dp.include_router(manager_router)
-    dp.include_router(ads_router)
-    dp.include_router(luckytickets_router)
-    await bot.set_webhook(config.webhook_url, drop_pending_updates=True)
-
 @app.get('/images/{image}')
 async def get_menu_imagesPage(image: str):
     file_path = f'images/{image}'
     if os.path.exists(file_path):
         return FileResponse(file_path)
     return FileResponse('icons/notfound.jpg')
-
-@app.post('/location')
-async def location(request: Request):
-    try:
-        data = await request.json()  # Получить JSON как словарь
-        latitude = data.get("latitude")
-        longitude = data.get("longitude")
-        # Вы можете сохранить местоположение в базе данных или использовать в реальном времени
-        print(f"Received location: {latitude}, {longitude}")
-        await log_message(f"Received location: {latitude}, {longitude}")
-        return {"message": "Location received successfully"}
-    except Exception as e:
-        print(e)
-        raise HTTPException(status_code=500, detail="Error processing location")
-
-
-@app.get('/surprise')
-async def surprise():
-    return FileResponse('location.html')
 
 @app.middleware("http")
 async def add_cache_control_header(request: Request, call_next):
