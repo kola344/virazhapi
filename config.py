@@ -1,6 +1,6 @@
 database_folder = 'database/'
 bot_token = '7266821701:AAHrxs4rnDKIgwoEibRCALTDGWqo9klbKqU'
-webhook_url = 'https://api.kafevirazh.ru/bot_hook'
+webhook_url = 'https://api.kafevirazh.ru/bot_hook/'
 main_url = ''
 tg_url = 'https://t.me/kafevirazh_bot'
 
