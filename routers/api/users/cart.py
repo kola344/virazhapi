@@ -38,14 +38,16 @@ async def subtract_item(item: itemSubtractAddModel):
     # надо где нужный item_id count -= 1 и total -= price
     cart_data.carts[item.user_key][item.item_index]['count'] -= 1
     cart_data.carts[item.user_key][item.item_index]['total'] -= cart_data.carts[item.user_key][item.item_index]['price']
-    return {"status": True, "info": "success", "itemCount": cart_data.carts[item.user_key][item.item_index]['count']}
+    return {"status": True, "info": "success", "itemCount": cart_data.carts[item.user_key][item.item_index]['count'],
+            "cart": cart_data.carts[item.user_key]}
 
 @router.post('/add_item')
 async def add_item(item: itemSubtractAddModel):
     '''Прибавляет предмет в корзину'''
     cart_data.carts[item.user_key][item.item_index]['count'] += 1
     cart_data.carts[item.user_key][item.item_index]['total'] += cart_data.carts[item.user_key][item.item_index]['price']
-    return {"status": True, "info": "success", "itemCount": cart_data.carts[item.user_key][item.item_index]['count']}
+    return {"status": True, "info": "success", "itemCount": cart_data.carts[item.user_key][item.item_index]['count'],
+            "cart": cart_data.carts[item.user_key]}
 
 @router.post('/get_cart')
 async def get_cart_lengthPage(item: user_cartModel):
