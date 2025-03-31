@@ -36,6 +36,7 @@ async def lifespan(app: FastAPI):
     dp.include_router(ads_router)
     dp.include_router(luckytickets_router)
     print('setting webhook')
+    await bot.delete_webhook()
     await bot.set_webhook(config.webhook_url, drop_pending_updates=True)
     try:
         yield
@@ -59,7 +60,7 @@ async def index_page():
     except Exception as e:
         return {"Status": False, "init": f"err: {e}"}
 
-@app.post('/bot_hook')
+@app.post('/bot_hook', include_in_schema=False)
 async def webhook(update: dict[str, Any]):
     '''АХАХАХХАХАХАХАХАХАХАХ'''
     await dp.feed_webhook_update(bot=bot, update=Update(**update))
