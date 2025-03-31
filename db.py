@@ -9,6 +9,7 @@ orders = db.orders()
 images = db.images()
 text_table = db.text_table()
 lucky_tickets = db.LuckyTickets()
+delivery_price = db.DeliveryPrice()
 
 async def initialize(folder = 'database/'):
     db = await create_pool(user='gen_user', password='mGk-base)=-', database='default_db', host="82.97.248.66")
@@ -34,3 +35,5 @@ async def initialize(folder = 'database/'):
     await text_table.create_table()
     await lucky_tickets.connect(db)
     await lucky_tickets.create_table()
+    await delivery_price.connect(db)
+    await delivery_price.create_table()

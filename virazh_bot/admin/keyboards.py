@@ -5,6 +5,7 @@ menu = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='Упр�
                                              [InlineKeyboardButton(text='Управление меню', callback_data='admin.menu.categories')],
                                              [InlineKeyboardButton(text='Отключенные товары', callback_data='admin.menu.deactivated')],
                                              [InlineKeyboardButton(text='Информация о заказах', callback_data=f'admin.menu.orderinfo')],
+                                             [InlineKeyboardButton(text='Установить цены на доставку', callback_data='admin.menu.deliveryprice')],
                                              [InlineKeyboardButton(text='Отчет о доставках', callback_data='admin.menu.delivery_report')]])
 
 adding_category_button = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='❌ Отмена')]], resize_keyboard=True)

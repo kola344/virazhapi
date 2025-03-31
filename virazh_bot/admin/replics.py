@@ -23,6 +23,26 @@ replic_bsendPhoto = 'Отправьте фотографию, которая б�
 replic_bsendWait = 'Поздравления рассылаются. Пожалуйста, подождите'
 replic_bsendErr = 'Ошибка рассылки сообщений'
 
+replic_editDeliveryPricesErr = 'Неверный формат, пожалуйста\nВведите новые цены на доставку\nФормат:\n<город> - <цена> - <бесплатно от>\n<город> - <цена> - <бесплатно от>\nи тд.'
+
+async def replic_editDeliveryPrices():
+    text = 'Введите новые цены на доставку\n<город> - <цена> - <бесплатно от>\n<город> - <цена> - <бесплатно от>\nи тд.'
+    markup = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text='❌ Отмена', callback_data='Cancel')]
+    ])
+    return text, markup
+
+async def replic_deliveryPrices():
+    text = 'Текущие цены на доставку:\n'
+    for info in await db.delivery_price.get_deliveryPrices():
+        text += f'{info["city"]} - {info["price"]}р\n'
+    markup = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text='✏️ Изменить', callback_data='admin.editDeliveryPrices')]
+    ])
+    return text, markup
+
+
+
 async def replic_bsendSended(count):
     return f'Поздравляения были разосланы. Количество поздравленных людей: {count}'
 

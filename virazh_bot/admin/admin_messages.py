@@ -2,7 +2,7 @@ import asyncio
 import traceback
 
 from aiogram import Router, F
-from aiogram.types import Message, FSInputFile
+from aiogram.types import Message, FSInputFile, CallbackQuery
 from virazh_bot.bot_init import bot
 from virazh_bot.admin.replics import *
 from virazh_bot.admin import keyboards, models
@@ -14,6 +14,23 @@ from database.db_logging import db_log_message
 from integration import vk
 
 router = Router()
+
+@router.message(models.deliveryPricesState.deliveryEdit, F.text)
+async def deliveryEditFunc(message: Message):
+    # data = {city, free, price}
+    try:
+        splited = await message.text.split('\n')
+        data = []
+        for delivery_info in splited:
+            info_splited = delivery_info.split('-')
+            city, price, free = info_splited[0], int(info_splited[1]), int(info_splited[2])
+            data.append({"city": city, "price": price, "free": free})
+        await db.delivery_price.update_delivery_price(data)
+        text, markup = await replic_deliveryPrices()
+        await message.answer(text, reply_markup=markup)
+    except:
+        await message.answer(replic_editDeliveryPricesErr)
+
 
 @router.message(models.bsendState.bsend, F.photo)
 async def bsendFunc(message: Message, state: FSMContext):
@@ -182,6 +199,24 @@ async def admin_panel(message: Message, state: FSMContext):
         await message.answer(replic_admin_menu, reply_markup=keyboards.menu)
     else:
         await message.answer(replic_403)
+
+@router.callback_query(models.deliveryPricesState.deliveryEdit, F.data == 'Cancel')
+async def deliveryPriceCancelCallback(call: CallbackQuery, state: FSMContext):
+    await state.clear()
+    text, markup = await replic_editDeliveryPrices()
+    await call.message.edit_text(text, reply_markup=markup)
+
+@router.callback_query(F.data == 'admin.editDeliveryPrices')
+async def editDeliveryPricesCallback(call: CallbackQuery, state: FSMContext):
+    text, markup = await replic_editDeliveryPrices()
+    await call.message.edit_text(text, reply_markup=markup)
+    await state.set_state(models.deliveryPricesState.deliveryEdit)
+
+@router.callback_query(F.data == 'admin.menu.deliveryprice')
+async def deliveryPriceCallback(call: CallbackQuery, state: FSMContext):
+    await state.clear()
+    text, markup = await replic_deliveryPrices()
+    await call.message.edit_text(text, reply_markup=markup)
 
 @router.callback_query(F.data.startswith('admin'))
 async def callback(call, state: FSMContext):

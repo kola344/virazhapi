@@ -25,3 +25,6 @@ class order_info_editorState(StatesGroup):
 
 class bsendState(StatesGroup):
     bsend = State()
+
+class deliveryPricesState(StatesGroup):
+    deliveryEdit = State()

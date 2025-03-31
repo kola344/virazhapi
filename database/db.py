@@ -414,6 +414,11 @@ class menu:
                 }
             return None
 
+    async def get_item_ids(self):
+        async with self.db.acquire() as connection:
+            rows = await connection.fetch('SELECT id FROM menu')
+            return [row["id"] for row in rows]
+
     async def check_item_by_id(self, item_id):
         async with self.db.acquire() as connection:
             row = await connection.fetchrow('SELECT 1 FROM menu WHERE id = $1', item_id)
@@ -730,6 +735,48 @@ class text_table:
                 return 'Нет информации'
             else:
                 return row["text"]
+
+class DeliveryPrice:
+    def __init__(self):
+        self.db = None
+
+    async def connect(self, db: asyncpg.connection.Connection):
+        self.db = db
+
+    async def create_table(self):
+        async with self.db.acquire() as connection:
+            await connection.execute('''CREATE TABLE IF NOT EXISTS delivery_price (
+                city TEXT PRIMARY KEY,
+                free INT,
+                price INT
+            )''')
+
+    async def get_cities(self):
+        async with self.db.acquire() as connection:
+            return [row['city'] for row in await connection.fetch('''SELECT city FROM delivery_price''')]
+
+    async def delete_from_table(self):
+        async with self.db.acquire() as connection:
+            await connection.execute('''DELETE FROM delivery_price''')
+
+    async def update_delivery_price(self, data: list):
+        #data = {city, free, price}
+        async with self.db.acquire() as connection:
+            for delivery in data:
+                await connection.execute('''INSERT INTO delivery_price (city, free, price)
+                                            VALUES ($1, $2, $3)''', delivery['city'], delivery['free'], delivery['price'])
+
+    async def get_deliveryPrices(self):
+        async with self.db.acquire() as connection:
+            return await connection.fetch('''SELECT * FROM price''')
+
+    async def get_delivery_price_by_city(self, city, receipt_amount):
+        async with self.db.acquire() as connection:
+            data = await connection.fetchrow('''SELECT * FROM delivery_price WHERE city = $1''', city)
+            if data['free'] > receipt_amount:
+                return data['price']
+            return 0
+
 
 class LuckyTickets:
     def __init__(self):

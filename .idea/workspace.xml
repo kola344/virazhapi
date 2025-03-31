@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5e3700f-3b1d-41a9-8c8b-5c8dfa16c164" name="Changes" comment="lucky tickets">
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routers/api/users/functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/api/users/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/api/users/cart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/api/users/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/api/users/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/api/users/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/api/users/cart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/api/users/cart_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/api/users/cart_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/api/users/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/api/users/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virazh_bot/admin/admin_messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/admin_messages.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virazh_bot/admin/keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/keyboards.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virazh_bot/admin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virazh_bot/admin/replics.py" beforeDir="false" afterPath="$PROJECT_DIR$/virazh_bot/admin/replics.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +83,7 @@
       <recent name="$PROJECT_DIR$/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="virazhapi" />
       <option name="ENV_FILES" value="" />
@@ -137,38 +149,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719988481537</updated>
-    </task>
-    <task id="LOCAL-00089" summary="edited text to phone number in order repo">
-      <option name="closed" value="true" />
-      <created>1725194047183</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1725194047183</updated>
-    </task>
-    <task id="LOCAL-00090" summary="fixed deactivate function (after deactivation bot sends category menu of this item)">
-      <option name="closed" value="true" />
-      <created>1728394143824</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1728394143824</updated>
-    </task>
-    <task id="LOCAL-00091" summary="added checking available items in user cart function">
-      <option name="closed" value="true" />
-      <created>1728395024495</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1728395024495</updated>
-    </task>
-    <task id="LOCAL-00092" summary="added checking available items in user cart function">
-      <option name="closed" value="true" />
-      <created>1728395153885</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1728395153885</updated>
     </task>
     <task id="LOCAL-00093" summary="items with name positions auto excepting when using get all menu func">
       <option name="closed" value="true" />
@@ -530,7 +510,39 @@
       <option name="project" value="LOCAL" />
       <updated>1743436258297</updated>
     </task>
-    <option name="localTasksCounter" value="138" />
+    <task id="LOCAL-00138" summary="lucky tickets">
+      <option name="closed" value="true" />
+      <created>1743436892794</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1743436892794</updated>
+    </task>
+    <task id="LOCAL-00139" summary="lucky tickets">
+      <option name="closed" value="true" />
+      <created>1743437240315</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1743437240315</updated>
+    </task>
+    <task id="LOCAL-00140" summary="lucky tickets">
+      <option name="closed" value="true" />
+      <created>1743437376991</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1743437376991</updated>
+    </task>
+    <task id="LOCAL-00141" summary="lucky tickets">
+      <option name="closed" value="true" />
+      <created>1743439207705</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1743439207705</updated>
+    </task>
+    <option name="localTasksCounter" value="142" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
