@@ -42,9 +42,6 @@ async def get_giftPage(item: get_giftModel):
 async def add_orderPage(item: add_orderModel):
     if carts[item.user_key] == []:
         return {"status": True, "info": "cart is empty", "order_id": -1}
-    order_type = 'pickup'
-    if item.address != 'Самовывоз':
-        order_type = 'delivery'
     await db.users.update_name_by_key(item.user_key, item.name)
     phone_number = await db.users.get_phone_by_key(item.user_key)
     order_subtext = ''
@@ -56,13 +53,13 @@ async def add_orderPage(item: add_orderModel):
             price += 0
         order_subtext += f"\n{i['name']} - {i['variation']}: {i['price']}р x {i['count']} -> {i['total']}р"
     delivery_price = await db.delivery_price.get_delivery_price_by_city(item.city, price)
-    order_subtext += f"\n🚚 Доставка: {delivery_price}р"
+    order_subtext += f"\n\n🚚 Доставка: {delivery_price}р"
     current_date = datetime.now()
     date = current_date.strftime('%d.%m.%Y')
     order_id = await db.orders.add_order(carts[item.user_key], item.delivery_at, item.comment, item.user_key, f'{item.city}: {item.address}', date, price, item.payment)
     if price >= gift_target:
         gift_data = await db.text_table.get_gift()
-        text = f'ЗАКАЗ #{order_id}{order_subtext}\n🎁{gift_data["name"]}: 0\nИТОГО: {price}р\n\nИмя: {item.name}\nАдрес доставки: {item.city} - {item.address}\nДоставить к: {item.date} {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nЭто предзаказ. Доставить {item.date}\nНомер: {phone_number}'
+        text = f'ЗАКАЗ #{order_id}{order_subtext}\n\n🎁{gift_data["name"]}: 0\nИТОГО: {price}р\n\nИмя: {item.name}\nАдрес доставки: {item.city} - {item.address}\nДоставить к: {item.date} {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nЭто предзаказ. Доставить {item.date}\nНомер: {phone_number}'
     else:
         text = f'ЗАКАЗ #{order_id}{order_subtext}\nИТОГО: {price}р\n\nИмя: {item.name}\nАдрес доставки: {item.city} - {item.address}\nДоставить к: {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nЭто предзаказ. Доставить {item.date}\nНомер: {phone_number}'
     await db.orders.update_text(order_id, text)
