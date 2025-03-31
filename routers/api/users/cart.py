@@ -21,7 +21,7 @@ async def addItem_to_cart(item: addItem_to_cartModel):
     if not item.user_key in cart_data.carts:
         cart_data.carts[item.user_key] = []
     item_data = await db.menu.get_item_info_by_id(item.item_id)
-    cart_data.carts[item.user_key].append({"item_id": item.item_id, "variation_id": item.variation_id, "variation": item_data["variations"][item.variation_id], "count": item.count, "price": item_data["price"][item.variation_id], "total": item_data["price"][item.variation_id] * item.count, "name": item_data["name"], "info": item_data["info"], "subinfo": item_data["subinfo"]})
+    cart_data.carts[item.user_key].append({"item_id": item.item_id, "variation_id": item.variation_id, "variation": item_data["variations"][item.variation_id], "count": item.count, "price": int(item_data["price"][item.variation_id]), "total": int(item_data["price"][item.variation_id]) * item.count, "name": item_data["name"], "info": item_data["info"], "subinfo": item_data["subinfo"]})
     return {"status": True, "info": "success"}
 
 @router.post('/delete_from_cart')
@@ -38,12 +38,14 @@ async def subtract_item(item: itemSubtractAddModel):
     # надо где нужный item_id count -= 1 и total -= price
     cart_data.carts[item.user_key][item.item_index]['count'] -= 1
     cart_data.carts[item.user_key][item.item_index]['total'] -= cart_data.carts[item.user_key][item.item_index]['price']
+    return {"status": True, "info": "success", "itemCount": cart_data.carts[item.user_key][item.item_index]['count']}
 
 @router.post('/add_item')
 async def add_item(item: itemSubtractAddModel):
     '''Прибавляет предмет в корзину'''
     cart_data.carts[item.user_key][item.item_index]['count'] += 1
     cart_data.carts[item.user_key][item.item_index]['total'] += cart_data.carts[item.user_key][item.item_index]['price']
+    return {"status": True, "info": "success", "itemCount": cart_data.carts[item.user_key][item.item_index]['count']}
 
 @router.post('/get_cart')
 async def get_cart_lengthPage(item: user_cartModel):

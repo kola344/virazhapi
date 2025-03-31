@@ -9,7 +9,7 @@ class add_to_cartModel(BaseModel):
 '''Новая модель данных'''
 class addItem_to_cartModel(BaseModel):
     user_key: str
-    item_id: str
+    item_id: int
     variation_id: int
     count: int
 

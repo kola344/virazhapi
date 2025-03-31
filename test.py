@@ -1,3 +1,5 @@
 import requests
 
-print(requests.post('https://api.kafevirazh.ru/bot_hook'))
+user_key = 'sZs8PtGw4jbt6G5i'
+
+print(requests.post(''))
