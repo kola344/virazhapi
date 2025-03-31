@@ -34,9 +34,13 @@ async def delete_from_cartPage(item: delete_from_cartModel):
 @router.post('/subtract_item')
 async def subtract_item(item: itemSubtractAddModel):
     '''Вычитает предмет из корзины'''
-    # cart_data.carts[item.user_key] = [item_id, variation_id, variation, count, price, total, name, info, subinfo]
-    # надо где нужный item_id count -= 1 и total -= price
-    cart_data.carts[item.user_key][item.item_index]['count'] -= 1
+    count = cart_data.carts[item.user_key][item.item_index]['count'] - 1
+    if count <= 0:
+        cart_data.carts[item.user_key].pop(item.item_index)
+        return {"status": True, "info": "success",
+                "itemCount": 0,
+                "cart": cart_data.carts[item.user_key]}
+    cart_data.carts[item.user_key][item.item_index]['count'] = count
     cart_data.carts[item.user_key][item.item_index]['total'] -= cart_data.carts[item.user_key][item.item_index]['price']
     return {"status": True, "info": "success", "itemCount": cart_data.carts[item.user_key][item.item_index]['count'],
             "cart": cart_data.carts[item.user_key]}
