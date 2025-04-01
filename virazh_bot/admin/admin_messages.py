@@ -27,6 +27,7 @@ async def deliveryEditFunc(message: Message):
             info_splited = delivery_info.split('-')
             city, price, free = info_splited[0], int(info_splited[1]), int(info_splited[2])
             data.append({"city": city, "price": price, "free": free})
+        await db.delivery_price.delete_from_table()
         await db.delivery_price.update_delivery_price(data)
         text, markup = await replic_deliveryPrices()
         await message.answer(text, reply_markup=markup)
