@@ -768,7 +768,7 @@ class DeliveryPrice:
 
     async def get_deliveryPrices(self):
         async with self.db.acquire() as connection:
-            return await connection.fetch('''SELECT * FROM price''')
+            return await connection.fetch('''SELECT * FROM delivery_price''')
 
     async def get_delivery_price_by_city(self, city, receipt_amount):
         async with self.db.acquire() as connection:

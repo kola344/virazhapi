@@ -1,7 +1,6 @@
 uvicorn
 fastapi
 aiogram
-aiosqlite
 aiohttp
 asyncpg
 openpyxl

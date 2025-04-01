@@ -53,7 +53,9 @@ async def add_orderPage(item: add_orderModel):
             price += 0
         order_subtext += f"\n{i['name']} - {i['variation']}: {i['price']}р x {i['count']} -> {i['total']}р"
     delivery_price = await db.delivery_price.get_delivery_price_by_city(item.city, price)
-    order_subtext += f"\n\n🚚 Доставка: {delivery_price}р"
+    if item.address != 'Самовывоз':
+        order_subtext += f"\n\n🚚 Доставка: {delivery_price}р"
+        price += delivery_price
     current_date = datetime.now()
     date = current_date.strftime('%d.%m.%Y')
     order_id = await db.orders.add_order(carts[item.user_key], item.delivery_at, item.comment, item.user_key, f'{item.city}: {item.address}', date, price, item.payment)
