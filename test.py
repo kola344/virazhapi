@@ -1,5 +1,5 @@
-import requests
+import asyncio
 
-user_key = 'sZs8PtGw4jbt6G5i'
+from virazh_bot.bot import main
 
-print(requests.post(''))
+asyncio.run(main())

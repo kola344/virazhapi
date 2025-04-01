@@ -13,13 +13,15 @@ from database.db_logging import db_log_message
 
 from integration import vk
 
+import traceback
+
 router = Router()
 
 @router.message(models.deliveryPricesState.deliveryEdit, F.text)
 async def deliveryEditFunc(message: Message):
     # data = {city, free, price}
     try:
-        splited = await message.text.split('\n')
+        splited = message.text.split('\n')
         data = []
         for delivery_info in splited:
             info_splited = delivery_info.split('-')
@@ -28,7 +30,8 @@ async def deliveryEditFunc(message: Message):
         await db.delivery_price.update_delivery_price(data)
         text, markup = await replic_deliveryPrices()
         await message.answer(text, reply_markup=markup)
-    except:
+    except Exception as e:
+        traceback.print_exc()
         await message.answer(replic_editDeliveryPricesErr)
 
 

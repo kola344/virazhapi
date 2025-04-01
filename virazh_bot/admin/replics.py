@@ -33,9 +33,10 @@ async def replic_editDeliveryPrices():
     return text, markup
 
 async def replic_deliveryPrices():
-    text = 'Текущие цены на доставку:\n'
+    text = 'Текущие цены на доставку:\nГород - Цена - Бесплатно от:\n'
     for info in await db.delivery_price.get_deliveryPrices():
-        text += f'{info["city"]} - {info["price"]}р\n'
+
+        text += f'{info["city"]} - {info["price"]}р - {info["free"]}р.\n'
     markup = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text='✏️ Изменить', callback_data='admin.editDeliveryPrices')]
     ])
