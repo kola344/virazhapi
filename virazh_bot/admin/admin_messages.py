@@ -203,7 +203,7 @@ async def admin_panel(message: Message, state: FSMContext):
 @router.callback_query(models.deliveryPricesState.deliveryEdit, F.data == 'Cancel')
 async def deliveryPriceCancelCallback(call: CallbackQuery, state: FSMContext):
     await state.clear()
-    text, markup = await replic_editDeliveryPrices()
+    text, markup = await replic_deliveryPrices()
     await call.message.edit_text(text, reply_markup=markup)
 
 @router.callback_query(F.data == 'admin.editDeliveryPrices')
