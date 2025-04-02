@@ -18,7 +18,7 @@ import traceback
 router = Router()
 
 @router.message(models.deliveryPricesState.deliveryEdit, F.text)
-async def deliveryEditFunc(message: Message):
+async def deliveryEditFunc(message: Message, state: FSMContext):
     # data = {city, free, price}
     try:
         splited = message.text.split('\n')
@@ -31,6 +31,7 @@ async def deliveryEditFunc(message: Message):
         await db.delivery_price.update_delivery_price(data)
         text, markup = await replic_deliveryPrices()
         await message.answer(text, reply_markup=markup)
+        await state.clear()
     except Exception as e:
         traceback.print_exc()
         await message.answer(replic_editDeliveryPricesErr)
