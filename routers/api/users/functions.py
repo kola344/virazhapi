@@ -21,7 +21,7 @@ def get_influenceList():
 
     result = [
         {
-            "image": {"exists": True, "url": None, "size": 0},
+            "image": {"exists": True, "url": 'https://kola344-virazhapi-4766.twc1.net/images/18.png', "size": 0},
             "title": {"type": "normal", "data": "Обычный заголовок"},
             "text": {"type": "good", "data": "Плюс что-то"},
             "subtext": {"type": "warn", "data": "Внимание на это"},
@@ -56,7 +56,7 @@ def get_influenceList():
             "price": {"type": "good", "amount": -30, "isAffects": True},
         },
         {
-            "image": {"exists": True, "url": None, "size": 2},
+            "image": {"exists": True, "url": 'https://kola344-virazhapi-4766.twc1.net/images/18.png', "size": 2},
             "title": {"type": "warn", "data": "Обратите внимание"},
             "text": {"type": "normal", "data": None},
             "subtext": {"type": "normal", "data": None},
@@ -70,21 +70,21 @@ def get_influenceList():
             "price": {"type": "normal", "amount": 0, "isAffects": False},
         },
         {
-            "image": {"exists": True, "url": None, "size": 3},
+            "image": {"exists": True, "url": 'https://kola344-virazhapi-4766.twc1.net/images/18.png', "size": 3},
             "title": {"type": "critical", "data": "Ошибка системы"},
             "text": {"type": "critical", "data": "Сбой в заказе"},
             "subtext": {"type": "critical", "data": "Свяжитесь с поддержкой"},
             "price": {"type": "critical", "amount": 999, "isAffects": False},
         },
         {
-            "image": {"exists": True, "url": None, "size": 0},
+            "image": {"exists": True, "url": 'https://kola344-virazhapi-4766.twc1.net/images/18.png', "size": 0},
             "title": {"type": "warn", "data": "Осторожно"},
             "text": {"type": "warn", "data": "Возможна задержка"},
             "subtext": {"type": "warn", "data": "Неопределённая ошибка"},
             "price": {"type": "warn", "amount": 20, "isAffects": True},
         },
         {
-            "image": {"exists": True, "url": None, "size": 1},
+            "image": {"exists": True, "url": 'https://kola344-virazhapi-4766.twc1.net/images/18.png', "size": 1},
             "title": {"type": "good", "data": "Выгодное предложение"},
             "text": {"type": "good", "data": "Соус в подарок"},
             "subtext": {"type": "good", "data": "Добавлен автоматически"},
@@ -94,7 +94,7 @@ def get_influenceList():
         # Остальные 20 штук — разное сочетание полей
         *[
             {
-                "image": {"exists": bool(i % 2), "url": None, "size": i % 4},
+                "image": {"exists": bool(i % 2), "url": 'https://kola344-virazhapi-4766.twc1.net/images/18.png', "size": i % 4},
                 "title": {"type": t, "data": f"{t.capitalize()} заголовок" if i % 3 == 0 else None},
                 "text": {"type": t2, "data": f"{t2.capitalize()} текст" if i % 4 == 0 else None},
                 "subtext": {"type": t3, "data": f"{t3.capitalize()} подстрока" if i % 5 == 0 else None},
