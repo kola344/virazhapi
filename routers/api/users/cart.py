@@ -2,18 +2,9 @@ from fastapi import APIRouter
 import db
 from models.api.users.cart import *
 from routers.api.users import cart_data
-from routers.api.users.functions import get_delivery_price
+from routers.api.users.functions import get_delivery_price, get_influenceList
 
 router = APIRouter()
-
-@router.post('/add_to_cart')
-async def add_to_cartPage(item: add_to_cartModel):
-    '''Старый метод API'''
-    if not item.user_key in cart_data.carts:
-        cart_data.carts[item.user_key] = []
-    item_data = await db.menu.get_item_info_by_id(item.item_id)
-    cart_data.carts[item.user_key].append({"item_id": item.item_id, "variation_id": item.variation_id, "variation": item_data["variations"][item.variation_id], "price": item_data["price"][item.variation_id], "name": item_data["name"], "info": item_data["info"], "subinfo": item_data["subinfo"]})
-    return {"status": True, "info": "success"}
 
 @router.post('/addItem_to_cart')
 async def addItem_to_cart(item: addItem_to_cartModel):
@@ -78,3 +69,8 @@ async def get_delivary_pricePage(item: deliveryPriceModel):
 async def get_citiesPage():
     '''Возвращает список городов, доступных для доставки'''
     return {"status": True, "info": "success", "cities": await db.delivery_price.get_cities()}
+
+@router.post('/get_priceInfluence')
+async def get_priceInfluencePage(item: get_influencesModel):
+    return {"status": True, "info": "success", "influences": get_influenceList()}
+
