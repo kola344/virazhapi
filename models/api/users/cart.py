@@ -29,3 +29,11 @@ class get_influencesModel(BaseModel):
     city: str
     order_time: str
     current_time: int
+
+class send_promoModel(BaseModel):
+    user_key: str
+    delivery_type: str
+    city: str
+    order_time: str
+    current_time: str
+    promo: str

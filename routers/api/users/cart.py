@@ -74,3 +74,16 @@ async def get_citiesPage():
 async def get_priceInfluencePage(item: get_influencesModel):
     return {"status": True, "info": "success", "influences": get_influenceList()}
 
+@router.post('/send_promo')
+async def send_promoPage(item: send_promoModel):
+    if item.promo == 'test':
+        return {"status": True, "info": "success", "promo_data": [
+                {"type": "normal", "text": "Промокод в честь дня рождения"},
+                {"type": "good", "text": "В корзине есть 5 товаров"},
+                {"type": "warn", "text": "На комбо/сеты промокод не распространяется"}
+                ]
+            }
+    return {"status": True, "info": "success", "promo_data": [
+        {"type": "critical", "text": "Такого промокода не существует"}]
+            }
+
