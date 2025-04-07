@@ -845,6 +845,42 @@ class birthdayPromocodes:
         async with self.db.acquire() as connection:
             await connection.execute('''UPDATE birthday_promocodes SET used = TRUE WHERE promocode = $1''', promocode)
 
+class paymentMethods:
+    def __init__(self):
+        self.db = None
+
+    async def connect(self, db: asyncpg.connection.Connection):
+        self.db = db
+
+    async def create_table(self):
+        async with self.db.acquire() as connection:
+            await connection.execute('''CREATE TABLE IF NOT EXISTS payment_methods (
+            user_key TEXT PRIMARY KEY,
+            method_id TEXT,
+            first6 TEXT,
+            last4 TEXT,
+            expiry_month INT,
+            expiry_year INT,
+            card_type TEXT
+            )''')
+
+    async def get_method_info_by_key(self, key):
+        async with self.db.acquire() as connection:
+            return await connection.fetchrow("""SELECT CONCAT(first6, '******', last4) as card, card_type FROM payment_methods WHERE user_key = $1""", key)
+
+    async def add_payment_method(self, user_key, method_id, first6, last4, expiry_month, expiry_year, card_type):
+        async with self.db.acquire() as connection:
+            await connection.execute('''INSERT INTO payment_methods (user_key, method_id, first6, last4, expiry_month, expiry_year, card_type) VALUES ($1, $2, $3, $4, $5, $6, $7)''', user_key, method_id, first6, last4, expiry_month, expiry_year, card_type)
+
+    async def del_payment_method(self, user_key):
+        async with self.db.acquire() as connection:
+            await connection.execute('''DELETE FROM payment_methods WHERE user_key = $1''', user_key)
+
+    async def update_payment_method(self, user_key, method_id, first6, last4, expiry_month, expiry_year, card_type):
+        async with self.db.acquire() as connection:
+            await connection.execute('''UPDATE payment_methods SET method_id = $2, first6 = $3, last4 = $4, expiry_month = $5, expiry_year = $6, card_type = $7 WHERE user_key = $1''', user_key, method_id, first6, last4, expiry_month, expiry_year, card_type)
+
+
 async def main():
     tg = users()
     await tg.connect('')
