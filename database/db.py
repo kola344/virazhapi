@@ -539,7 +539,8 @@ class users:
                                              tg_last_name TEXT,
                                              tg_username TEXT,
                                              key TEXT,
-                                             active_order INT)''')
+                                             active_order INT,
+                                             registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)''')
 
     async def check_user_by_id(self, user_id):
         async with self.db.acquire() as connection:
