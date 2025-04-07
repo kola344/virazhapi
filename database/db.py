@@ -866,7 +866,8 @@ class paymentMethods:
 
     async def get_method_info_by_key(self, key):
         async with self.db.acquire() as connection:
-            return await connection.fetchrow("""SELECT CONCAT(first6, '******', last4) as card, card_type FROM payment_methods WHERE user_key = $1""", key)
+            row = await connection.fetchrow("""SELECT CONCAT(first6, '******', last4) as card, card_type FROM payment_methods WHERE user_key = $1""", key)
+            return {"exists": row is not None, "data": dict(row) if row else None}
 
     async def add_payment_method(self, user_key, method_id, first6, last4, expiry_month, expiry_year, card_type):
         async with self.db.acquire() as connection:
