@@ -1,9 +1,12 @@
 import json
 
 import aiohttp
+
+import config
 from config import vk_token, vk_id, vk_username # Замените на ваш ID пользователя
 from datetime import datetime, timedelta
 import asyncio
+from virazh_bot.keygen import generate_birthdayPromo
 
 async def upload_image(session, image_path):
     # Получаем URL для загрузки изображения
@@ -131,6 +134,7 @@ async def send_photo_to_friends(friends_ids: list, photo_path: str):
     attachment = await upload_photo(photo_path)
     async with aiohttp.ClientSession() as session:
         for friend_id in friends_ids:
+            promo = await generate_birthdayPromo(10)
             await session.get(
                 "https://api.vk.com/method/messages.send",
                 params={
@@ -138,7 +142,8 @@ async def send_photo_to_friends(friends_ids: list, photo_path: str):
                     "v": "5.131",
                     "peer_id": friend_id,
                     "attachment": attachment,
-                    "random_id": 0
+                    "random_id": 0,
+                    "message": config.birthday_text.replcae('%p%', promo)
                 },
             )
             await asyncio.sleep(5)

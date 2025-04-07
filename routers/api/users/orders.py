@@ -4,8 +4,8 @@ from models.api.users.orders import get_order_historyModel, get_giftModel, send_
 from times_and_shift import get_order_times
 from virazh_bot.functions import order as orders_bot
 from datetime import datetime
-from routers.api.users.cart_data import carts, gift_target
-from routers.api.users.functions import get_delivery_price
+from routers.api.users.cart_data import carts, gift_target, promocodes, influences
+from routers.api.users.functions import get_delivery_price, str_calculate_receipt_with_influences, apply_promocodes
 
 router = APIRouter()
 
@@ -32,7 +32,7 @@ async def get_giftPage(item: get_giftModel):
                 price += int(i["total"])
             except:
                 price += 0
-        if price >= gift_target:
+        if price >= gift_target and item.delivery_type == 'Самовывоз':
             return {"status": True, "info": "success", "gift": await db.text_table.get_gift()}
         return {"status": True, "info": "success", "gift": {}}
     return {"status": True, "info": "success", "gift": {}}
@@ -52,6 +52,9 @@ async def add_orderPage(item: add_orderModel):
         except:
             price += 0
         order_subtext += f"\n{i['name']} - {i['variation']}: {i['price']}р x {i['count']} -> {i['total']}р"
+    order_subtext += f"\n\nПОДЫТОГ: {price}р"
+    price, add_text = await str_calculate_receipt_with_influences(price, item.user_key)
+    order_subtext += add_text
     delivery_price = await db.delivery_price.get_delivery_price_by_city(item.city, price)
     if item.address != 'Самовывоз':
         order_subtext += f"\n\n🚚 Доставка: {delivery_price}р"
@@ -66,5 +69,8 @@ async def add_orderPage(item: add_orderModel):
         text = f'ЗАКАЗ #{order_id}{order_subtext}\nИТОГО: {price}р\n\nИмя: {item.name}\nАдрес доставки: {item.city} - {item.address}\nДоставить к: {item.delivery_at}\n\nКомментарий к заказу:\n{item.comment}\nОплата: {item.payment}\nЭто предзаказ. Доставить {item.date}\nНомер: {phone_number}'
     await db.orders.update_text(order_id, text)
     await orders_bot.send_order_to_chat(text, item.user_key, order_id)
+    await apply_promocodes(item.user_key)
     carts[item.user_key] = []
+    influences[item.user_key] = []
+    promocodes[item.user_key] = []
     return {"status": True, "info": "success", "order_id": order_id}

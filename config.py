@@ -52,3 +52,12 @@ vk_username = 'virash_kafe_vorsma'
 '''
 VtQvTnFOKMAj6mXaAe0T8lh2ycy1GwU3kLlOoeOx5qoM8BlLgxHU2iZeOv88kPlBgWFAs3PO2NJZICAKQrgPrSpZz4wdsLzTr6TiQHasadywqEZf5DGPTZZ1wrCjPMeE079zUf2s4F5mFqntXdxrj0gBDA3Wb77j5Z0mEQ1S7CSRmAeFnoEawOd7uakA1ovCvPucOBzgjJfsieZTHPZKTxIS29xeCDVs6BByIxNnazxg3iY0MLwdngoi1p3LRiD
 '''
+
+birthday_text = '''🎉 С Днём Рождения!
+Сегодня ваш день — пусть он будет вкусным и незабываемым!
+
+🍽 Загляните на наш сайт kafevirazh.ru и выберите любимые блюда.
+🎁 А чтобы было ещё приятнее — вводите промокод %p% при оформлении заказа и получите приятный бонус!
+
+С любовью, кафе “Вираж” ❤️
+'''

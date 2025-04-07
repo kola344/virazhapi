@@ -2,7 +2,7 @@ from fastapi import APIRouter
 import db
 from models.api.users.cart import *
 from routers.api.users import cart_data
-from routers.api.users.functions import get_delivery_price, get_influenceList
+from routers.api.users.functions import get_delivery_price, get_influencesList, check_promocode
 
 router = APIRouter()
 
@@ -72,18 +72,9 @@ async def get_citiesPage():
 
 @router.post('/get_priceInfluence')
 async def get_priceInfluencePage(item: get_influencesModel):
-    return {"status": True, "info": "success", "influences": get_influenceList()}
+    return {"status": True, "info": "success", "influences": await get_influencesList(item.user_key, item.delivery_type, item.city)}
 
 @router.post('/send_promo')
 async def send_promoPage(item: send_promoModel):
-    if item.promo == 'test':
-        return {"status": True, "info": "success", "promo_data": [
-                {"type": "normal", "text": "Промокод в честь дня рождения"},
-                {"type": "good", "text": "В корзине есть 5 товаров"},
-                {"type": "warn", "text": "На комбо/сеты промокод не распространяется"}
-                ]
-            }
-    return {"status": True, "info": "success", "promo_data": [
-        {"type": "critical", "text": "Такого промокода не существует"}]
-            }
+    return await check_promocode(item.user_key, item.promo)
 

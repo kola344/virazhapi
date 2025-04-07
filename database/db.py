@@ -777,6 +777,13 @@ class DeliveryPrice:
                 return data['price']
             return 0
 
+    async def calculate_need_delivery_price(self, city, receipt_amount):
+        async with self.db.acquire() as connection:
+            data = await connection.fetchrow('''SELECT * FROM delivery_price WHERE city = $1''', city)
+            if data['free'] > receipt_amount:
+                return data['free'] - receipt_amount
+            return 0
+
 
 class LuckyTickets:
     def __init__(self):
@@ -808,6 +815,34 @@ class LuckyTickets:
     async def get_users_by_ticket(self, ticket_id):
         async with self.db.acquire() as connection:
             return await connection.fetch('''SELECT * FROM lucky_tickets WHERE ticket_id = $1''', ticket_id)
+
+class birthdayPromocodes:
+    def __init__(self):
+        self.db = None
+
+    async def connect(self, db: asyncpg.connection.Connection):
+        self.db = db
+
+    async def create_table(self):
+        async with self.db.acquire() as connection:
+            await connection.execute('''CREATE TABLE IF NOT EXISTS birthday_promocodes (
+            id SERIAL PRIMARY KEY,
+            promocode TEXT,
+            end_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP + INTERVAL '2 days',
+            used BOOLEAN DEFAULT FALSE
+            )''')
+
+    async def add_promocode(self, promocode):
+        async with self.db.acquire() as connection:
+            await connection.execute('''INSERT INTO birthday_promocodes (promocode) VALUES ($1)''', promocode)
+
+    async def check_promocode(self, promocode):
+        async with self.db.acquire() as connection:
+            return (await connection.fetchrow('''SELECT * FROM birthday_promocodes WHERE promocode = $1 AND used = FALSE AND end_date > CURRENT_TIMESTAMP''', promocode)) is not None
+
+    async def update_promocodeStatus(self, promocode):
+        async with self.db.acquire() as connection:
+            await connection.execute('''UPDATE birthday_promocodes SET used = TRUE WHERE promocode = $1''', promocode)
 
 async def main():
     tg = users()
