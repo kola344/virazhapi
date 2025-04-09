@@ -161,7 +161,7 @@ async def get_influencesList(user_key: str, delivery_type: str, city: str):
     if stars_amount:
         if await db.users.check_tg_connected_by_key(user_key):
             influences.append({
-                "image": {"exists": True, "url": f"{config.api_url}/icons/telegram.jpeg"},
+                "image": {"exists": True, "url": f"{config.api_url}/icons/telegram.jpeg", "size": 0},
                 "title": {"type": "normal", "data": f"Подарок - {stars_amount} Telegram ⭐️Stars!"},
                 "text": {"text": "normal", "data": f"После завершения заказа отправим подарок за {stars_amount} ⭐️Stars"},
                 "subtext": {"type": "normal", "data": "Не нужны звезды? Укажите в комментарии к заказу ссылку на Telegram другого человека"},
@@ -169,7 +169,7 @@ async def get_influencesList(user_key: str, delivery_type: str, city: str):
             })
         else:
             influences.append({
-                "image": {"exists": True, "url": f"{config.api_url}/icons/telegram.jpeg"},
+                "image": {"exists": True, "url": f"{config.api_url}/icons/telegram.jpeg", "size": 0},
                 "title": {"type": "normal", "data": f"Подарок - {stars_amount} Telegram ⭐️Stars!"},
                 "text": {"text": "normal",
                          "data": f"Чтобы получить, подключите свой Telegram в профиле после оформления заказа"},
