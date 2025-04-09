@@ -10,3 +10,6 @@ birthday_discount = 15
 staffs_discount = 10
 
 staffsPhones = [79200671561]
+
+receipts_amounts_stars = [500, 1000, 2000, 3200]
+stars_amounts = [15, 25, 50, 100]

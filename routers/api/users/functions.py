@@ -1,5 +1,7 @@
 import db
 from routers.api.users import cart_data
+import bisect
+import config
 
 async def calculate_receipt(user_key):
     total = 0
@@ -73,7 +75,16 @@ async def str_calculate_receipt_with_influences(total, user_key: str):
         return total, '\n\nСкидки:' + add_text
     return total, ''
 
-async def check_influences(user_key: str):
+async def str_stars(receipt_amount: int, user_key):
+    if await db.users.check_tg_connected_by_key(user_key):
+        stars_amount = get_stars(receipt_amount)
+        if stars_amount:
+            user_data = await db.users.get_user_data_by_key(user_key)
+            return f'\n\n⭐️Stars - {stars_amount}\nTelegram: <a href="tg://user?id={user_data['tg_id']}">{user_data["tg_id"]}</a>\nTG_usename: @{user_data["tg_username"]}\n\n'
+    return ''
+
+
+async def check_influences(user_key: str, total_amount: int = None):
     phone_number = await db.users.get_phone_by_key(user_key)
     if phone_number in cart_data.staffsPhones:
         is_exists = False
@@ -86,6 +97,12 @@ async def check_influences(user_key: str):
             cart_data.influences[user_key] = []
         if not is_exists:
             cart_data.influences[user_key].append({"type": "staff", "id": -1})
+
+
+def get_stars(amount: int) -> int:
+    idx = bisect.bisect_right(cart_data.receipts_amounts_stars, amount) - 1
+    return cart_data.stars_amounts[idx] if idx >= 0 else 0
+
 
 async def get_influencesList(user_key: str, delivery_type: str, city: str):
     influences = []
@@ -138,4 +155,27 @@ async def get_influencesList(user_key: str, delivery_type: str, city: str):
                     "subtext": {"type": "normal", "data": None},
                     "price": {"type": "good", "amount": -(receipt_without_influences * (cart_data.staffs_discount / 100)), "isAffects": True}
                 })
+
+    # stars
+    stars_amount = get_stars(receipt_amount)
+    if stars_amount:
+        if await db.users.check_tg_connected_by_key(user_key):
+            influences.append({
+                "image": {"exists": True, "url": f"{config.api_url}/icons/telegram.jpeg"},
+                "title": {"type": "normal", "data": f"Подарок - {stars_amount} Telegram ⭐️Stars!"},
+                "text": {"text": "normal", "data": f"После завершения заказа отправим подарок за {stars_amount} ⭐️Stars"},
+                "subtext": {"type": "normal", "data": "Не нужны звезды? Укажите в комментарии к заказу ссылку на Telegram другого человека"},
+                "price": {"type": "normal", "amount": None, "isAffects": False}
+            })
+        else:
+            influences.append({
+                "image": {"exists": True, "url": f"{config.api_url}/icons/telegram.jpeg"},
+                "title": {"type": "normal", "data": f"Подарок - {stars_amount} Telegram ⭐️Stars!"},
+                "text": {"text": "normal",
+                         "data": f"Чтобы получить, подключите свой Telegram в профиле после оформления заказа"},
+                "subtext": {"type": "normal",
+                            "data": "Не нужны звезды? Укажите в комментарии к заказу ссылку на Telegram другого человека"},
+                "price": {"type": "normal", "amount": None, "isAffects": False}
+            })
+
     return influences

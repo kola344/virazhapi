@@ -104,11 +104,11 @@ async def callback(call):
             order_text = await db.orders.get_text(order_id)
             try:
                 await bot.delete_message(chat_id=user_tg_id, message_id=user_message_id)
-                mess = await bot.send_message(chat_id=user_tg_id, text=order_text, reply_markup=user_markup)
+                mess = await bot.send_message(chat_id=user_tg_id, text=order_text, reply_markup=user_markup, parse_mode='html')
                 await db.orders.update_message_user_id(order_id, mess.message_id)
             except Exception as e:
                 try:
-                    mess = await bot.send_message(chat_id=user_tg_id, text=order_text, reply_markup=user_markup)
+                    mess = await bot.send_message(chat_id=user_tg_id, text=order_text, reply_markup=user_markup, parse_mode='html')
                     await db.orders.update_message_user_id(order_id, mess.message_id)
                     markup, user_markup = await replic_order_manager_markup(l3, order_id)
                     await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)

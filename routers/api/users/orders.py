@@ -5,7 +5,7 @@ from times_and_shift import get_order_times
 from virazh_bot.functions import order as orders_bot
 from datetime import datetime
 from routers.api.users.cart_data import carts, gift_target, promocodes, influences
-from routers.api.users.functions import get_delivery_price, str_calculate_receipt_with_influences, apply_promocodes
+from routers.api.users.functions import get_delivery_price, str_calculate_receipt_with_influences, apply_promocodes, str_stars
 
 router = APIRouter()
 
@@ -59,6 +59,7 @@ async def add_orderPage(item: add_orderModel):
     if item.address != 'Самовывоз':
         order_subtext += f"\n\n🚚 Доставка: {delivery_price}р"
         price += delivery_price
+    order_subtext += await str_stars(price, item.user_key)
     current_date = datetime.now()
     date = current_date.strftime('%d.%m.%Y')
     order_id = await db.orders.add_order(carts[item.user_key], item.delivery_at, item.comment, item.user_key, f'{item.city}: {item.address}', date, price, item.payment)

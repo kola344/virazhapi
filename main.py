@@ -75,6 +75,13 @@ async def get_menu_imagesPage(image: str):
         return FileResponse(file_path)
     return FileResponse('icons/notfound.jpg')
 
+@app.get('/icons/{image}')
+async def get_icons_imagesPage(image: str):
+    file_path = f'icons/{image}'
+    if os.path.exists(file_path):
+        return FileResponse(file_path)
+    return FileResponse('icons/notfound.jpg')
+
 @app.middleware("http")
 async def add_cache_control_header(request: Request, call_next):
     response: Response = await call_next(request)
