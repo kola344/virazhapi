@@ -35,5 +35,5 @@ class send_promoModel(BaseModel):
     delivery_type: str
     city: str
     order_time: str
-    current_time: str
+    current_time: int
     promo: str
