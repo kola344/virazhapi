@@ -143,7 +143,7 @@ async def send_photo_to_friends(friends_ids: list, photo_path: str):
                     "peer_id": friend_id,
                     "attachment": attachment,
                     "random_id": 0,
-                    "message": config.birthday_text.replace('%p%', promo)
+                    # "message": config.birthday_text.replace('%p%', promo)
                 },
             )
             await asyncio.sleep(5)
