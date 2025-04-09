@@ -80,7 +80,7 @@ async def str_stars(receipt_amount: int, user_key):
         stars_amount = get_stars(receipt_amount)
         if stars_amount:
             user_data = await db.users.get_user_data_by_key(user_key)
-            return f'\n\n⭐️Stars - {stars_amount}\nTelegram: <a href="tg://user?id={user_data['tg_id']}">{user_data["tg_id"]}</a>\nTG_usename: @{user_data["tg_username"]}\n\n'
+            return f'\n\n⭐️Stars - {stars_amount}\nTelegram: <a href="tg://user?id={user_data['tg_id']}">{user_data["tg_id"]}</a>\nTG_usename: @{user_data["tg_username"]}'
     return ''
 
 
