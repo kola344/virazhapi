@@ -43,34 +43,40 @@ async def apply_promocodes(user_key: str):
             await db.birthdayPromocodes.update_promocodeStatus(promo['promo'])
 
 async def calculate_receipt_with_influences(total, user_key: str):
+    discount_have = False
     if user_key in cart_data.promocodes:
         for promo in cart_data.promocodes[user_key]:
             if promo['type'] == 'birthday' and await db.birthdayPromocodes.check_promocode(promo['promo']):
                 total -= int(total * (cart_data.birthday_discount / 100))
+                discount_have = True
                 break
     if user_key in cart_data.influences:
         for influence in cart_data.influences[user_key]:
-            if influence['type'] == 'staff':
-                total -= int(total * (cart_data.staffs_discount / 100))
-                break
+            if not discount_have:
+                if influence['type'] == 'staff':
+                    total -= int(total * (cart_data.staffs_discount / 100))
+                    break
     return total
 
 async def str_calculate_receipt_with_influences(total, user_key: str):
     add_text = ''
+    discount_have = False
     if user_key in cart_data.promocodes:
         for promo in cart_data.promocodes[user_key]:
             if promo['type'] == 'birthday' and await db.birthdayPromocodes.check_promocode(promo['promo']):
                 discount = int(total * (cart_data.birthday_discount / 100))
                 total -= discount
                 add_text += f'\n🎉 Скидка в день рождения {cart_data.birthday_discount}%: -{discount}р'
+                discount_have = True
                 break
     if user_key in cart_data.influences:
         for influence in cart_data.influences[user_key]:
-            if influence['type'] == 'staff':
-                discount = int(total * (cart_data.staffs_discount / 100))
-                total -= discount
-                add_text += f'\n👨‍🍳 Скидка для своих {cart_data.staffs_discount}%: -{discount}р'
-                break
+            if not discount_have:
+                if influence['type'] == 'staff':
+                    discount = int(total * (cart_data.staffs_discount / 100))
+                    total -= discount
+                    add_text += f'\n👨‍🍳 Скидка для своих {cart_data.staffs_discount}%: -{discount}р'
+                    break
     if add_text != '':
         return total, '\n\nСкидки:' + add_text
     return total, ''
@@ -110,6 +116,8 @@ async def get_influencesList(user_key: str, delivery_type: str, city: str):
     receipt_without_influences = await calculate_receipt(user_key)
     receipt_amount = await calculate_receipt_with_influences(receipt_without_influences, user_key)
 
+    discount_have = False
+
     #delivery
     if delivery_type != 'Самовывоз':
         delivery_need = await calculate_delivery(city, receipt_amount)
@@ -133,6 +141,7 @@ async def get_influencesList(user_key: str, delivery_type: str, city: str):
                         "subtext": {"type": "normal", "data": promo['promo']},
                         "price": {"type": "good", "amount": -(receipt_without_influences * (cart_data.birthday_discount / 100)), "isAffects": True}
                     })
+                    discount_have = True
                 else:
                     influences.append({
                         "image": {"exists": False, "url": None, "size": 0},
@@ -147,14 +156,15 @@ async def get_influencesList(user_key: str, delivery_type: str, city: str):
     print(cart_data.influences)
     if user_key in cart_data.influences:
         for influence in cart_data.influences[user_key]:
-            if influence['type'] == 'staff':
-                influences.append({
-                    "image": {"exists": False, "url": None, "size": 0},
-                    "title": {"type": "normal", "data": "Скидка для своих"},
-                    "text": {"type": "good", "data": f"Применена скидка {cart_data.staffs_discount}%!"},
-                    "subtext": {"type": "normal", "data": None},
-                    "price": {"type": "good", "amount": -(receipt_without_influences * (cart_data.staffs_discount / 100)), "isAffects": True}
-                })
+            if not discount_have:
+                if influence['type'] == 'staff':
+                    influences.append({
+                        "image": {"exists": False, "url": None, "size": 0},
+                        "title": {"type": "normal", "data": "Скидка для своих"},
+                        "text": {"type": "good", "data": f"Применена скидка {cart_data.staffs_discount}%!"},
+                        "subtext": {"type": "normal", "data": None},
+                        "price": {"type": "good", "amount": -(receipt_without_influences * (cart_data.staffs_discount / 100)), "isAffects": True}
+                    })
 
     # stars
     stars_amount = get_stars(receipt_amount)
