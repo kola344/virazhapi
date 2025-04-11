@@ -95,11 +95,13 @@ async def callback(call):
             func, order_id = splited_l2[0], int(splited_l2[1])
         if func == 'set':
             await db.orders.set_status(config.order_statuses[l3], order_id)
-            markup, user_markup = await replic_order_manager_markup(l3, order_id)
-            await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
             order_data = await db.orders.get_order_data(order_id)
             user_key = order_data["order_by"]
-            user_tg_id = await db.users.get_user_tg_id_by_key(user_key)
+            user_data = await db.users.get_user_data_by_key(user_key)
+            user_tg_id = user_data['tg_id']
+            user_tg_username = user_data['tg_username']
+            markup, user_markup = await replic_order_manager_markup(l3, order_id, user_tg_id, user_tg_username)
+            await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
             user_message_id = await db.orders.get_user_message_id(order_id)
             order_text = await db.orders.get_text(order_id)
             try:
@@ -110,7 +112,7 @@ async def callback(call):
                 try:
                     mess = await bot.send_message(chat_id=user_tg_id, text=order_text, reply_markup=user_markup, parse_mode='html')
                     await db.orders.update_message_user_id(order_id, mess.message_id)
-                    markup, user_markup = await replic_order_manager_markup(l3, order_id)
+                    markup, user_markup = await replic_order_manager_markup(l3, order_id, user_tg_id, user_tg_username)
                     await bot.edit_message_reply_markup(chat_id=user_id, message_id=call.message.message_id, reply_markup=markup)
                 except Exception as e:
                     print(e)

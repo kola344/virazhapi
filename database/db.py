@@ -82,6 +82,10 @@ class orders:
                                                      message_user_id INT,
                                                      payment TEXT)''')
 
+    async def get_user_data_by_order_id(self):
+        async with self.db.acquire() as connection:
+            return await connection.fetchrow('''SELECT * FROM users JOIN orders ON user''')
+
     async def add_order(self, data, delivery_at, comment, order_by, address, date, price, payment):
         async with self.db.acquire() as connection:
             new_id = await connection.fetchval('''
@@ -146,6 +150,7 @@ class orders:
                 SELECT message_user_id FROM orders WHERE id = $1
             ''', order_id)
             return row['message_user_id'] if row else None
+
 
     async def get_text(self, order_id):
         async with self.db.acquire() as connection:

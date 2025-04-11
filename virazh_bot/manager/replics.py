@@ -40,7 +40,7 @@ async def replic_shift_info():
     markup = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='Закрыть смену', callback_data='manager.shift.false')], [InlineKeyboardButton(text='⬅️ Назад', callback_data='manager.menu.main')]])
     return text, markup
 
-async def replic_order_manager_markup(selected_status, order_id):
+async def replic_order_manager_markup(selected_status, order_id, user_tg_id, user_tg_username):
     if selected_status == 'completed':
         order_data = await db.orders.get_order_data(order_id)
         shift_stats_functions.add_completed_order('today', order_data["price"])
@@ -64,6 +64,9 @@ async def replic_order_manager_markup(selected_status, order_id):
                 keyboard.append([InlineKeyboardButton(text=config.order_statuses[i], callback_data=f'order.set:{order_id}.{i}')])
         if await db.orders.get_user_message_id(order_id) != None:
             keyboard.append([InlineKeyboardButton(text='🟢 Telegram', callback_data=f'none')])
+            keyboard.append([InlineKeyboardButton(text=str(user_tg_id), url=f'tg://user?id={user_tg_id}')])
+            if user_tg_username:
+                keyboard.append([InlineKeyboardButton(text=f'@{user_tg_username}', url=f'https://t.me/{user_tg_username}')])
         else:
             keyboard.append([InlineKeyboardButton(text='🔴 Telegram', callback_data=f'none')])
 
